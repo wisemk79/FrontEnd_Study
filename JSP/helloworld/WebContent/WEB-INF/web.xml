@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>helloworld</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+<!-- xml을 이용한 맵핑 -->
+
+<servlet>
+<servlet-name>helloworld</servlet-name><!-- 서블릿 이름 -->
+<servlet-class>com.javalec.ex.HelloWorld</servlet-class><!-- 실제 서블릿 경로하고 자바파일이름-->
+</servlet>
+<servlet-mapping>
+<servlet-name>helloworld</servlet-name>
+													<!-- 원래주소는http://localhost:8181/helloworld/servlet/com.javalec.ex.HelloWorld <-너무 주소가 길고 뒤의 경로가 보이는 것 처럼 보안에 노출되어있어 맵핑(주소를 다른이름으로 바꿔줌)을 한다 -->
+<url-pattern>/hw</url-pattern><!-- http://localhost:8181/helloworld/hw <-매핑한대로 원래 주소가 숨겨짐 -->
+</servlet-mapping>
+
+</web-app>
+
