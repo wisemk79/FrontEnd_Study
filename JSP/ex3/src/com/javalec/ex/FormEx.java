@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FormEx
  */
-@WebServlet("/FormEx")
+@WebServlet("/")
 public class FormEx extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

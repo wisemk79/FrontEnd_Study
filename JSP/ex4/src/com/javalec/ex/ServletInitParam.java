@@ -30,14 +30,18 @@ public class ServletInitParam extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			System.out.println("doGet");
-			
+			/*		
+			String id = getServletContext().getInitParameter("id");
+			String pw = getServletContext().getInitParameter("pw");
+			String path = getServletContext().getInitParameter("path");
+		*/	
 			String id = getInitParameter("id");
 			String pw = getInitParameter("pw");
 			String path = getInitParameter("path");
-			
+		
 			response.setContentType("text/html; charset = EUC-KR"); 
 			PrintWriter writer = response.getWriter();// 응답 문서에 출력하기 위한 PrintWriter 객체를 가지고 옴
-			
+
 			writer.println("<html><head></head><body>");
 			writer.println("아이디 : " + id + "<br>");
 			writer.println("비밀번호 : " + pw + "<br>");

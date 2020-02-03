@@ -20,7 +20,6 @@ import com.sun.net.httpserver.HttpServer;
  */
 @WebServlet("/HWorld")//서블릿 클래스의 닉네임 <---어노테이션(해당 자바 코드안에 webservlet 써서 맵핑)을 이용한 맵핑
 public class HelloWorld extends HttpServer {//이 서블릿 파일은 java resource의 com.javalec.ex 패키지에 서블릿 파일이 존재
-	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
