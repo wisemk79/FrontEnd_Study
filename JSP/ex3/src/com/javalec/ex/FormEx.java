@@ -17,9 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FormEx extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public FormEx() {
         super();
         // TODO Auto-generated constructor stub

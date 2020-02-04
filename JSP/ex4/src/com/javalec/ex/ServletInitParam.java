@@ -28,7 +28,7 @@ public class ServletInitParam extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {//throws는 예외를 자신이 처리하지 않고 자신을 호출하는 메소드에게 책임을 전가하는것
 			System.out.println("doGet");
 			/*		
 			String id = getServletContext().getInitParameter("id");
