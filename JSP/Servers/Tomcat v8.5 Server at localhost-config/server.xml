@@ -23,7 +23,7 @@
   <Listener className="org.apache.catalina.security.SecurityListener" />
   -->
   <!--APR library loader. Documentation at /docs/apr.html -->
-  <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/>
+ <!-- <Listener SSLEngine="on" className="org.apache.catalina.core.AprLifecycleListener"/> --> 
   <!-- Prevent memory leaks due to use of particular java/javax APIs-->
   <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
   <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8181" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -149,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="ex11_1" path="/ex11_1" reloadable="true" source="org.eclipse.jst.jee.server:ex11_1"/><Context docBase="ex3" path="/ex3" reloadable="true" source="org.eclipse.jst.jee.server:ex3"/><Context docBase="jsp_Day1" path="/jsp_Day1" reloadable="true" source="org.eclipse.jst.jee.server:jsp_Day1"/><Context docBase="ex10" path="/ex10" reloadable="true" source="org.eclipse.jst.jee.server:ex10"/><Context docBase="ex7_1" path="/ex7_1" reloadable="true" source="org.eclipse.jst.jee.server:ex7_1"/><Context docBase="ex12" path="/ex12" reloadable="true" source="org.eclipse.jst.jee.server:ex12"/><Context docBase="jsp_Day1_2" path="/jsp_Day1_2" reloadable="true" source="org.eclipse.jst.jee.server:jsp_Day1_2"/></Host>
+      <Context docBase="ex14_join_login_out_form" path="/ex14_join_login_out_form" reloadable="true" source="org.eclipse.jst.jee.server:ex14_join_login_out_form"/></Host>
     </Engine>
   </Service>
 </Server>
