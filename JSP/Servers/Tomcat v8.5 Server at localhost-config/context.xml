@@ -25,4 +25,15 @@
     <!--
     <Manager pathname="" />
     -->
+     <Resource
+    	auth = "Container"
+    	driverClassName = "oracle.jdbc.driver.OracleDriver"
+    	url = "jdbc:oracle:thin:@localhost:1521:xe"
+    	username = "scott"
+    	password = "tiger"
+    	name = "jdbc/Oracle11g"
+    	type = "javax.sql.DataSource"
+    	maxActive = "50"
+    	maxWait = "1000"
+    /><!-- maxActive = "50" 50개의 요청에 대해 미리 커넥션풀 만들음// 51번째에 오면  maxWait = "1000" 1000이상 기다린다. 그다음에 톰캣이 커넥션을  증가를시켜줌  -->
 </Context>
