@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-	session.invalidate();
+	session.invalidate();//세션에있는 데이터를 날린다. 
 	response.sendRedirect("login.jsp");
 %>
 <!DOCTYPE html>

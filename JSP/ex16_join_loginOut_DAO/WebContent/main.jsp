@@ -7,10 +7,10 @@
 <%
 	}
 
-	String name = (String)session.getAttribute("name");
+	String name = (String)session.getAttribute("name");//세션에서 이름과 아이디를 가져온다. 
 	String id = (String)session.getAttribute("id");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">

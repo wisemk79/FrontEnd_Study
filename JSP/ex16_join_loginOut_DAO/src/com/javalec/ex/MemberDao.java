@@ -94,30 +94,30 @@ public class MemberDao {
 		return ri;
 	}
 	
-	public int userCheck( String id, String pw) {
+	public int userCheck( String id, String pw) {//사용자가 입력한 아이디와 패스워드를 이용 
 		int ri = 0;
 		String dbPw;
 		
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet set = null;
-		String query = "select pw from members where id = ?";
+		Connection connection = null;//커넥션 객체 
+		PreparedStatement pstmt = null;//prestatement객체 
+		ResultSet set = null;// 명령에 대한 반환값. 반환해주는 값은 테이블을 보시면서 해야 이해가 빠를듯..
+		String query = "select pw from members where id = ?";//멤버즈 테이블에서 비밀번호를 가져온다. 
 		
 		try {
 			connection = getConnection();
 			pstmt = connection.prepareStatement(query);
 			pstmt.setString(1, id);
-			set = pstmt.executeQuery();
+			set = pstmt.executeQuery();//DB에 명령하는 것 
 			
 			if(set.next()) {
-				dbPw = set.getString("pw");
-				if(dbPw.equals(pw)) {
-					ri = MemberDao.MEMBER_LOGIN_SUCCESS;				// �α��� Ok
+				dbPw = set.getString("pw");//pw를 가져와서 담고 
+				if(dbPw.equals(pw)) {//그것이 pw와 같다
+					ri = MemberDao.MEMBER_LOGIN_SUCCESS;				// 로그인 Ok
 				} else {
-					ri = MemberDao.MEMBER_LOGIN_PW_NO_GOOD;		// ��� X
+					ri = MemberDao.MEMBER_LOGIN_PW_NO_GOOD;		// 비번 X
 				}
 			} else {
-				ri = MemberDao.MEMBER_LOGIN_IS_NOT;		// ȸ�� X	
+				ri = MemberDao.MEMBER_LOGIN_IS_NOT;		// 회원이 아니다.	
 			}
 			
 		} catch (Exception e) {
