@@ -1,9 +1,16 @@
 package com.javalec.daotoex;
 
-public class MemberDTO {//데이터베이스에서 가져온 데이터를 관리해주는 클래스  데이터베이스에 있는것을 객체데이터로 바꾼것 
-	private String name, id, pw, phone1, phone2, phone3, gender;
+public class MemberDTO {
+
+	private String name;
+	private String id;
+	private String pw;
+	private String phone1;
+	private String phone2;
+	private String phone3;
+	private String gender;
 	
-	public MemberDTO(String name, String id, String pw,String phone1, String phone2, String phone3, String gender) {
+	public MemberDTO(String name, String id, String pw, String phone1, String phone2, String phone3, String gender) {
 		this.name = name;
 		this.id = id;
 		this.pw = pw;
@@ -69,5 +76,4 @@ public class MemberDTO {//데이터베이스에서 가져온 데이터를 관리
 		this.gender = gender;
 	}
 	
-
 }
