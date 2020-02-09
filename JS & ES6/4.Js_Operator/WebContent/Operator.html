@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		console.log(1==2);//false
+		console.log(1==2);//true
+		console.log(1==="1")//false <--데이터타입까지 비교를 한다. 
+		console.log(1=="1")//true <--데이터타입비교 x
+		console.log(null == undefined);//true 
+		console.log(null === undefined);//false 
+		console.log(true == 1)//true
+		console.log(true === 1)//false 1을 true로 간주하고 1이 아닌 숫자를 false로 간주한다. 
+		console.log(true == '1')//true
+		console.log(true === '1')//false
+		console.log(0 === -0)//true
+		console.log(NaN === NaN)//false  NaN은 수학적으로 성립하지않는 숫자(계산할수 없는 숫자 )이기 때문에 NaN으로 표기한다.
+	</script>
+</body>
+</html>

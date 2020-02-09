@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var age, id, password;
+		age = prompt("당신의 나이는 ? ");//자바에서 스캐너와 비슷한역할 alert창에 입력을 받고 값을 리턴 받을수 있다.
+		if(age > 20){
+			alert("음주가 가능합니다.");
+		}else{
+			alert("미성년자 입니다. ");
+		}
+		
+		id = prompt("아이디를 입력해주세요.");
+		if(id == 'abcde'){
+			password = prompt("비밀번호를 입력해주세요.");
+				if(password == '12345'){
+					alert(id + ' 님 안녕하세요.')
+				}else{
+					alert("비밀번호가 틀렸습니다.")
+				}
+		}else{
+			alert('없는 아이디입니다.')
+		}
+		
+		var i = 0;
+		while(true){
+			document.write(i);
+			i++;
+			
+			if(i == 5){
+				break;
+			}
+		}
+		
+		
+	</script>	
+</body>
+</html>

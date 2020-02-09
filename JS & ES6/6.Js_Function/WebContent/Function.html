@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function numbering(a){//function안에 매개변수를 선언한다(parameter) ..<--function에 1이라는 숫자를 넣어준다(argument)
+			document.write(a + '가 출력됩니다. <br/>'); 
+		}
+		
+		
+		for(var i = 0; i < 10; i++){
+			numbering(i);
+		}
+		
+		function getMember1(){
+			return 'egoing';
+		}
+		
+		function getMember2(){
+			return 'k8805';
+		}
+		
+		console.log(getMember1());
+		console.log(getMember2());
+		
+		function getMember3(arg, arg2){
+			return arg + (arg2 * 20);
+		}
+		
+		
+		function setMember3(arg){
+			document.write(arg + "<br/>");
+		}
+		
+		setMember3(getMember3(20, 30));
+		
+		
+		(function(){
+			document.write(getMember3(20, 30) + "<br/>");
+		})();//익명함수 <--함수를 정의함과 동시에 호출을한다. 
+		
+	</script>
+</body>
+</html>

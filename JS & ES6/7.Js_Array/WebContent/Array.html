@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	
+	function getMember(){
+		return ['egoing', 'coding', 'everybody']
+	}
+	
+	var member = getMember();
+		document.write(member + "<br/>");
+	function resultPrint(){
+		document.write("<hr><p>")
+		document.write(member.length + "<-현재 배열의 크기 <br/>")
+	for(var i = 0; i < member.length; i++){
+		document.write(member[i].toUpperCase() + "<br/>")//소문자를 대문자로 바꿔주는 함수 
+	}
+	}
+	
+	
+	resultPrint();
+	
+	
+	//member.push('add')<--라고 하면 member 라는 배열에 'add'라는 문자열을 추가한다. 
+ 	member.push('add');
+ 		document.write(member.length + "<-현재 배열의 크기 <br/>")
+ 	for(var i = 0; i < member.length; i++){
+		document.write(member[i].toUpperCase() + "<br/>")//소문자를 대문자로 바꿔주는 함수 
+	}
+ 		
+ 	//member.concat('concat add1', 'concat add2')<--라고 하면 member 라는 배열에 여러개의 문자열을 추가할 수 있다. 
+	//다만 concat은 배열을 합쳐줘서 그 배열 변수에 다시 담아줘야한다.
+ 	member = member.concat(['concat add1', 'concat add2']);
+ 	resultPrint();//소문자를 대문자로 바꿔주는 함수 
+	
+ 		
+ 	 //member.unshift('unshift add')<--라고 하면 member 라는 배열의 맨 앞에 문자열을 추가할 수 있다. 
+ 	//다만 concat은 배열을 합쳐줘서 그 배열 변수에 다시 담아줘야한다.
+ 	 member.unshift('unshift add');
+ 	 resultPrint();//소문자를 대문자로 바꿔주는 함수 
+ 	
+ 	 	
+  	//member.splice(1 , 0, 'd')<--라고 하면 member 라는 배열의 1번째 자리의 앞에(0) 'd'라는 문자를 넣는다는 의미 
+ 	//다만 concat은 배열을 합쳐줘서 그 배열 변수에 다시 담아줘야한다.
+ 	member.splice(1 , 0, 'd');
+ 	resultPrint();//소문자를 대문자로 바꿔주는 함수 
+ 	
+ 	//member.splice(1 , 1, 'x', 'y')<--라고 하면 member 라는 배열의 1번째 자리의 1개의 문자열을 삭제하고, 'x'와 'y'라는 문자를 넣는다는 의미  
+ 	//다만 concat은 배열을 합쳐줘서 그 배열 변수에 다시 담아줘야한다.
+ 	member.splice(1 , 1, 'x', 'y');
+ 	resultPrint();//소문자를 대문자로 바꿔주는 함수 
+ 	
+ 		
+ 	//member.shift();를 하면 맨앞의 문자열을 삭제한다. 
+ 	member.shift();
+ 	resultPrint();//소문자를 대문자로 바꿔주는 함수 
+ 	
+ 	//member.pop('y');를 하면 배열중 'y'라는 문자열을 삭제한다. 
+ 	member.pop('y');
+ 	resultPrint();//소문자를 대문자로 바꿔주는 함수 
+ 	
+ 	
+ 	var alpha = ['c','b','d','e','a']
+ 	function alphaPrint(){
+		document.write("<hr><p>")
+		document.write(alpha.length + "<-현재 배열의 크기 <br/>")
+	for(var i = 0; i < alpha.length; i++){
+		document.write(alpha[i].toUpperCase() + "<br/>")//소문자를 대문자로 바꿔주는 함수 
+	}
+	}
+ 	
+ 	alphaPrint();
+ 	
+ 	//alpha.sort();를 하게 되면 정렬을해준다. 
+ 	alpha.sort();
+ 	alphaPrint();
+ 	
+ 	//alpha.reverse();를 하게 되면 역순으로 정렬을해준다. 
+ 	alpha.reverse();
+ 	alphaPrint();
+ 	
+	</script>
+</body>
+</html>
