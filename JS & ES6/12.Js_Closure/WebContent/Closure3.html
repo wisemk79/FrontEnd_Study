@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function factoryMovie(title){//외부함수에 지역변수인 title에 매개변수를 넣어주고 
+									 //만약 전역변수로 선언한뒤 this.전역변수를해서 getter를 쓴다면 그값을 리턴할 것이고 
+									 //setter를 쓴다면 그 값은 변수의 값을 바꾸게될 것이다.
+			return {
+				getTitle : function(){
+					return title;//getter는 그 값을 리턴하는것이다. 
+				},
+				setTitle : function(_title){
+					if(typeof _title === 'String'){
+					title = _title//setter는 그 변수의 값을 바꾸는 것이다.
+					}else{
+						alert('제목은 문자열이어야합니다. ')
+					}
+				}	
+			}
+		}
+		
+		ghost = factoryMovie('Ghost in the shell <br>');//ghost와 matrix라는 곳에 factoryMovie의 get,set function객체를 담았다. 
+		matrix = factoryMovie('Matrix <br>');
+		
+		document.write(ghost.getTitle());
+		document.write(matrix.getTitle());
+		
+		ghost.setTitle('공각기동대 <br>');
+		matrix.setTitle(1);
+		
+		document.write(ghost.getTitle());
+		document.write(matrix.getTitle());
+		
+	</script>
+</body>
+</html>

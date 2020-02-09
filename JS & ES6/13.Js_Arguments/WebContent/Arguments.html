@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function sum(){//만약 function sum(x)<--function에 x라인 매개변수를 선언했다면 이것이 parameter가 되는 것이다. 
+			var i, _sum = 0;
+			for(i = 0; i < arguments.length; i++){//아래 arguments에 따르면 length는 4가된다.
+				document.write(i + ' : ' + arguments[i] + '<br/>');
+				_sum += arguments[i];//따라서 _sum은 10이된다. 
+			}
+			return _sum;
+		}
+		
+		document.write('result : ' + sum(1,2,3,4));//sum(i)<--여기서 함수안에 들어가는 i가 인자(argument)가되는것이다. 
+						//argument배열에 0 에 1/  1에 2/ 2에 3/ 3에 4를넣어주는
+	</script>
+</body>
+</html>
