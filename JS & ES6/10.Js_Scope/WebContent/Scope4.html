@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		for(var i = 0; i < 1; i++){
+			var name = 'coding everybody'
+		}
+		document.write(name);//자바와는 달리 자바스크립트는 function안의 var변수만이 지역변수가되고 for문안의 var변수는 전역변수가 되게된다. 
+		
+		/*
+		자바에서는
+		for(int i = 0; i < 1; i++){
+			String name = "coding everybody";
+		}
+		System.out.println(name);<--여기서는 name이 for문 안에서의 지역변수이기 때문에 출력이되지 않고 오류가된다. 
+		
+		
+		*/
+		
+		var i = 5;//전역변수 
+		
+		function a(){
+			var i = 10;//지역변수 
+			b();//여기서 i는 a 함수안의 지역변수를 참고하지 않는다. 왜냐하면 b()라는 함수는 사용될때의 변수가아닌 정의될때의 변수를 참고하기 때문이다. (정적 유효범위)
+		}
+		
+		function b(){
+			document.write(i)//반면. 여기서는 전역변수가 참고되어 사용될 것이다. 5 출력 
+		}
+		
+		a();
+		b();
+		
+		
+		
+	</script>
+</body>
+</html>

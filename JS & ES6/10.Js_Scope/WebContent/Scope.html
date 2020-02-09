@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var vscope = 'global';//전역변수 <--어플리케이션 전체에서 접근할수있다는 의미 
+		function fscope(){
+			var vscope = 'local'//fscope함수 안에 있는 변수 <--지역변수  
+								//<--여기서 만약 var을 안해주면 그 값이 전역변수로 들어가기 때문에 vscope는 global이아닌 local로 변하게될 것이다.  
+			var lv = 'locar variables'
+			document.write(vscope + "<br/>");
+			document.write(lv + "<br>")
+		}
+		function fscope2(){
+			document.write(vscope + "<br/>");
+		}	
+		
+		fscope();//locat이 출력될 것이다. function안에서 변수를 바꿔 줬기떄문 
+		fscope2();//반면, local은 지역변수이기 때문에 이 함수에는 적용이되지 않고 global이 출력될 것이다.
+		document.write(lv)
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	(function(){//function을 괄호로 감싸주고 바로 호출하는 익명함수가 된다. 
+		var MYAPP = {}//함수 안에 있기 때문에 지역변수가 되게 된다. 
+		MYAPP.calculator = {//1 + 2	할때 왼쪽 오른쪽을 의미 
+			'left' : null,
+			'right' : null
+		}
+		
+		MYAPP.coordinate = {// 왼쪽 오른쪽의 좌표상의 위치를 의미 
+				'left' : null,
+				'right' : null
+		}
+		
+		MYAPP.calculator.left = 10;
+		MYAPP.calculator.right = 20;
+		
+		function sum(){ 
+			return MYAPP.calculator.left + MYAPP.calculator.right;
+		}
+		document.write(sum());
+	})();
+		
+		
+	</script>
+</body>
+</html>

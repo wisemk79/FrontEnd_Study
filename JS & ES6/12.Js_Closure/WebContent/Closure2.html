@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function outter(){//외부함수를 정
+			var title = 'coding everybody'
+			return function(){//내부함수를 리턴하도록 정의 
+				document.write(title);//여기서 이상한것은 내부함수를 리턴하게되면 
+				//그상황에서 외부함수는 끝이나기떄문에 내부함수의 title 지역변수는 적용되지 않는게 맞다는것 
+				
+			}
+		}
+		inner = outter();//fucntion{document.write(title)}<--을 inner에 넣어준다.
+		inner();//closure의 특징은 내부함수를 포함하고있는 외부함수에 접근할수있을 뿐만아니라 
+				//그 외부함수가 종료된이후에도 내부함수를 통해서 외부함수에 접근할 수 있다. 
+	</script>
+</body>
+</html>

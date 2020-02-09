@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function cal(func, num){
+			return func(num);
+		}
+		
+		function increase(num){
+			return num + 1;
+		}
+		
+		function decrease(num){
+			return num - 1;
+		}
+		
+		document.write(cal(increase, 1) + "<br/>");//<--이것은 increase(1)과 같이되는데, 
+										//즉 함수를 함수의 첫번째인자와 두번쨰인자로 호출하는것. 
+										//func(num)<--이렇게 호출을하게된다.
+		document.write(cal(decrease, 1) + "<br/>");
+	</script>
+</body>
+</html>

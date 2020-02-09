@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	function sortNumber(a,b){
+	    return a - b;
+	}
+	var numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
+	document.write(numbers.sort(sortNumber)); // array, [20,10,9,8,7,6,5,4,3,2,1]
+	//numbers.sort()) sort()는 내장객체(내장메소드))라고한다. <--정렬하라 
+	//numbers.sort()) 를하게되면 [1, 10, 2, 20, 3, 4, 5]<--이런식으로 정렬하게됨. 
+	// a - b를 하게되면 오름차순이 될 것이고 b - a를 하게되면 내림차순이될 것이다.  
+	</script>
+</body>
+</html>

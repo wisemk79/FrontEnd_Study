@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function outer(){//외부함수 
+			var title = 'Hello World'//외부함수에서 선언한 지역변수이다. 
+			function inner(){//함수안에다가 함수를 선언한 것(내부함수) 이것은 var inner = funcrion(){} 과 같다.
+				document.write(title);//내부에 지역변수가 없다면 외부에서 찾게되는데 외부의 title변수에 접근하게되는데 이것을 closure이라고한다. 
+			}
+			inner();
+		}
+		
+		outer();
+	</script>
+</body>
+</html>

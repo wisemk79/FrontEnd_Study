@@ -6,6 +6,19 @@
 </head>
 <body>
 	<script>
+		var grades = {
+				'list' : {'egoing' : 10, 'k8805' : 6, 'sorialgi' : 80},//grades 안에 list라는 객체가 있고 
+				'show' : function(){//show라는 객체가 또 안에 있을수 있는데, 그것은 함수일수도 있다. 
+					alert('Hello World');
+					console.log(this.list);//this 는 grades 객체를 의미하는 것이고 그것 안의 객체인 list를 가져오게되면 list에 해당하는 인덱스와 값을 구할 수 있다.
+					for(var name in grades.list){
+						document.write(name + " " + this.list[name] + "<br/>")
+					}
+				}
+		}
+		
+		document.write(grades['list']['egoing'] + "<br/>");//list객체의 egoing인덱스에 접근 
+		grades.show();//선언된함수를 사용할 땐 () 넣어줄것! 
 		
 	</script>
 </body>
