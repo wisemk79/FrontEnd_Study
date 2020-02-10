@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var o = {}
+		var p = {}
+		
+		function func(){
+			switch(this){
+			case o:
+				document.write('o<br/>')
+				break;
+			case p:
+				document.write('p<br/>')
+				break;
+			case window:
+				document.write("window<br/>")
+				break;
+			}
+		}
+		
+		func();//this의 값은 기본적으로 전역객체인 window 가 있기 때문에 window로 들어감 
+		func.apply(o);//arg인 o가 this로 들어가기 떄문에 this = o가되고 따라서 case o의 출력문이 실행된다. 
+		func.apply(p);
+		//밑의 전제는 this라는 것에 있다. 그 함수가 누구의 소속이냐에 따라서 this의 값은 그 소속, 그객체를 가리킨다. 
+		//여기서 함수는 마치 func();로 호출하면 window객체에 소속되어있는것 처럼
+		//func.apply(o);라고 호출하면 o 라는 객체에 소속되어있는 것처럼
+		//func.apply(p);라고 호출하면 p 라는 객체에 소속되어있는 것처럼 유연하게 이용될 수가 있다. 
+	</script>
+</body>
+</html>

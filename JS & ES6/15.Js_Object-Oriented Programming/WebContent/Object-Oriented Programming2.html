@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function person(){};
+		var p = new person();//여기서 자바와는 다른점이 클래스의 객체를 만들때의 생성자와는 다르게 자바스크립트의 생성자는 어디에 소속되어있지 않고 그자체의 객체이다. 
+		//var p = person(); <--- 이렇게해서 p를 호출하게되면 undefined가 뜬다 , 만약 위처럼 new를 쓴다면 fucntion{}객체가 출력될 것이다. 
+		p.name = 'egoing';
+		p.introduce = function(){
+			return 'My name is ' + this.name;
+		}
+		
+		document.write(p.introduce());
+		
+		
+		function Person(name){
+		    this.name = name;//person의 name이라는 프로퍼티에 'egoing값이 들어가게되고,그것을 this.name에 넣어준다. 
+		    this.introduce = function(){//person객체의 introduce를 호출하게되면 생성된 객체에서준 argument에 따른 this.name이 리턴하게된다. 
+		        return 'My name is '+this.name; 
+		    }   
+		    /*
+		   	person이라는 객체가 어떠한 property(this.name, this.introduce)를 가져야하는지 
+		   	함수안에다 기술하는 것을 통해 그객체가 가지고있는 정보, 객체가 할수 있는 일을 
+		   	세팅해주는 것을 초기화라고 하며,init 또는 initialize라고한다.
+		   	이를 통해 코드의 재사용성을 대폭 높혀주게된다. 
+		    */
+		}
+		var p1 = new Person('egoing');//이렇게 해주게되면 위에 Person(name)의 name에 'egoing'이 들어가게될 것이며,
+		document.write(p1.introduce()+"<br />");
+		 
+		var p2 = new Person('leezche');
+		document.write(p2.introduce());
+	</script>
+</body>
+</html>

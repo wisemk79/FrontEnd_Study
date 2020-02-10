@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function sum(x,y){//sum이라는 객체를 생성한 것   <--이런식으로 작성하는것을 함수 리터럴이라고한다. 
+			return x + y;
+		}
+		/*
+	 	var o = {}<---객체 리터럴 이라고 한다. var o = [1,2,3,4]<--배열 리터럴 
+		*/
+		
+		document.write(sum(1,2));
+		
+		var sum2 = new Function('x','y','return x + y;');//이렇게 작성하는것은 3번째 인자가 길어진다면 너무 복잡해지기 때문에 위에처럼 작성하도록함 
+		document.write(sum2(1,2));
+	</script>
+</body>
+</html>

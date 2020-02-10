@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		var person = {};//비어있는 객체를 만드는 것 
+		person.name = 'egoing'; //person = function(){ name : 'egoing'}   person이라는 것에 name이라는 property를 넣어준다.
+		person.introduce = function(){////person = function(){ name : 'egoing', introduce : function(){return 'My name is ' + this.name}}
+			return 'My name is ' + this.name; //<--이렇게 함수안에 담겨있는 변수안에 담긴 함수를 메소드라고 한다. <--개념적으론 같은것임 
+		}//여기서 this 는 person이라는 객체에 담겨있는 name 'egoing'을 의미한다. 
+		
+		document.write(person.introduce());
+		
+		
+		/*
+		var person1 = {
+				'name' : 'egoing',
+				'introduce' : function(){//<--아래코드와 이름만 다를 뿐 기능은 똑같다. <--중복이 발생 
+					return 'My name is ' + this.name;
+				}		
+		}
+		
+		var person2 = {
+			'name' : 'leeche',
+			'introduce' : function(){
+				return 'My name is ' + this.name;
+			}		
+		}
+		*/
+	</script>
+</body>
+</html>

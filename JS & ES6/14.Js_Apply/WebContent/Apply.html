@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+/* 		function sum(){
+			return arg1 + arg2;
+		}
+		
+		document.write(sum(1,2));//보통은 이렇게 직접 argument를 넣어준다. 
+		document.write(sum.apply(null, [1,2]))<--이렇게해도 똑같은 결과가 나오지만 앞에 null을 쓸 것이라면 이렇게 할필요 없다.
+		document.write(sum.apply()) */
+		
+		o1 = {val1:1, val2:2, val3:3}
+		o2 = {v1:10, v2:50, v3:100, v4:25}
+		function sum(){
+			//var this = o1 또는 o2 
+		    var _sum = 0;
+		    for(name in this){//여기서 this라는 객체는 정해지지 않았으며 나중에 sum()함수에 arg가 들어오면 정해지는것 
+		    //if(typeof this[name] !== 'function'){<- type이 function이 아니면 더해준다 라는 이야기. 
+		        _sum += this[name];
+		    //}
+		    }
+		    return _sum;
+		}
+		
+		
+		document.write(sum.apply(o1) + "<br/>") // 6 
+		//<--sum.apply()에 o1을 arg로 준다면, 
+		//sum안에서의 this는 o1이 될 것이고, 
+		//그 name들은 o1의 객체인 val1,val2,val3가 될 것이다.
+		
+		document.write(sum.apply(o2) + "<br/>") // 185
+		
+	</script>
+</body>
+</html>

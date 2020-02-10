@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+/* 		func(){
+			alert('Hello?');
+		}
+		
+		func(); */
+		
+		//window.func() <---window는 객체가되고 func는 속성(메소드)이된다. 
+		//여기서 window는 전역객체이지만, 생략해도 명시되는 객체이다. 
+		//모든함수, 모든 변수는 전역함수,전역변수라 할지라도 window의 property가 되는것이다.
+		
+		var o = {
+			'func' : function(){
+				alert('Hello?')
+			}
+		}
+		
+		o.func();
+		window.o.func();//모든 객체는 전역객체(window)의 프로퍼티 임을 알수 있다.
+		//node.js에서는 window가 아닌 global이다. 
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function func1(){
+			if(window === this){//<---이것이 의미하는 바는 this라는 변수에 담겨있는 값이 window라는 것을 의미하게된다. 
+								//this가 전역객체인 window를 의미한다라고 생각하면된다. 
+				document.write('window === this')
+			}
+		}
+		
+		
+		var o = {
+			'func' : function(){
+				if(o === this){//메소드에서의 this 도 전역객체인 window를 의미한다는 것을 알수 있다. 
+					document.write('o === this')
+				}
+			}
+		}
+		
+		func1();
+		o.func();
+		
+		
+	</script>
+</body>
+</html>
