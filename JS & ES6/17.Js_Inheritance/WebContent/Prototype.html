@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function Ultra(){}//생성자 선언 
+		Ultra.prototype.ultraProp = true;
+		
+		function Super(){}//생성자 선언 
+		Super.prototype = new Ultra;//Ultra의 프로토타입이 슈퍼의 프로토타입으로 들어가게되고 그이하도 계속 상속받게된다. //이처럼 프로토타입과 프로토타입이 연결되어 있는것을 prototype chain이라고한다. 
+		
+		function Sub(){}//생성자 선언 
+		Sub.prototype = new Super;//Sub는 Super를 상속받고 Super은 Ultra를 상속받아 Sub는 결과적으로 ultraProp이라는 프로퍼티를 가지게된다.
+		
+		var o = new Sub();// new로 인해서 Sub는 단순한 함수가 아닌 생성자로서의 역할을 하게된다. new로 인해 Sub라는 객체를 o에 리턴하게된다. 
+		document.write(o.ultraProp);//ultraProp이 Sub에 없다면 Super에 올라가 확인하고, Super에 없다면 Ultra에 올라가 확인해서 ultraProp을 가져오게된다. 
+		
+		
+		//여기서 함수명.prototype의 prototype의 역할은 prototype이라는 프로퍼티에 어떠한 객체를 담고 있다가
+		//new를 이용해서 함수를 생성하게되면 자바스크립트는 생성자함수의 prototype 프로퍼티에 저장되어있는 객체를 꺼내서 그것을 리턴해주게된다. 
+		
+	</script>
+</body>
+</html>

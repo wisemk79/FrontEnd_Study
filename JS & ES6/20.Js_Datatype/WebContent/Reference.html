@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		//복제 
+/* 		var a = 1;
+		var b = a;<-- a에 담긴 1이 b에 담기게되는것. 여기서 중요한 것은 a가 b에 담기는 것이 아니다. 
+		b = 2;
+		document.write(a);//1 */
+		
+/* 		var a = {'id' : 1};
+		var b = a;
+		b.id = 2;
+		document.write(a.id);//2  <--이것이 의미하는 바는 b는 a에 담긴 프로퍼티 값을 참조한다.  */
+		
+		
+		var a = {'id' : 1};
+		var b = a;
+		b = {id : 1};
+		document.write(a.id);//1  <--이것이 의미하는 바는 b에 객체를 넣어주는 순간 b는 더이상 a의 프로퍼티를 참조하지 않는다. 
+		
+		//
+	</script>
+</body>
+</html>

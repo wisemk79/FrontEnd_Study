@@ -27,7 +27,7 @@ public class Server extends Thread {
 		this.jta = jta;
 		clients = new ArrayList<Socket>();// 사용자가 오면 그 사용자의 소켓 주소를 ArrayList에 저장한다
 		chatAdmin = new Clients(null);
-		conDB = new ConnectDB();
+
 		openServer();
 		this.start();
 	}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+/* 		var a = 1;
+		function func(b){
+			b = 2;// a=1이기 때문에 b에 어떠한 값이오더라도 a = 1이된다.
+		}
+		
+		func(a);
+		document.write(a);//a = 1 */
+		
+/* 		var a = {'id' : 1};
+		function func(b){
+			b = {'id' : 2};
+		}
+		func(a);
+		document.write(a.id); */
+		
+		
+		var a = {'id' : 1};
+		function func(b){
+			b.id = 2;//b=a가되고 b= a의 프로퍼티를 참조하니까 2로 변경이된다.
+		}
+		func(a);
+		document.write(a.id);
+	</script> 
+</body>
+</html>

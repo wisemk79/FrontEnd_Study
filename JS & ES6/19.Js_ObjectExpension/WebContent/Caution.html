@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	Object.prototype.contain = function(needle){//needle<--바늘이라는 의미<--딱히 큰의미는 없는것 
+		for(var name in this){//이 메소드가 소속되어있는 객체, 예를들어 o.contain()이라고한다면 o라는 객체를 의미한다. 
+			if(this[name] === needle){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	var o = {'name' : 'egoing', 'city' : 'seoul'}//객체를 정의함.
+	var a = ['egoing', 'leezche', 'grapittie'];//배열을 정의함. 
+
+	
+	for(var name in o){
+		if(o.hasOwnProperty(name)){//만약 굳이 사용하고싶다면 왼쪽과같이 조건을 걸어준다.  <--이 객체에 인자로 전달한 어떠한값을 자신을 property로 갖고 있는가? 
+		document.write(name);//<--이것만 작성하고 출력을하게되면 name,city, 그리고 contain이 나온다. //Object객체에 property를 추가하면 contain이 추가되기때문에 좋지 않다.
+							//Object의 property에 기능을 추가하면 모든곳에 영향을 주기때문에 위험성이있다.				
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	 	
+		Object.prototype.contain = function(needle){//needle<--바늘이라는 의미<--딱히 큰의미는 없는것 
+			for(var name in this){//이 메소드가 소속되어있는 객체, 예를들어 o.contain()이라고한다면 o라는 객체를 의미한다. 
+				if(this[name] === needle){
+					return true;
+				}
+			}
+			return false;
+		}
+	
+		var o = {'name' : 'egoing', 'city' : 'seoul'}//객체를 정의함.
+		document.write(o.contain('grappittie'));//contain() : 어떤 인자(argument)를 전달하게되면 그 인자에 해당하는 값(value)이 있는지 없는지 확인하여 있다면 true를 반환하는 함수이다.
+		var a = ['egoing', 'leezche', 'grapittie'];//배열을 정의함. 
+		document.write(a.contain('leezche'));//'leezche'라는 인자를 전달하여 인자와 동일한 값이 있다면 true를 반환한다. 
+	</script>
+</body>
+</html>

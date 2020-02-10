@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+	function Ultra(){}
+	Ultra.prototype.ultraProp = true;
+	 
+	function Super(){}
+	Super.prototype = new Ultra();
+	 
+	function Sub(){}
+	Sub.prototype = new Super();
+	Sub.prototype.ultraProp = 2; // 이런식으로 하고 밑에서 호출해도 2가 출력될 것이다. 
+								 //왜냐하면 생성자 밑에 정의한것이 없고, 그렇다면 Sub 객체로 가서 ultraProp 프로퍼티가 있는지 
+								 //확인하게될 것이다. 확인이 안된다면 그위에 상속받은 부모 객체로 가게될 것이고, 아니라면 ultraProp을 출력하게될 것이다. 
+	 
+	var o = new Sub();
+	//o.ultraProp = 2;<--이렇게하면 2가 출력되게될 것이다. 
+	document.write(o.ultraProp);
+	</script>
+</body>
+</html>

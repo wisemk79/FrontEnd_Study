@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function Person(name){//기존의 생성자 
+		this.name = name;
+	}
+	
+	Person.prototype.name = null;
+	Person.prototype.introduce = function(){
+		return 'My nickname is ' + this.name;
+	}
+	
+	function Programmer(name){
+		this.name = name;
+	}
+	Programmer.prototype = new Person();//programmer는 person의 프로퍼티인 introduce를 가질 수 있게된다. 
+	Programmer.prototype.coding = function(){
+		return 'Hello World';
+	}
+	
+	var p1 = new Programmer('egoing');
+	document.write(p1.introduce() + "<br/>");//My name is egoing
+	document.write(p1.coding() + "<br/>");//Hello World
+	
+	function Designer(name){
+		this.name = name;
+	}
+	Designer.prototype = new Person(); 
+	Designer.prototype.design = function(){
+		return 'Beautiful';
+	}
+	
+	
+	var p2 = new Designer('leeche');
+	document.write(p2.introduce() + "<br/>");//My name is egoing
+	document.write(p2.design() + "<br/>");//Hello World
+	
+	</script>
+</body>
+</html>

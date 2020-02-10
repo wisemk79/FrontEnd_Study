@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function Person(name){//기존의 생성자 
+			this.name = name;
+		}
+		
+		Person.prototype.name = null;//Person 객체안에 prototype이라는 특수한 프로퍼티안에 name이라는 프로퍼티와 introduce라는 메소드(프로퍼티)를 정의해놨다.   
+		Person.prototype.introduce = function(){//여기서 특수한 프로퍼티인 prototype은 상속받을 때 맞춰줘야한다. 
+			return 'My name is ' + this.name;
+		}
+		
+		function Programmer(name){//새로운 생성자 <---프로그래머도 사람이기 때문에 위의 person()과 같은 속성을 가지고 있다.(name, introduce))
+			this.name = name;
+		}
+		Programmer.prototype = new Person();//programmer에 prototype라는 특수한 프로퍼티를 만들어주고 
+											//new Person을 해줘 Person()의 특수 프로퍼티인 prototype의 
+											//name과 introduce를 상속받는다. 
+		
+		var p1 = new Programmer('egoing');//이상태에서 'egoing'이라는 이름을 가진 programmer라는 객체를 생성해준다면, 
+										  //programmer는 이미 person에 있는 프로퍼티를 상속 받기 때문에 introduce라는 메소드를 가지고있을 것이고,
+										  //introduce를 사용할 수 있게된다.
+		document.write(p1.introduce());
+		
+/* 		
+		var p1 = new Person('egoing');//
+		document.write(p1.introduce() + "<br/>"); */
+		
+	</script>
+</body>
+</html>
