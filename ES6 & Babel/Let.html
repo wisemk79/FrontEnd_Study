@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            var name = "global var"//전역변수
+            
+            // function home(){
+            //     var homevar = "homevar"//지역변수
+            //     for(var i = 0; i < 100; i++){<--여기서 var은 지역변수로 for문 바깥의 console.log에 영향을 미쳐 100이 출력된다.
+            //     }
+            //     console.log(i);
+            // }
+            
+            function home(){
+                var homevar = "homevar"//지역변수
+                for(let i = 0; i < 100; i++){//let을 쓰면 그 block scope(블록 안에서만 유효한 값) 안에서만 유효한 값이다.
+                    document.write(i + '<br/>');
+                }
+                
+                if(true){
+                  let j = "Hello World"//마찬가지로 여기서의 j는 if문 안쪽의 hello block scope이기 때문에 아래에서 if문 바깥에서 출력될 수 없다.
+                }
+                document.write(j);//
+
+                
+                //console.log(i);<--let을 쓰게되면 
+            }
+
+            home();
+    </script>
+</body>
+</html>
