@@ -7,6 +7,7 @@
     
 </head>
 <body>
+
     <ul>
         <li class="test">javascript</li>
         <li class="test">java</li>
@@ -31,6 +32,15 @@
         //         console.log(i + "번째 리스트입니다.");
         //     })
         // }
+
+        var list = document.querySelectorAll("li");//<--아까 list의 length가 잡히지 않은 이유는 
+        document.write(list.length);
+        console.log(list.length);
+        for(let i = 0; i < list.length; i++){// let을 사용해서 지역변수로 변경시켜줄 수 있다.
+            list[i].addEventListener("click", function(){
+                console.log(i + "번째 리스트입니다.");
+            })
+        }
 
 
 
