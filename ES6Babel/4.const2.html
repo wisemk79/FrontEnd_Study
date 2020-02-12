@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function home(){
+            const list = ["apple", "orange", "watermelon"];
+            list.push("banana");//apple,orange,watermelon,banana <--추가가 되었다.
+            document.write(list + "<br/>");
+            //따라서 const는 변경이 안되는것을 의미하진 않는다. 재할당이 안되는 것이다.
+            //const를 사용하더라도 배열과 오브젝트의 값을 추가, 삭제, 변경하는 것은 가능하다.
+
+
+            //immutable array는 어떻게 만드는가?
+
+        }
+
+        home();
+
+        const list = ["apple", "orange", "watermelon"];
+             list2 = [].concat(list, "banana");
+             document.write(list2);
+
+        
+    </script>
+</body>
+</html>

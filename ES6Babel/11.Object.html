@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getObj(){
+            const name = "crong";
+
+            const getName = function(){
+                return name;
+            }
+
+            const setName = function(newname){
+                name = newname;
+            }
+
+            const printName = function(){
+                document.write(name);
+            }
+
+            return{ getName, setName//<--아래와 같이 key값 : value값이 같은 경우 왼쪽 처럼 하나만 써도 사용이 가능하다.
+               // getName : getName,
+               // setName : setName
+            }
+
+        }
+
+        let obj = getObj();
+        document.write(obj.getName());
+    </script>
+</body>
+</html>

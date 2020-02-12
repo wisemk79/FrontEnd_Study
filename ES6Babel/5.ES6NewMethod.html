@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //ES2015 String에 새로운 메소드들 
+        let str = "hello world ~ ^^";
+        let matchstr = "hello ";
+        document.write(str.startsWith(matchstr) + "<br/>");//true를 반환, 시작하는 단어가 matchstr과 같으면 true
+                                                //만약 matchstr가 "helloo"라면 맞지 않기 때문에 false를 반환하게될것임. 
+
+        let matchstr2 = "~ ^^";
+        document.write(str.endsWith(matchstr2) + "<br/>");//true는 반환, 끝나는 단어가 matchstr2와 같으면 true를 반환한다.
+
+        document.write(str.includes("world") + "<br/>");//includes는 비교대상 문자열에 해당 단어가 포함되어있는가 확인
+         
+
+
+    </script>
+</body>
+</html>

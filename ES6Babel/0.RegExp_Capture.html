@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //   (\w+)\s(\w+) 여기서 \w+는 0~9,a~z,A~Z 범위내의 숫자나 문자가 하나라도 있는지 확인   \s는 띄어쓰기이다. 
+
+        let pattern = /(\w+)\s(\w+)/;
+        let str = 'coding everybody';
+        let result = str.replace(pattern, "$2 , $1");//everybody , coding 여기서 $2는 위의 패턴에서 2번째그룹 (\w+)를 의미한다. ,(comma)는 공백을 의미
+        document.write(result);
+
+    </script>
+</body>
+</html>

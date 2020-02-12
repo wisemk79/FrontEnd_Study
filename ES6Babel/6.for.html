@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let data = [1, 2, undefined, NaN, null, ""];
+        data.forEach(function(value){//forEach를 이용하여 순회하여 for문을 돌릴수있다.
+            document.write("value is " + value + "<br/>");
+        });
+
+        document.write('<hr><p>');
+
+        for(let prop in data){//for in 은 문제가 하나있다. 자기자신이 갖고있지 않은 상위에 추가된 값까지도 포함할 수 있다. 밑의 코드를 확인해보자
+            document.write("value is " + data[prop] + "<br/>");
+        };
+
+        document.write('<hr><p>');
+
+        Array.prototype.getIndex = function(){};//어레이 Object객체에 prototype의 프로퍼티로 메소드를 추가했다.
+        for(let prop in data){   
+            document.write("value is " + data[prop] + "<br/>");//출력시에 function(){}도 같이 출력된다. 자기 자신의 객체 이외에 상위에 프로토타입의 추가된 프로퍼티도 나타내는 문제가 생긴다. 
+        };
+
+        document.write('<hr><p>');
+
+        data.forEach(function(value){//반면, forEach문은 function(){}객체를 출력하지 않는다.
+            document.write("value is " + value + "<br/>");
+        });
+
+        document.write('<hr><p>');
+
+        //한번 for of문을 썼을 때 어떤 결과가 나올지 확인해 보자.
+        for(let value of data){//for in 문은 index를 받지만 for of문은 값을 직접받는다. 
+            document.write("value is " + value + "<br/>");
+        }
+
+        document.write('<hr><p>');
+
+        let str = "hello world!!!";
+        for(let value of str){//for of문은 문자열을 캐릭터단위로 출력할 수 있다. 
+        document.write("value is " + value + "<br/>");
+        }
+
+    </script>
+
+</body>
+</html>

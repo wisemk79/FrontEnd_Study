@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let pre = [100, 200, "hello", null];
+        let data = [0, 1, 2, 3, ...pre, 4, 5];//<--배열사이에 배열을 넣을때 Spread Operator를 사용하면 간편하게 넣을 수 있다.
+        document.write(data + "<br/>");
+
+
+        function sum(a,b,c){
+            return a + b + c;
+        }
+        let pre2 = [100,200,300];
+        document.write(sum.apply(null, pre2) + "<br/>");//배열을 넣을때 일일히 배열인덱스로 넣지말고 apply를 이용하여 할 수 있다.
+
+        document.write("...pre => " + sum(...pre2));//위에보다 더쉽게 넣는 방법은 배열을 펼쳐주는 ...pre를 하면된다.
+
+
+    </script>
+</body>
+</html>

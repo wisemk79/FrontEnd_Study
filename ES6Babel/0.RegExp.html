@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pattern = /a/;//아래랑 똑같은 표현으로 정규표현식 객체를 pattern에 저장한다는의미
+        // var pattern = new RegExp('a');//a라는 것을 찾고자한다.
+        // document.write(pattern.exec('abcde'));//문자열을 하나하나 비교해서 찾아 출력한다.
+
+
+        // let pattern = /a./;
+        // document.write(pattern.exec('abcde'));//결과는 ab 
+
+        document.write(pattern.exec('bcde') + '<br/>')//null <--a에 해당하는 문자가 없기때문이다.
+
+        document.write(pattern.test('bcde') + '<br/>')//a가 없기 때문에 false가 뜨는데 test는 그 문자가 있으면 true를 반환한다.
+
+        let str = 'abcde';
+
+        document.write(str.match(pattern) + '<br/>');//a출력 
+
+        document.write(str.replace(pattern, 'A') + '<br/>');//a를 A로 치환한다. 
+
+    </script>
+</body>
+</html>

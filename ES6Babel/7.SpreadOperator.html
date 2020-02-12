@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //spread operator 펼침 연산자
+
+        let pre = ["apple", "oragne", 100,200];
+        let newData = [...pre];//<---spread operator인데 ...이 배열을 펼쳐준다는 의미이고 ...pre하게되면 pre데이터3개를 펼쳐준다. 이런의미이다.
+        document.write(newData + '<br/>');//<--pre배열과 똑같이 출력된다.
+        document.write(pre === newData);//다만, pre와 newData는 같은 데이터형이 아니다. false
+    </script>
+</body>
+</html>
