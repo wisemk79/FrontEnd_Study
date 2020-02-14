@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //default parameter 기본 변수
+        function sum(value, size = 1){//이런식으로 size = 1을 넣어주면 size값이 없는 경우 지정해준 default parameter를 넣어준다.
+            //size = size || 1;//size값을 넣거나 size가 NaN이면 1을 넣어 계산해주는것을 지정해줌 <--default만들어준것
+            return value * size
+        }
+
+        //sum(3,10);보통은 이렇게 위에 파라메터2개를 정하면 arguments를 2개 넣지만, 만약 arg가 1개만 sum(3) 넣는다면, NaN이 나올 것이다.
+        //이를 방지하려면 위와같이하면되긴한다.
+        document.write(3);
+
+
+
+
+        function sum2(value, size = {value : 1}){//default parameter는 object형태로도 올 수 있다.
+            return value * size.value;
+        }
+
+        //document.write(sum2(3,{value : 3}));//9가나온다
+        document.write(sum2(3))//2번째 argument가 없는 경우 위의 default parameter 의 object value를 가져온다.
+    </script>
+</body>
+</html>

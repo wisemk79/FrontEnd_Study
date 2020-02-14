@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //setPrototypeOf <-~의 프로토타입으로 세팅한다.
+        const healthObj = {
+            showHealth : function(){
+                console.log("오늘 운동시간은 " + this.HealthTime)
+            },
+            setHeathTime : function(newHealthTime){
+                this.HealthTime = newHealthTime;
+            }
+        }
+
+        const newObj = Object.setPrototypeOf({
+            "name" : "dolo",
+            "HealthTime" : "12:12"
+        },healthObj)//name,healthtime 프로퍼티를 healthObj의 프로토타입으로 추가해주는 것
+
+        console.log(newObj);
+        
+
+    </script>
+</body>
+</html>

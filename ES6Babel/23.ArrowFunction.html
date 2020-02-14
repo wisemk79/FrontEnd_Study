@@ -16,6 +16,20 @@
         }, 1000);//ms단위임
 
 
+        // let newArr = [1,2,3,4,5].map(function(value){
+        //     return value * 2;//2의 배수가 출력된다. 2,4,6,8,10
+        // })
+
+        // let newArr = [1,2,3,4,5].map((v) => {
+        //     return v * 2;//2의 배수가 출력된다. 2,4,6,8,10
+        // })
+
+        let newArr = [1,2,3,4,5].map((v) => v * 2);//콜백함수는 이런식으로 좀더 간단하게 표현 가능하다.
+
+        document.write( "newArr callback Function ",newArr);
+
+
+
     </script>
 </body>
 </html>

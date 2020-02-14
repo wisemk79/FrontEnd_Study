@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //object assign 메소드
+        const healthObj = {
+            showHealth : function(){
+                console.log("오늘 " + this.name + "님의 운동시간은 " + this.HealthTime + "입니다.");
+            }
+        }
+
+        const myHealth = Object.create(healthObj);//<--이건 prototype기반의 오브젝트를 만드는것이다. 따라서 아래처럼 불편하게 일일히 값을 넣어줘야되는 부분이 있다.
+        myHealth.name = "scott";
+        myHealth.HealthTime = "11:11";
+
+        console.log(myHealth);//object반환
+        console.log(myHealth.showHealth());
+        
+        const myHealth2 = Object.assign(Object.create(healthObj),{//object.assign의 첫번째 인자로 Object.create를 해주고 두번째인자로 프로퍼티들을 넣어준다.
+            name : "dolo",
+            HealthTime : "12:12"
+        });//이처럼 object assign을 이용하면 좀더 편리하게 값을 넣어줄 수 있다.
+
+        console.log(myHealth2.showHealth());
+        
+
+
+
+    </script>
+</body>
+</html>

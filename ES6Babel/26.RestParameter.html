@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        call()은 상위 context를 변경하는 메서드이고
+arguments는 함수의 매개변수에 접근할 수 있는 속성이다.
+먼저 위의 행위를 말로 설명하자면 
+이 코드가 존재하는 함수의 매개변수로 넘어온 값들을 array로 변환하겠다는 것이다.
+function func(a, b){} 에서 a와 b를 arguments[0]과 arguments[1]로 접근가능하다.
+하지만 여기서 arguments는 array가 아니며 object임을 알아야 한다.(참고) 그러므로 array로 변환할 필요가 있을 경우 Array.prototype.slice.call(arguments) 를 사용하는 것이다.
+
+이 코드는 보통 아래와 같이 apply와 함께 사용된다.
+var args = Array.prototype.slice.call(arguments);
+
+func.apply(this, args); 
+apply는 call과 같이 상위 context를 변경해준다. 차이점은 매개변수를 넘겨주는 2번째 인자가 Array라는 점이다. Array에 담긴 순서에 맞게 호출된 함수(func)의 매개변수에 적용된다.
+
+Array.prototype.slice.call(arguments);
+이 코드는 결과만 보면 아래와 같다.
+
+[arguments].slice();
+call()의 첫번째 인자에 arguments가 전달되므로 Array의 context는 arguments로 대체되기 때문이다.
+        */
+        function checkNum(){
+            const argArray = Array.prototype.slice.call(arguments);//argumets object를 array object로 변환 받기 위해서는 
+            console.log(toString.call(argArray));//기존 값들을 object array로 반환
+            console.log(argArray);//arguments array값을 반환
+            const result = argArray.every((v) => typeof v === "number");
+            console.log(result);//arguments 중 문자열 11의 타입을 확인했기 때문에 false가 반환됨
+        }
+
+        checkNum(1,2,3,4,5,6,"11");//기존에 여러값의 arguments를 받으면 argument라는 object를 반환받는다.
+
+        function checkNum2(...argArray){//...argArray rest parameter로 가변적으로 어레이를 받고 싶은 경우
+            console.log(toString.call(argArray));//기존 값들을 object array로 반환
+            const result = argArray.every((v) => typeof v === "number");
+            console.log(result);//arguments 중 문자열 11의 타입을 확인했기 때문에 false가 반환됨
+        }
+        checkNum2(1,2,3,4,5,6,"11");
+        
+
+    </script>
+</body>
+</html>

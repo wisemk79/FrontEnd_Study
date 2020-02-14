@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //parent
+        const healthObj = {
+            showHealth : function(){
+                console.log("오늘 운동시간은 " + this.HealthTime)
+            },
+            setHeathTime : function(newHealthTime){
+                this.HealthTime = newHealthTime;
+            }
+        }
+
+
+        //child obj
+        const healthChildObj = {
+            getAge : function(){
+                return this.age;
+            }
+        }
+
+        Object.setPrototypeOf(healthChildObj, healthObj);//헬스부모객체의 것을 헬스자식객체가 상속받음
+
+        const childObj = Object.setPrototypeOf({//자식객체가 헬스 자식 객체의 것을 상속받았으니 부모객체의 메소드도 사용이 가능
+            age:22
+        },healthChildObj);
+
+        console.log(childObj.getAge());//자식객체의 나이를 가져와 출력
+        childObj.setHeathTime("11:11");//헬스부모 객체의 setter를 이용해 시간을설정
+        console.log(childObj.showHealth());//헬스 부모객체의 메소드를 자식객체가 가져와서 사용
+        
+       
+
+
+    </script>
+</body>
+</html>

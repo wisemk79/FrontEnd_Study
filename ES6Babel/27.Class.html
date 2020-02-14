@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //자바의 클래스와 비슷한 개념의 함수 로직<--자바스크립트에는 클래스 개념이 없었다.
+        function Health(name){
+            this.name = name;//생성자 초기화 파라미터
+        }
+
+        Health.prototype.showHealth = function(){
+            console.log(this.name + "님 안녕하세요.");
+        }
+
+        const h = new Health("crong");
+
+        h.showHealth();
+        //여기까지
+
+
+        //ES6에서 생긴 class<--하지만 타입을보면 Function이기 때문에 모양만 클래스인것이다.
+        class Health2{
+            constructor(name, lastTime){//class를 만들게되면 명시적으로 constructor를 만들어주게되어있다.<--생성자
+                this.name = name;
+                this.lastTime = lastTime;//구조만 다를뿐 위에꺼랑 방법은 똑같다.
+            }
+
+                showHealth2(){//결국은 showHealth2 역시 prototype의 프로퍼티이다.
+                    console.log(this.name + "님 하이요.");
+                }
+        }
+
+        const h2 = new Health2("bath");
+        h2.showHealth2();
+
+        console.log(toString.call(Health2));//[object Function]<--toString.call은 
+                            //object의 타입을 확인할 수 있는데, 확인해보면 결국 여기서 class는 class가아니고 Function인 것이다.
+
+
+    </script>
+</body>
+</html>

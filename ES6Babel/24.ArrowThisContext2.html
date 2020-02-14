@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>my div</p>
+
+    <script>
+    
+        const el = document.querySelector("p");
+
+        // const myObj = {
+        //     register(){    
+        //             el.addEventListener("click", function(){
+        //             this.printData();
+        //         }.bind(this));//bind로 this를 묶어줌
+        //     },
+        //     printData(){
+        //         document.write('Clicked!!!');
+        //     }
+        // }
+
+        const myObj = {//위의 내용을 arrows를 사용해보면?
+            register(){    
+                    el.addEventListener("click", () => {//arrow Function를 사용하면 this로 bind해주지 않아도 실행된다.
+                    this.printData();
+                });//bind로 this를 묶어줌
+            },
+            printData(){
+                document.write('Clicked!!!');
+            }
+        }
+
+        myObj.register();
+    </script>
+</body>
+</html>
