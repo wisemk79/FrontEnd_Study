@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let news = [
+        {
+            "title" : "sbs",
+            "imgurl" : "http://static.naver.com/newsstand/articleimg.jpg",
+            "newslist" : [
+                "[가보니] 가상 경주도 즐기고, 내 손으로 자동차도 만들고",
+                "리캡차가 사라진다."
+            ]
+        },
+        {
+            "title" : "mbc",
+            "imgurl" : "http://static.naver.com/newsstand/articleimg32.jpg",
+            "newslist" : [
+                "I don't know how to coding",
+                "How to get the money?"
+            ]
+        }
+    ];
+
+    let [,mbc] = news;//필요한 오브젝트를 뽑을수도있다. mbc라는 객체
+    document.write(mbc + '<br/>');
+
+    // let {title, imgurl} = mbc;//필요한 프로퍼티를 가져올 수 있다. 
+    // document.write(title + '<br/>', imgurl + '<br/>');
+
+
+
+    let [, {title, imgurl, newslist}] = news;//destructuring을 이용하여 객체의 프로퍼티를 한꺼번에 가져올 수 있다.
+    document.write(title + '<br/>', imgurl + '<br/>', newslist + '<br/>');//destructuring을 이용한 jason 파싱
+
+    </script>
+
+</body>
+</html>

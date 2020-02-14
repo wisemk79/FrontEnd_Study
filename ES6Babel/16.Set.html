@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let mySet = new Set();//sql 프라이머리키 처럼 중복된 값이 들어올 수 없다.
+        //console.log(toString.call(mySet));
+
+        //set : 중복없이 유일한 값을 저장하려고할때. 이미 존재하는지 체크할 때 유용
+
+        mySet.add("crong <br/>");
+        mySet.add("hary <br/>");
+        mySet.add("crong <br/>");//중복된 값이 들어가도 추가 되지 않는다.
+
+        document.write(mySet.has("crong <br/>"));//해당값이 있으면 true 아니면 false를 반환 
+
+        document.write(mySet.size);//크기가 2인것을 보면 확실하게 중복된 값이 들어가지 않았다는 것을 알 수 있다.
+
+        mySet.forEach(function(v){
+            document.write(v)
+        });
+
+        mySet.delete("crong <br/>");//crong을 지웠으니 hary만 남게된다.
+
+        mySet.forEach(function(v){
+            document.write(v)
+        });
+
+        document.write(mySet.size);//size가 1인것으로 보아 정상적으로 삭제되었다.
+
+
+    </script>
+</body>
+</html>

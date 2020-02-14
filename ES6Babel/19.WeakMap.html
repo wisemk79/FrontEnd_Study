@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Area(height, width){
+            this.height = height;
+            this.width = width;
+        }
+
+        Area.prototype.getArea = function(){
+            return this.height * this.width;
+        }
+
+        let myArea = new Area(10,20);//Area 객체를 생성해줌
+        document.write(myArea.getArea());//Area의 메소드인 getArea를 호출한다.
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            let news = [
+        {
+            "title" : "sbs",
+            "imgurl" : "http://static.naver.com/newsstand/articleimg.jpg",
+            "newslist" : [
+                "[가보니] 가상 경주도 즐기고, 내 손으로 자동차도 만들고",
+                "리캡차가 사라진다."
+            ]
+        },
+        {
+            "title" : "mbc",
+            "imgurl" : "http://static.naver.com/newsstand/articleimg32.jpg",
+            "newslist" : [
+                "I don't know how to coding",
+                "How to get the money?"
+            ]
+        }
+    ];
+        function getNewsList([ ,{newslist}]){
+            document.write(newslist + '<br/>');
+        }
+        
+        getNewsList(news);
+
+    </script>
+
+    <!-- 2번째 예제 -->
+
+    <div>U know what? I don't know how to coding</div>
+
+    <script>
+        // document.querySelector("div").addEventListener("click", function(evt){//객체를 받아 전부 실행할 수도있지만, 다른 방식도 있다.
+        //     document.write(evt.target);
+        // });
+
+
+        // document.querySelector("div").addEventListener("click", function({target}){//Destructing을 이용해서 타겟의 태그 네임을 가져오는것
+        //     document.write(target.tagName);//여기에 만약 target.innerText를 하면 텍스트 내용이 나오게 된다.
+        // });
+
+
+        document.querySelector("div").addEventListener("click", function({type,target}){
+            document.write(type, target.tagName);//여기서 type은 click이벤트를 이야기하는것
+        });
+    </script>
+</body>
+</html>

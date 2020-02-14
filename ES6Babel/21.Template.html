@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const data = [
+            {
+                name : 'coffee-bean',
+                order : true,
+                items : ['americano', 'milk', 'green-tea']
+            },
+            {
+                name : 'starbucks',
+                order : false
+            }
+        ]
+
+
+        const template = `<div>welcome ${data[0].name} !!`//<--- (`) 는 1왼쪽에 있는키임. ${data[0].name}은 data객체의 파라메터 벨류 값을 가져온다.
+        document.write(template);
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const wm = new WeakMap();
+
+        function Area(height, width){
+            wm.set(this, {height, width});//지금 객체(this)에 height와 width를 숨기는 것
+        }
+
+        Area.prototype.getArea = function(){
+            const {height,width} = wm.get(this);//지금 객체(this)에서 height와 width를 뽑아서 리턴해준다.
+            return height * width;
+        }
+        
+
+        let myarea = new Area(10,20);
+        document.write(myarea.getArea());
+
+        document.write(wm.has(myarea));//true
+
+        myarea = null;
+
+        document.write(wm.has(myarea));//false
+
+    </script>
+</body>
+</html>

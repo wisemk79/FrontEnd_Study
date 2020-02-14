@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+           <script>
+        const data = [
+            {
+                name : 'coffee-bean',
+                order : true,
+                items : ['americano', 'milk', 'green-tea']
+            },
+            {
+                name : 'starbucks',
+                order : false
+            },
+            {
+                name : 'coffee-king',
+                order : true,
+                items : ['americano', 'latte']
+            }
+        ]
+        function fn(tags, name, items){
+            if(typeof items === "undefined"){
+                items = "주문가능한 상품이 없습니다.";
+            }
+            return (tags[0] + name + tags[1] + items + tags[2]);
+        }
+
+
+        data.forEach((v) => {//forEach로 전체 프로퍼티를 출력
+            let template = fn`<div>welcome ${v.name} !!</div>
+        <h2>주문가능항목</h2><div>${v.items}</div>`    
+        document.write(template + '<br/>');
+        });
+
+        const template2 = fn`<div>welcome ${data[0].name} !!</div>
+        <h2>주문가능항목</h2><div style = "color:red">${data[0].items}</div>`//태그안에 style도 넣어줄 수 있다.
+      
+        document.write('<hr><p>')
+        document.write(template2 + '<br>');
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //weakSet
+        //참조를 가지고있는 객체만 저장이 가능하다. 
+        //객체형태를 중복없이 저장하려고 할때 유용하다.
+        let arr = [1,2,3,4];
+        let arr2 = [5,6,7,8];
+        let obj = {arr, arr2};
+        let ws = new WeakSet();
+
+        ws.add(arr);
+        //ws.add(111);<-- 111과 문자열 111은 객체가 아니기 때문에 weakSet에 들어갈 수 없다.
+        //ws.add("111");
+        ws.add(function(v){//객체는 들어간다. 
+            console.log(v);
+        });
+
+        ws.add(obj);//이렇게하면 결과적으로 arr, function객체, obj(arr,arr2)가 들어간 어레이가 생성된다.
+
+        arr = null;
+        arr2 = null;//<--배열값이 없어짐
+
+        console.log(ws);//그러나 arr과 arr2는 있는 것처럼보인다
+
+        console.log(ws.has(arr), ws.has(arr2));//이렇게하면 false false가 출력되는데, 
+        //그이유는 위에서 arr,arr2를 null값으로 변환했기 때문에 garbage collection대상으로 없는것으로 확인된다.
+
+    </script>
+</body>
+</html>

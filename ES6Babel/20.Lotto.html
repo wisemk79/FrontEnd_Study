@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Setting = {
+            name : "Lucky Lotto!",
+            count : 6,
+            maxNumber : 45
+        }
+        let {count,maxNumber} = Setting;
+        function getRandomNumber(maxNumber){
+            return  maxNumber * Math.random() + 1;
+        }
+
+        let mySet = new Set();
+        while(true){
+        mySet.add(Math.round(getRandomNumber(maxNumber)));
+            if(mySet.size == count){
+            break;
+            }   
+        }
+        console.log(mySet);
+    </script>
+</body>
+</html>
