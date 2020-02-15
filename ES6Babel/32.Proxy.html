@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Proxy 어떤 오브젝트가 있을 떄 그 오브젝트를 가로채서 따른작업을 할수 있도록 해준다.
+        const myObj = {name : "crong", changedValue : 0};//만약 몇번 바뀌었는지 알고 싶다면.
+        const proxy = new Proxy(myObj,{//myObj에 {name : "crong", changedValue : 0}를 직접 넣어줄 수도 있다.
+            get : function(target, property, receiver){//여기서 receiver는 리턴해주는 것 자체를 의미
+                console.log('get value');//불러들일때 자동으로 출력
+                //return target[property]; <--프록시는 값을 반환하는 역할은 프록시의 역할이 아니라고 주장하는 바있어 아래처럼 작성하여 값을 반환하기도한다.
+                //return Reflect.get(target,property);//리플렉트는 값을 반환하는 역할, 타겟의 프로퍼티 값을 얻을 수 있다.
+                //만약 없는 값에 대한 에러처리가 하고싶다면?
+                return (property in target) ? target[property] : "anonymous"//프로퍼티가 타겟에 있다면? 타겟의 프로퍼티를 반환하고, 아니면 오류메세지 전달
+                }
+            ,
+            set : function(target, property, value){//target은 myObj를 가리킨다.
+                console.log("change value");//값이 바뀔때 자동으로
+                target['changedValue']++;
+                target[property] = value;
+            }
+        });//오브젝트를 프록시에 넣고 왼쪽엔 핸들러를 넣어준다.
+        //myObj에 있는 프로퍼티를 얻으려 했을떄 변경하거나 셋 또는 겟(커스텀)을 할려고할때 핸들러에서 작업을 해준다
+        console.log(proxy.name);
+        proxy.name = "jisu";
+        console.log(proxy.name);
+        console.log(toString.call(proxy));//타입은 오브젝트 타입이다.
+        console.log(proxy.changedValue);
+        console.log(proxy.xdavdavdas);// 없는 프로퍼티이기 때문에 anonymous가 출력될것
+
+        //프록시는 중간에 가로채서 로그(로깅)를 찍거나할때 활용할 수 있다.
+
+        
+    </script>
+</body>
+</html>

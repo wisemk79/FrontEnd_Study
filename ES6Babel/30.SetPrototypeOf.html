@@ -17,7 +17,7 @@
             }
         }
 
-        const newObj = Object.setPrototypeOf({
+        const newObj = Object.setPrototypeOf({//앞의 assign처럼 번거롭게 new를 해줄필요가 없다는 것이 특징
             "name" : "dolo",
             "HealthTime" : "12:12"
         },healthObj)//name,healthtime 프로퍼티를 healthObj의 프로토타입으로 추가해주는 것
