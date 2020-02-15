@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Counter</h1>
+    <h2 id="number">0</h2>
+    <button id="increase">+</button><!--버튼을 눌렀을 때 값을 바꿔주기 위해선 dom element에 대한 reference를 찾고 접근하여 값을 가져와야한다.-->
+
+    <script>
+        let number = 0;
+        let elNumber = document.getElementById("number");//dom을 가져옴
+        let btnIncrease = document.getElementById("increase");
+
+        btnIncrease.onclick = function(){//onclick 이벤트 설정
+            number++;
+            elNumber.innerText = number;
+        }
+    </script>
+
+</body>
+</html>
