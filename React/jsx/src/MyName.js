@@ -1,15 +1,14 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 // MyName 함수를 MyNameProps에서 import해서 가져온다
 import MyName from './MyNameProps'
 
 class App extends Component{
   render(){
     return(
-    <fragment>
-
+    <div>
       <MyName name = "infrearn"/>
       <MyName/>
-    </fragment>
+    </div>
     )
   }
 }
