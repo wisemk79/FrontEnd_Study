@@ -36,7 +36,7 @@ class MyComponent extends Component{
     render(){//리액트의 랜더함수에서 오류가 나게되면 앱 자체가 크래쉬나게된다.
         return(
         <div>
-        {/*있지도 않은값(this.props.missing.something)을 불러올때 오류처리하는법(부모컴포넌트(LifeCycleAPI.js)에서해야한다.) */}
+        {/*있지도 않은값(this.props.missing.something)을 불러올때 오류처리하는법(부모컴포넌트(LifeCycleAPI.js)에서 구현해야한다.) */}
             {/*this.props.missing.something*/}
             <p>props : {this.props.value}</p>
             <p>state : {this.state.value}</p>

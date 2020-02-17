@@ -6,7 +6,12 @@
 1. constructor(생성자)
 우리가 만든 컴포넌트가 처음 브라우저에서 나타날때,
 컴포넌트의 초기값(state) 또는 브라우저가 나타날때 미리해야되는 작업이 있는 경우 여기서 처리를 한다.    
-
+```javascript
+<input typr = "button"></input>
+const dodod = {
+    name : "su"
+}
+```
 2. getDerivedStateFromProps
 만약, props로 받은 값을 state에 동기화하고 싶은경우 이것을 사용하면된다. 
 이것은 mounting단계 뿐만아니라 updating단계에서도 사용하게된다.
