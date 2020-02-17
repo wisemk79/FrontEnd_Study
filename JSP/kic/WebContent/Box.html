@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+   //가로,세로를 입력했는지를 체크
+   function goBox(){
+	  var row = document.getElementById('tr_cnt');
+	  var colum = document.getElementById('td_cnt');
+	 if(row.options[row.selectedIndex].value == 0 && colum.options[colum.selectedIndex].value == 0){
+		alert("다시 입력해주세요.") 
+	 }else{
+			 //document.BoxForm.action = "./Box_proc.jsp";
+			document.BoxForm.submit(); 
+	 }
+
+   }//goBox()
+
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>표만들기</title>
+</head>
+<body>
+ <form name="BoxForm" method="post" action="Box_proc.jsp">
+ 표만들기 설정<br>
+ 가로(행)
+  <select id="tr_cnt" name = "tr">
+      <option value="0">선택</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+  </select><br>
+  
+ 세로(열)
+  <select id="td_cnt" name = "td">
+      <option value="0">선택</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+  </select><br>
+  <a href="JavaScript:goBox()">표만들기</a>
+ </form>
+</body>
+</html>
