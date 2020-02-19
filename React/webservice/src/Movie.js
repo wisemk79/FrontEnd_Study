@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './Movie.css';
 
-//Ajax로 https://yts.mx/api 사이트의 api(https://yts.mx/api/v2/list_movies.json)를 가져와 출력하는것을 해보자. 
+
 export default class Movie extends Component {
     //propTypes의 역할은 만약 부모 컴포넌트가 보낸 props의 타입이 string인지 아닌지 체크해주는 기능을한다. 
     //isRequired를 붙히게되면 해당 prop을 보내지 않는 경우 오류가 뜨게되는것이다.
