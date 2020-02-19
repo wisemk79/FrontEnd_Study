@@ -8,7 +8,7 @@ export default class App extends Component {
 //https://yts.mx/api/v2/list_movies.json?sort_by=rating <--- 평점순으로 정렬하도록 /sort_by=rating추가한것<-- 여기있는 데이터들을 불러들이고 싶다.
 
 /*
- * 1. 처음 웹이 켜지면 state에 아무것도 없기 때문에 Loading이 출력된다. 
+   1. 처음 웹이 켜지면 state에 아무것도 없기 때문에 Loading이 출력된다. 
    2. 마지막으로 did mount가 호출되면 this.getMovies가 호출된다.
    3. getmovies는 this._callApi()함수 작업 수행이 끝나면(await) this._callApi()로직에 대한 
       반환값(yts사이트의 json data 중 movies데이터)을 movies변수에 값을 넣어주고 movies변수를 반환한다.
