@@ -7,7 +7,7 @@
 우리가 만든 컴포넌트가 처음 브라우저에서 나타날때,
 컴포넌트의 초기값(state) 또는 브라우저가 나타날때 미리해야되는 작업이 있는 경우 여기서 처리를 한다.    
 ```javascript
-<input typr = "button"></input>
+<input type = "button"></input>
 const dodod = {
     name : "su"
 }

@@ -1,0 +1,17 @@
+.App{
+    padding: 50px;
+    /* 블록타입 레이아웃모드 https://webdir.tistory.com/349 */
+    display: flex;
+    /* flex item중 하나로 ‘진행 축’ 정렬과 간격을 제어 이 속성을 사용하면 완전히 균등한 공간으로 배분할 수 있습니다.
+        https://webclub.tistory.com/628 /  https://naradesign.github.io/article/flex-justify-align.html */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+.App--loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

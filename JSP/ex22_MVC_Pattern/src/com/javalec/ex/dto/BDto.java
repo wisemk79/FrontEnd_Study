@@ -1,4 +1,4 @@
-package com.javalec.ex.dto;
+ package com.javalec.ex.dto;
 
 import java.sql.Timestamp;
 
