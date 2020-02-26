@@ -1,0 +1,26 @@
+.header {
+    background-color: #5c7cfa;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+/* 일정한 간격으로 오브젝트를 만들기 위함 */
+.item {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: table-cell;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.item:hover {
+    background: #748ffc;
+}
+
+/* NavLink 사용을 위해 active를 설정  */
+.item:active, .item.active {
+    background: white;
+    color:#5c7cfa
+}

@@ -110,7 +110,8 @@ export default class App extends Component {
     <div className="App">
     {this.state.greeting}
     {/* movie컴포넌트는 title과 poster라는 props를 데이터를 얻게된다. */}
-        {/* <Movie title = {movieTitles[0]} poster = {movieImages[0]}/>
+        {/* 
+        <Movie title = {movieTitles[0]} poster = {movieImages[0]}/>
         <Movie title = {movieTitles[1]} poster = {movieImages[1]}/>
         <Movie title = {movieTitles[2]} poster = {movieImages[2]}/>
         <Movie title = {movieTitles[3]} poster = {movieImages[3]}/> */}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AddNumberRoot from "./Components/AddNumberRoot";
 import DisplayNumberRoot from "./Components/DisplayNumberRoot";
-
+//부모컴포넌트
 export default class App extends Component {
     state = {number:0}
   render() {

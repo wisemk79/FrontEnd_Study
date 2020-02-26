@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 const mapDispatchToProps = (dispatch) => {
     return {
         //AddNumber의 프로퍼티로 전달하는 기능(onClick)을 이름으로주고 그 값을 함수를 준다.
-            onClick:(size) => dispatch({type:'INCREMENT',size:size})
+            onClick:(size) => dispatch({type:'INCREMENT',size: size})
         }
     }
 
@@ -14,7 +14,7 @@ export default connect(null, mapDispatchToProps)(AddNumber)
 // import React, { Component } from 'react'
 // import store from '../store'
 
-// //wrapper컴포넌트로 가짜 컴포넌트, 기존 component폴더의 addnumber는 보기주기위한거고 이 컴포넌트는 
+// //wrapper컴포넌트로 가짜 컴포넌트, 기존 component폴더의 addnumber는 보여주기위한거고 이 컴포넌트는 
 // export default class extends Component {
 //     render() {
 //         return (
