@@ -1,0 +1,16 @@
+.articleList-button {
+    position: relative;
+    margin-right: 10px;
+}
+
+.text {
+    background-color: white !important;
+}
+
+.text:focus {
+    outline:0;
+    box-shadow: none;
+    border: none; 
+  }
+
+

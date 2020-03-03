@@ -4,6 +4,7 @@ import './Header.css'
 
 function Header() {
     return (
+        // 라우트를 정의해준다.
         <div className="header">
             {/* Link to=""는 어떤 주소로 보내줄지 설정하는것 */}
             <NavLink exact to="/" className="item" activeClassName="active">홈</NavLink>
