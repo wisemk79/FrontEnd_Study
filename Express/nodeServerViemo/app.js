@@ -1,8 +1,41 @@
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser')//body-parser를 가져온다.
+import express from 'express'
+import bodyParser from 'body-parser'
+import sqlite3 from 'sqlite3'
+import path from 'path'
+import cors from 'cors'//404떳을때 설정해줄것
+import process from 'process'
 
-app.listen(3000, function(){
+// var express = require('express')
+const app = express()
+app.use(cors())//404떳을때 설정해줄것
+// var bodyParser = require('body-parser')//body-parser를 가져온다.
+// var mysql = require('mysql')//import로 구축
+const dirName = path.resolve("")
+const db = new sqlite3.Database(dirName + '/jsman')//경로를 지정해주고
+
+db.serialize(()=>{
+	// db.run('CREATE TABLE user (uid integer primary key autoincrement, email varchar(20), name varchar(10), pw varchar(20))');
+	
+	// const query = `insert into user(email, name, pw) values('crong@gmail.com', 'crong', 'asdf')`//쿼리를 만들어서 db.run(excute와 같은 역할)에 넣어준다
+	// db.run(query)
+	
+	// var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
+						
+	// for (var i = 0; i < 10; i++) {
+	//   stmt.run('Ipsum ' + i);//
+	// }
+  
+	// stmt.finalize();
+  
+	db.each('SELECT uid, email, name, pw FROM user', function(err, row) {
+	  console.log(row.uid + ': ' + row.email + ', ' + row.name + ', ' + row.pw);
+	});
+})
+
+
+
+
+app.listen(3000, () => {
 	console.log("start!!!! express server on port 3000")
 })
 //http://127.0.0.1:3000/
@@ -12,14 +45,13 @@ app.use(bodyParser.json())//클라이언트에서 오는 통신이 json인경우
 app.use(bodyParser.urlencoded({extended:true}))//post로 올때는 urlencoded()를 이용한다/
 app.set('view engine', 'ejs')//view 엔진은 ejs로 사용하겠다고 express한테 알려주는것 <--view폴더를 만들어 ejs파일을 생성해본다.
 
-
 app.get('/',function(req,res){
 	//res.send("<h1>hi friend</h1>")
-	res.sendFile(__dirname + "/public/main.html")//절대경로라는것을 표시해주기 위해 __dirname을 사용한다.
+	res.sendFile(dirName + "/public/main.html")//절대경로라는것을 표시해주기 위해 __dirname을 사용한다.
 })
 
 app.get('/main',function(req,res){
-	res.sendFile(__dirname + "/public/main.html")
+	res.sendFile(dirName + "/public/main.html")
 })
 
 app.post('/email_post',(req,res)=>{//form.html에서 submit해주면 /email_post로 라우팅을 타고 콜백함수를 실행한다.
@@ -29,10 +61,36 @@ app.post('/email_post',(req,res)=>{//form.html에서 submit해주면 /email_post
 	res.render('email.ejs',{'email' : req.body.email})//ejs에 오른쪽 객체 데이터가 email이라는 name값을 찾아서 req값을 찾아서 치환한다음에 클라이언트에 응답을해주게 되어있다
 })
 
+app.use("/static", express.static('./'));
 
+//post로 받은것을 '/ajax_send_email' url로 라우팅해서 
+app.post('/ajax_send_email',(req,res)=>{
+	console.log(req.body.email);
+	const email = req.body.email 
+	console.log(email)
+	let responseData = {}//response data를 json으로 주기 위해 object형태로 초기화해줘야한다.
+	
 
+	db.each('SELECT email, name, pw FROM user', function(err, row) {
+		//에러처리는 처음에 해야한다
+		if(err){
+			console.log(err)
+		}
+		else if(row[0]){
+			responseData.result = "ok";
+			responseData.name = row[0].name;
+		}
+		else{
+			responseData.result = "no";
+			responseData.name = "";
+		}
+		res.json(responseData)//json으로 응답하고 form.html addEventListenr로가서
+	  });
+	})
 
-
+process.on('exit',()=>{
+	db.close()
+})
 
 
 

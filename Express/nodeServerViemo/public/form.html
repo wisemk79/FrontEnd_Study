@@ -11,25 +11,48 @@
         <input type="submit">
     </form>
 
-    <button class="ajaxsend">ajaxsend</button>
+    <button class="axiossend">axiossend</button>
 
+    <div class="result"></div>
+    
     <script>
-        document.querySelector('.ajaxsend').addEventListener('click',function(){
-            var inputdata = document.forms[0].elements[0].value//document.forms[0]는 form접근 elements[0]sms 첫번쨰 인풋타입을 의미
-            sendAjax('http://127.0.0.1:3000/ajax_send_email', inputdata)
+        const axios = require('axios')
+        document.querySelector('.axiossend').addEventListener('click',()=>{
+            const inputdata = document.forms[0].elements[0].value//document.forms[0]는 form접근 elements[0]sms 첫번쨰 인풋타입을 의미
+            sendAxios('http://127.0.0.1:3000/ajax_send_email', inputdata)
+            // sendAjax('http://127.0.0.1:3000/ajax_send_email', inputdata)//app.js에서 처리해줘야한다.
         })
 
-        function sendAjax(url, data){//sendAjax는 url과 data를 받는데, data는 json형태로 작성한다.  
-            var data = {'email': data}
-            data = JSON.stringify(data);//아래에서 data를 send해줄때 위에처럼 object형태로 넣어줄 수 없기 때문에 string형태로 바꿔줘야한다(문자열 형태로 바뀐 JSON data)
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', url)//xhr의 첫번째 인자는 메소드를 주게 되어있다. 두번째인자는 url
-            xhr.setRequestHeader('Content-Type', "application/json")//서버로 보낼때 json형태의 데이터를 보내는데, 그럴때 이렇게 써준다.
-            xhr.send(data);//<--이렇게하면 json형태의 데이터가 날라가게된다.
-            xhr.addEventListener('load',function(){//응답이 제대로 왔을때 
-                console.log(xhr.responseText)
-            })
-        }
+        const sendAxios = (url,data) => {
+        axios.post(url, data)
+        .then(response => {
+            const email = response.data;
+            console.log(`POST: email is added`, email);
+            // append to DOM
+            appendToDOM([email]);
+        })
+        .catch(error => console.error(error));
+};
+
+
+
+        // function sendAjax(url, data){//sendAjax는 url과 data를 받는데, data는 json형태로 작성한다.  
+        //     var data = {'email': data}
+        //     data = JSON.stringify(data);//아래에서 data를 send해줄때 위에처럼 object형태로 넣어줄 수 없기 때문에 string형태로 바꿔줘야한다(문자열 형태로 바뀐 JSON data)
+            
+        //     //클라이언트에서 받은 폼을 json형태로 만들어서 send로 POST로 보냈고 app.js로가서...
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.open('POST', url)//xhr의 첫번째 인자는 메소드를 주게 되어있다. 두번째인자는 url
+        //     xhr.setRequestHeader('Content-Type', "application/json")//서버로 보낼때 json형태의 데이터를 보내는데, 그럴때 이렇게 써준다.
+        //     xhr.send(data);//<--이렇게하면 json형태의 데이터가 날라가게된다.
+            
+        //     xhr.addEventListener('load',function(){//응답이 제대로 왔을때 
+        //         console.log(xhr.responseText)
+        //         var result = JSON.parse(xhr.responseText)
+        //         if(result.result !== "ok") return;
+        //         document.querySelector(".result").innerHTML = result.email 
+            // })
+        // }
     </script>
 </body>
 </html>

@@ -14,6 +14,7 @@ export default class App extends Component {
 
 
   _renderMovies = () => {
+    
     const movies = this.state.movies.map((props) => {//(props, index) =>이렇게 인덱스를 사용하면 느리기때문에 좋지않다 따라서 지금 movie api가 같고있는 id를 가져오는 것이 좋다.key = {index} key = {props.id}
       console.log(props)//영화 사이트의 구성요소를 console에서 볼 수 있다.
       return <Movie 

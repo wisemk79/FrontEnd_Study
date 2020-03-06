@@ -22,6 +22,7 @@
 7. `nodemon app.js` <---를 해주면 nodemon실행됨 이렇게하면 코드의 변화가 있을때마다 저장해주면 바로 실행된다.
 8. post방식으로 전달받을때 필요한 `npm install body-parser --save`
 9. `npm install ejs --save`
+10. `npm install mysql --save` <--mysql을 node에서 설정해준다.
 
 
 # vi 사용
