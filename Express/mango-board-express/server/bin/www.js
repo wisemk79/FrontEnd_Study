@@ -3,10 +3,11 @@
 /**
  * Module dependencies.
  */
+import app from '../app';
+import debugLib from 'debug';
+import http from 'http';
+const debug = debugLib('mango-board-express:server');
 
-var app = require('../app');
-var debug = require('debug')('mango-board-express:server');
-var http = require('http');
 
 /**
  * Get port from environment and store in Express.

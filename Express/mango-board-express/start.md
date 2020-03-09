@@ -1,0 +1,1 @@
+npm run watch:dev <---package.json 참조

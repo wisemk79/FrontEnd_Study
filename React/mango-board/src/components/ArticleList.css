@@ -1,6 +1,14 @@
-.write-button {
+.list {
     position: relative;
     width: 4rem;
+    bottom: 10px;
+}
+
+.list .write-button{
     padding:5px 10px 5px 10px;
-    top:10px;
+}
+
+.listGroup {
+    position: relative;
+    margin: 15px;
 }
