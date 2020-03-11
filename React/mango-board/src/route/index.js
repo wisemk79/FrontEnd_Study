@@ -16,7 +16,7 @@ export default function() {
         <Route exact path="/articles" component={ArticleListPage} />
         <Route path="/articles/:id" component={ArticlePage} />
         <Route path="/write" component={WriteFormPage} />
-        <Route component={ArticleListPage} />
+        <Route component={ArticleListPage}/>
       </Switch>
     </Router>
   );

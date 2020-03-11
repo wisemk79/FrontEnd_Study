@@ -16,19 +16,48 @@ var router = _express["default"].Router();
 
 
 router.get('/', function (req, res, next) {
+  console.log(req);
+
   _database["default"].serialize(function () {
     // console.log("articleList실행됨");
-    var query = "select * from articles";
-    var responseData = {};
+    // select * from articles limit 추출할 행 갯수 offset 첫행;
+    var stmt = _database["default"].prepare('select * from articles limit ? offset ?');
 
-    _database["default"].all(query, [], function (err, rows) {
+    var responseData = {};
+    var countRow = 10;
+    var num = 0;
+
+    if (req.query.size > 1) {
+      countRow = req.query.size;
+    }
+
+    if (req.query.page > 1) {
+      num = (req.query.page - 1) * 10;
+    }
+
+    console.log(num);
+    stmt.all(countRow, num, [], function (err, rows) {
       // console.log(rows)
       if (err) {
         console.log(err, '에러임');
       }
 
       if (rows) {
+        console.log('들어옴', rows);
         responseData.items = rows; // console.log('들어옴',responseData)
+      } else {
+        console.log('error');
+      }
+    });
+    stmt = _database["default"].prepare("SELECT count(*) count FROM articles");
+    stmt.get(function (err, row) {
+      if (err) {
+        console.log(err, '에러임');
+      }
+
+      if (row) {
+        console.log('들어옴', row);
+        responseData.count = row; // console.log('들어옴',responseData)
 
         res.json(responseData);
       } else {

@@ -5,23 +5,49 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
+  console.log(req)
   db.serialize(() => {
     // console.log("articleList실행됨");
-    const query = "select * from articles"
+    // select * from articles limit 추출할 행 갯수 offset 첫행;
+    let stmt = db.prepare('select * from articles limit ? offset ?')
     const responseData = {}
-    db.all(query, [],(err,rows) => {
+    let countRow = 10
+    let num = 0
+    if(req.query.size > 1){
+      countRow = req.query.size
+    }
+    if(req.query.page > 1){
+      num = (req.query.page-1)*10
+    }
+    console.log(num)
+    stmt.all(countRow, num,[],(err,rows) => {
       // console.log(rows)
       if(err){
         console.log(err,'에러임')
       }
       if(rows){
+        console.log('들어옴',rows)
         responseData.items = rows;
         // console.log('들어옴',responseData)
-         res.json(responseData)
       }else{
         console.log('error');
-      }
-    })
+      }})
+
+      stmt = db.prepare("SELECT count(*) count FROM articles");
+      stmt.get((err,row)=>{
+        if(err){
+          console.log(err,'에러임')
+        }
+        if(row){
+          console.log('들어옴',row)
+          responseData.count = row;
+          // console.log('들어옴',responseData)
+           res.json(responseData)
+        }else{
+          console.log('error');
+        }
+      })
+
   })
   
 });

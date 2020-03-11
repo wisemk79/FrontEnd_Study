@@ -2,26 +2,27 @@ import {ArticleList} from '../components'
 import axios from 'axios'
 import host from '../local'
 import React, {useState, useEffect} from 'react'
+import queryString from 'query-string'
 
-export default function AriticleListPage(){
+export default function AriticleListPage({location, history}){
+    const query = queryString.parse(location.search);
+    console.log(query)
     const [items, setItems] = useState(null)
-
+    const [count, setCount] = useState(0)
+    const [size, setSize] = useState(10)
+    
     const getArticleListAxios = (url) => {
         console.log("호출")
          axios.get(url)
         .then((res) => {
-            console.log(res.data)
+            setCount(res.data.count.count)
             setItems(res.data.items)
         });
     };
-    
+
     //componentDidMount, componentDidUpdate랑 같은역할
     useEffect(()=> {
-        console.log("articlelist실행");
-         getArticleListAxios(host + "/articles") 
-         console.log(items);
-         
-        
+         getArticleListAxios(host + "/articles" + location.search) 
         // if(items) return 
         // const query = `select * from articles`
         // window.database.execute(query, (result, error)=>{
@@ -36,7 +37,16 @@ export default function AriticleListPage(){
 console.log(items);
 
     return(
-        <ArticleList items={items}/>
+        items ? 
+        <ArticleList 
+            items={items} 
+            history={history} 
+            count={count} 
+            size={size} 
+            page={query.page} 
+            location={location.search} 
+            getArticle={getArticleListAxios}    
+        />: "loading"
     )
 }
 

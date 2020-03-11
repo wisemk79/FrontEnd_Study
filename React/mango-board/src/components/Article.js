@@ -33,13 +33,13 @@ export default function Article(props) {
                <Form.Control 
                value={title} 
                 onChange={(e)=>setTitle(e.target.value)}
-              />
+               />
                :<Form.Control 
                className="text"
-              plaintext 
-              readOnly
+               plaintext 
+               readOnly
                value={props.title || ""} 
-                onChange={(e)=>setTitle(e.target.value)}
+               onChange={(e)=>setTitle(e.target.value)}
               />}
               </Col>
             </Row>
@@ -47,7 +47,6 @@ export default function Article(props) {
             <Row>
               <Col>
               <Form.Group controlId="write_contents">
-            <Form.Label>내용</Form.Label>
             {update ?
               <Form.Control
               as="textarea"

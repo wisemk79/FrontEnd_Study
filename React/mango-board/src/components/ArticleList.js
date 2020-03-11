@@ -1,57 +1,55 @@
-import React,{useState} from "react";
+import React,{useState, useCallback} from "react";
 // import Article from "./Article";
 import { Button, ListGroup, Pagination } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import './ArticleList.css'
+import host from '../local'
 
 export default function ArticleList(props) {
+  console.log(props)
   const [pageNum, setPageNum] = useState(1);
   //items에 아무것도 없으면 ||로 빈배열 넣어준다
   const items = props.items || [];
   const itemList = items.map((item, index) =>//items를 mapping하여 새로운 배열로 만들어준다. mapping의 경우 key값을 줘야한다.
     // <Article title = {item.title} contents = {item.contents}/>
-        // <Article {...item} key = {index}/>    
-    <Link to={`/articles/${item.id}`} key={index}>
-      <ListGroup.Item >{index + 1} | {item.title}</ListGroup.Item>
+        // <Article {...item} key = {index}/>   
+    <Link to={`/articles/${item.id}&page=${props.size}`} key={index}>
+      <ListGroup.Item > {item.title}</ListGroup.Item>
     </Link>
   );
+  
       const pageItems = []
       let active = pageNum;
-      for (let number = 1; number <= Math.ceil(items.length/10); number++) {
+      for (let number = 1; number <= Math.ceil(props.count/props.size); number++) {
         pageItems.push(
-          <Pagination.Item key={number} active={number === active} onClick={()=>setPageNum(number)}>
+          <Pagination.Item key={number} active={number === active} >
+            <Link className="pageNationStL" onClick={()=>{
+            // props.history.push(`/articles?page=${number}`)
+            setPageNum(number)
+            props.getArticle(host + "/articles" + `?size=${props.size}&page=${number}`)
+            }} to={`/articles?size=${props.size}&page=${number}`}>
             {number}
+            </Link>
           </Pagination.Item>,
         );
       }
     
     const paginationBasic = (
-      <ListGroup className="listGroup">
+      <ListGroup id="pagenationGroup" className="listGroup">
         <Pagination>{pageItems}</Pagination>
       </ListGroup>
     );
 
-    const getItemList = (pagiNum) => {  
-      let itemsNumber = (pagiNum * 10) -1
-      const getList = []
-      
-      if(itemsNumber >= items.length){
-        itemsNumber = items.length
-      }
-        for(let i = (pagiNum - 1)*10 ; i <= itemsNumber; i++){
-            getList.push(itemList[i])
-        }
 
-        return getList
-    }
+
       
   return (
     <>
     <ListGroup className="listGroup"> 
-    {getItemList(pageNum)}
+    {itemList}
     </ListGroup>
     {paginationBasic}
-    <ListGroup  className="listGroup">
+    <ListGroup className="listGroup">
     <Link className="list" to="/write" >
     <Button className="write-button" variant="success" >글쓰기</Button>
     </Link>

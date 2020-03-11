@@ -1,13 +1,33 @@
-import React from 'react'
-import {NavLink} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import {NavLink, Link, Route} from 'react-router-dom'
+import {Navbar, Form} from 'react-bootstrap'
+import './Nav.css'
 
 export default function Nav() {
-    return (
-        <div>
-            <NavLink to="/articles">공지사항</NavLink>
-            <NavLink to="/articles">자유게시판</NavLink>
-            <NavLink to="/articles">자료실</NavLink>
+    const [selected, setSelected] = useState(10)
+    console.log(selected)
 
-        </div>
+    return (
+        <>
+        <Navbar className="navDesign" bg="dark" variant="dark">
+        <Navbar.Brand href="#home">
+        <img
+            alt=""
+            src="/logo.svg"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+        />{' '}
+        MangoBoard
+        </Navbar.Brand>
+        <Form>
+            <Form.Control className="comboBox" as="select" value={selected} onChange={(e)=>setSelected(e.target.value)}>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+            </Form.Control>
+        </Form>
+    </Navbar>
+    </>
     )
 }
