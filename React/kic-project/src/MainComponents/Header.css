@@ -2,5 +2,24 @@
     position: relative;
     margin:15px;
     text-align: center;
-    
+    justify-content: center;
+    display: flex;
+}
+
+.header-position{
+    position: relative;
+    margin-left:2rem;
+}
+
+.edge-menu{
+    position: relative;
+    /* left: 31rem; */
+    font-size: 12px !important;
+    font-weight: bolder;
+    left:26rem;
+    bottom:2.5rem;
+}
+
+.edge-drop-item{
+    font-size: 12px !important;
 }

@@ -9,7 +9,7 @@
     margin-bottom:2rem;
 }
 
-.input-box{
+.login-input-box{
     position: relative;
     width:23rem !important;
     height: 3.5rem !important;
@@ -32,8 +32,8 @@
 }
 
 .join-button{
-    margin-top: 10px;
     position: relative;
+    margin-top: 10px;
     width:23rem !important;
     height: 3.5rem !important;
     font-size: 1rem !important;

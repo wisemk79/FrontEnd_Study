@@ -20,20 +20,6 @@ export default function Login(props) {
 
     const handleAlert = () => (
         alert('아이디 또는 비밀번호를 입력하세요.')
-        // <Modal.Dialog>
-        //     <Modal.Header closeButton>
-        //         <Modal.Title>Modal title</Modal.Title>
-        //     </Modal.Header>
-
-        //     <Modal.Body>
-        //         <p>Modal body text goes here.</p>
-        //     </Modal.Body>
-
-        //     <Modal.Footer>
-        //         <Button variant="secondary">Close</Button>
-        //         <Button variant="primary">Save changes</Button>
-        //     </Modal.Footer>
-        // </Modal.Dialog>
         )
 
     return (
@@ -46,7 +32,7 @@ export default function Login(props) {
                             <h3>로그인</h3>
                         <br/>
                             <Form.Control 
-                                className="input-box" 
+                                className="login-input-box" 
                                 size="lg" 
                                 type="text" 
                                 placeholder="아이디를 입력해주세요."
@@ -55,7 +41,7 @@ export default function Login(props) {
                             />
                         <br />
                             <Form.Control 
-                                className="input-box" 
+                                className="login-input-box" 
                                 size="lg" 
                                 type="password" 
                                 placeholder="비밀번호를 입력해주세요."
@@ -67,7 +53,7 @@ export default function Login(props) {
                         <br />
                             <Button className="login-button" type="submit">로그인</Button>
                         <br />
-                            <Link to="/">
+                            <Link to="/join">
                                 <Button className="join-button">회원가입</Button>
                             </Link>
                     </Form>

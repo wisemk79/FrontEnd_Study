@@ -23,7 +23,7 @@ export default function LoginPage() {
     })
 
     const handleData = (data) => {
-        setData(DataTransfer)
+        setData(data)
         console.log(data)
     }
     return (

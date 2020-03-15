@@ -1,23 +1,31 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import logo from '../Containers/images/Main/logo.png'
-import {Dropdown} from 'react-bootstrap'
+import {Container, Row, Col, NavDropdown, Navbar, Nav} from 'react-bootstrap'
 import './Header.css'
 
 export default function Header() {
     return (
-        <div className="header">
-<Dropdown.Menu show>
-  <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-  <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-  <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-</Dropdown.Menu>
-            <Link to="/">
-                <img src={logo} width="89px" alt="Logo" />
-            </Link>
-        </div>
+        <Container className="header">
+            <Row>
+                <Col>
+                        <Navbar expand="lg">
+                        <Link className="header-position" to="/">
+                            <img className="header-position" src={logo} width="89px" alt="Logo" />
+                        </Link>
+                                <Nav className="mr-auto">
+                                <Nav.Link className="edge-menu" href="/login">로그인</Nav.Link>
+                                <Nav.Link className="edge-menu" href="/join">회원가입</Nav.Link>
+                                <NavDropdown className="edge-menu" title="고객센터">
+                                    <NavDropdown.Item className="edge-drop-item" href="#action/3.1">공지사항</NavDropdown.Item>
+                                    <NavDropdown.Item className="edge-drop-item" href="#action/3.2">자주하는 질문</NavDropdown.Item>
+                                    <NavDropdown.Item className="edge-drop-item" href="#action/3.3">1:1문의</NavDropdown.Item>
+                                </NavDropdown>
+                                </Nav>
+                        </Navbar>
+                </Col>
+            </Row>
+        </Container>
 
     )
 }
