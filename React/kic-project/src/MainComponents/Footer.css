@@ -1,0 +1,18 @@
+.footer-body{
+    border-top: 1px solid rgb(247, 242, 242);
+    text-align: center;
+    padding: 2rem;
+}
+
+.footer-notice2{
+    color:#999999;
+}
+
+.footer-button{
+    width: 8rem;
+    border-radius: 3rem;
+}
+
+.position{
+    background-color: red;
+}

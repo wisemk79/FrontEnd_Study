@@ -1,0 +1,137 @@
+.slide{
+    position: relative;
+    margin-bottom:3rem;
+}
+
+.contents1{
+    position: relative;
+    text-align: center;
+    padding:10px;
+}
+
+.contents2{
+    position: relative;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    text-align: center;
+    background-color: #f7f7f7;
+    padding-top: 3rem;
+    padding-bottom:3rem;
+}
+
+/* 이미지의 크기를 지정해주면 자연스럽게 이미지 오브젝트가 내려감 */
+.contents1-img{
+    position: relative;
+    right:2px;
+    width: 15rem;
+}
+
+.contents2-img{
+    position: relative;
+    right:2px;
+    width: 22rem;
+}
+
+.contents4-button-position1{
+    position: relative;
+    margin-top:-2rem;
+}
+.contents4-button-position2{
+    position: relative;
+    margin-bottom: -1rem;
+}
+
+.contents4-button{
+    position: relative;
+    margin:10px;
+    width: 10rem;
+    border-radius: 1rem !important;
+    left:0rem;
+}
+
+.contents5{
+    background-color: #e6edf2;
+    color: #344b57;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 7rem;
+}
+
+.contents5-Link:hover{
+        text-decoration: none;
+        color: #212529;
+}
+
+/* 컨텐츠간 마진 */
+.contents-margin{
+    position: relative;
+    margin:50px;
+    text-align: center;
+   
+}
+
+/* 텍스트 주변 공간 */
+.text-margin{
+    position: relative;
+    margin: 10px;
+    color: #212529;
+}
+
+/* 텍스트 링크 색 조정 */
+.text-link{
+    position: relative;
+    color: #212529;
+    text-align: center;
+
+}
+
+.text-link:hover{
+    text-decoration: none;
+    color: #212529;
+}
+
+
+/* 마우스 오버 이미지 확대시 frame 밖으로 나가지 않게하기 위해 부모 태그의 크기를정해줌 */
+.frame1{
+    position: relative;
+    width:247px;
+    height:319px;
+    /* 마우스오버 크기가 틀보다 커질시 숨김 */
+    overflow: hidden;
+    background-color: f7f7f7;
+    align-self:center;
+}
+
+
+.frame2-row{
+    height:339px;
+    width:338px;
+    /* 마우스오버 크기가 틀보다 커질시 숨김 */
+    overflow: hidden;
+    background-color: f7f7f7;
+    align-self:center;
+}
+
+.frame2{
+    
+    /* 마우스오버 크기가 틀보다 커질시 숨김 */
+    overflow: hidden;
+    background-color: f7f7f7;
+    align-self:center;
+}
+
+
+/* 이미지 확대효과 */
+.img{
+    transform: scale(1.0);
+    transition: 1s;
+}
+
+.img:hover{
+    /* 이미지확대 */
+    transform: scale(1.2);
+    /* 이미지 확대 이벤트 시간 */
+    transition: 1s;
+}
