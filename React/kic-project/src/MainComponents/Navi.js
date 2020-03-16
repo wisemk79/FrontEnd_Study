@@ -31,10 +31,10 @@ export default function() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link className="navdesign" href="#link">신상품</Nav.Link>
-            <Nav.Link className="navdesign" href="#link">베스트</Nav.Link>
-            <Nav.Link className="navdesign" href="#link">알뜰쇼핑</Nav.Link>
-            <Nav.Link className="navdesign" href="#link">이벤트</Nav.Link>
+            <Nav.Link className="navdesign" href="/category">신상품</Nav.Link>
+            <Nav.Link className="navdesign" href="/category">베스트</Nav.Link>
+            <Nav.Link className="navdesign" href="/category">알뜰쇼핑</Nav.Link>
+            <Nav.Link className="navdesign" href="/event">이벤트</Nav.Link>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

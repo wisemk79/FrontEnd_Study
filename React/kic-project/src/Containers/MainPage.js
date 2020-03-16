@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Spinner} from 'react-bootstrap'
 import Main from '../MainComponents/Main'
 import axios from 'axios'
 import host from './local'
@@ -77,10 +78,11 @@ export default function MainPage() {
     return (
         <>
         {
-        mainItems && 
+        mainItems ?
             <Main
                 mainItems={mainItems}
-            />
+            />:
+            <Spinner animation="border" variant="warning" />
         }
         </>
     )

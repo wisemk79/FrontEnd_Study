@@ -1,6 +1,6 @@
-import React,{useState, useCallback} from "react";
+import React,{ useState } from "react";
 // import Article from "./Article";
-import { Button, ListGroup, Pagination } from "react-bootstrap";
+import { Button, ListGroup, Pagination, Table } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import './ArticleList.css'
 import host from '../local'
@@ -13,11 +13,14 @@ export default function ArticleList(props) {
   const itemList = items.map((item, index) =>//items를 mapping하여 새로운 배열로 만들어준다. mapping의 경우 key값을 줘야한다.
     // <Article title = {item.title} contents = {item.contents}/>
         // <Article {...item} key = {index}/>   
-    <Link to={`/articles/${item.id}&page=${props.size}`} key={index}>
-      <ListGroup.Item > {item.title}</ListGroup.Item>
-    </Link>
+    <tr className="border-body">
+      <td className="board-num">{item.id}</td>
+      <td className="board"><Link to={`/articles/${item.id}`} key={index}>{item.title}</Link></td>
+      <td className="board-time">{item.date}</td>
+      <td className="board-num">{item.hit}</td>
+    </tr>
   );
-  
+  console.log(props.count,props.size)
       const pageItems = []
       let active = pageNum;
       for (let number = 1; number <= Math.ceil(props.count/props.size); number++) {
@@ -44,17 +47,25 @@ export default function ArticleList(props) {
 
       
   return (
-    <>
-    <ListGroup className="listGroup"> 
+    <div className="board-body">
+    <div className="title">
+      <h2>게시판</h2>
+    </div>
+    <Table className="board-length" responsive>
+    <thead>
+
+  </thead>
+  <tbody>
     {itemList}
-    </ListGroup>
+    </tbody>
+    </Table>
     {paginationBasic}
     <ListGroup className="listGroup">
     <Link className="list" to="/write" >
     <Button className="write-button" variant="success" >글쓰기</Button>
     </Link>
     </ListGroup>
-    </>
+    </div>
   );
 }
 

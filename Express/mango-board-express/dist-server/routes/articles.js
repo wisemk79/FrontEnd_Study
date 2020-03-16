@@ -16,12 +16,14 @@ var router = _express["default"].Router();
 
 
 router.get('/', function (req, res, next) {
-  console.log(req);
+  if (req.query) {
+    console.log(req.query);
+  }
 
   _database["default"].serialize(function () {
     // console.log("articleList실행됨");
     // select * from articles limit 추출할 행 갯수 offset 첫행;
-    var stmt = _database["default"].prepare('select * from articles limit ? offset ?');
+    var stmt = _database["default"].prepare('select * from articles order by id desc limit ? offset ?');
 
     var responseData = {};
     var countRow = 10;
@@ -32,7 +34,7 @@ router.get('/', function (req, res, next) {
     }
 
     if (req.query.page > 1) {
-      num = (req.query.page - 1) * 10;
+      num += req.query.size * (req.query.page - 1);
     }
 
     console.log(num);
@@ -88,6 +90,10 @@ router.get('/:id', function (req, res, next) {
       }
     });
     stmt.finalize();
+
+    var stmt2 = _database["default"].prepare("update articles set hit = hit + 1 where id=?");
+
+    stmt2.run(req.path.replace("/", ""));
   });
 });
 router.post('/', function (req, res, next) {

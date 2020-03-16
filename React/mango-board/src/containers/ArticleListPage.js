@@ -7,10 +7,11 @@ import queryString from 'query-string'
 export default function AriticleListPage({location, history}){
     const query = queryString.parse(location.search);
     console.log(query)
+    console.log(history)
     const [items, setItems] = useState(null)
     const [count, setCount] = useState(0)
     const [size, setSize] = useState(10)
-    
+
     const getArticleListAxios = (url) => {
         console.log("호출")
          axios.get(url)
@@ -18,22 +19,20 @@ export default function AriticleListPage({location, history}){
             setCount(res.data.count.count)
             setItems(res.data.items)
         });
+
     };
 
     //componentDidMount, componentDidUpdate랑 같은역할
     useEffect(()=> {
-         getArticleListAxios(host + "/articles" + location.search) 
-        // if(items) return 
-        // const query = `select * from articles`
-        // window.database.execute(query, (result, error)=>{
-        //     if(error){
-        //         //error콘솔에 빨간글씨로 표시
-        //         console.error("데이터 안옴", error)
-        //     }else{
-        //         setItems(result)
-        //     } 
-        // })
-    },[])
+        if(query.size === undefined){
+        setSize(query.size)
+        history.push(`/articles?size=${size}`)
+        getArticleListAxios(host + "/articles" + location.search)}
+        
+        if(size !== query.size){
+        setSize(query.size)
+        getArticleListAxios(host + "/articles" + location.search)}
+    })
 console.log(items);
 
     return(
@@ -52,7 +51,16 @@ console.log(items);
 
 
 
-
+        // if(items) return 
+        // const query = `select * from articles`
+        // window.database.execute(query, (result, error)=>{
+        //     if(error){
+        //         //error콘솔에 빨간글씨로 표시
+        //         console.error("데이터 안옴", error)
+        //     }else{
+        //         setItems(result)
+        //     } 
+        // })
 
 // import {connect} from 'react-redux'//react-redux에 연결한다.
 

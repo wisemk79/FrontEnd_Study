@@ -12,7 +12,7 @@ export default function Article(props) {
 
   const onFormSubmit = (e) => {
       e.preventDefault()
-      props.onSubmit({title,contents})
+      props.onSubmit({title, contents})
       setUpdate(false)
       setRedirect(true)
   }

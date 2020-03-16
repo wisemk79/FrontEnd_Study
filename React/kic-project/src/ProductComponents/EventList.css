@@ -1,0 +1,17 @@
+.event-list-container{
+    background-color: #f9f9f9;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding:4rem;
+}
+
+.event-list-body{
+    display: inline-block;
+}
+
+.event-list-img{
+    margin-top: 1rem;
+    max-width: 110%;
+    
+}

@@ -5,11 +5,13 @@ const router = express.Router();
 
 /* GET users listing. */
 router.get('/', (req, res, next) => {
-  console.log(req)
+  if(req.query){
+  console.log(req.query)
+  }
   db.serialize(() => {
     // console.log("articleList실행됨");
     // select * from articles limit 추출할 행 갯수 offset 첫행;
-    let stmt = db.prepare('select * from articles limit ? offset ?')
+    let stmt = db.prepare('select * from articles order by id desc limit ? offset ?')
     const responseData = {}
     let countRow = 10
     let num = 0
@@ -17,7 +19,7 @@ router.get('/', (req, res, next) => {
       countRow = req.query.size
     }
     if(req.query.page > 1){
-      num = (req.query.page-1)*10
+      num += (req.query.size)*(req.query.page-1)
     }
     console.log(num)
     stmt.all(countRow, num,[],(err,rows) => {
@@ -32,6 +34,7 @@ router.get('/', (req, res, next) => {
       }else{
         console.log('error');
       }})
+      
 
       stmt = db.prepare("SELECT count(*) count FROM articles");
       stmt.get((err,row)=>{
@@ -67,15 +70,17 @@ router.get('/:id', (req, res, next)=>{
         responseData.item = row;
         // console.log('들어옴',responseData)
          res.json(responseData)
-         
       }else{
         console.log('error');
       }
 
     })
     stmt.finalize();
-      
+
+    const stmt2 = db.prepare("update articles set hit = hit + 1 where id=?")
+    stmt2.run(req.path.replace("/",""))
   })
+
 })
 
 router.post('/', (req, res, next) => {

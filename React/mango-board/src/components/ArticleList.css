@@ -8,6 +8,42 @@
     position: relative;
     padding:5px 10px 5px 10px;
     bottom: 3.5rem;
+    right:11rem;
+}
+
+.title{
+    position: relative;
+    margin:20px;
+    left:25%;
+}
+
+.board-body{
+    position: relative;
+    left:15%;
+    vertical-align: text-bottom;
+}
+
+.board-length{
+    width:70%;
+    height:20%;
+    text-align: center;
+    line-height: 15px;
+}
+
+.board{
+    font-size: 15px;
+}
+
+.board-time{
+    text-align: center;
+    font-size: 12px;
+    width:9rem;
+}
+
+.board-num{
+    text-align: center;
+    font-size: 12px;
+    width:4rem;
 }
 
 .listGroup {
@@ -28,5 +64,5 @@
 
 #pagenationGroup{
     position: relative;
-    margin-left:45%;
+    margin-left:30%;
 }

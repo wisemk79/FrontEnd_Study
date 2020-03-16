@@ -56,3 +56,18 @@
     border: 2px solid #ed7175cd !important;
     color: #ed7175d2 !important;
 }
+
+.submit-button{
+    margin-top:2rem;
+    width: 20rem;
+    background-color: #ed7176 !important;
+    border: 2px solid #ed7176 !important;
+    color: white !important;
+    max-width: 100%;
+}
+
+.submit-button:hover{
+    background-color: #d06367 !important;
+    border: 2px solid #d26568 !important;
+    color: rgb(216, 216, 216) !important;
+}

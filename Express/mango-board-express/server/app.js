@@ -4,6 +4,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import articlesRouter from './routes/articles';
+import loginRouter from './routes/login'
+import joinRouter from './routes/join'
 import cors from 'cors'//app.js에서 middle ware를 구축해야됨
 
 
@@ -16,7 +18,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/articles', articlesRouter);
+// app.use('/articles', articlesRouter);
+app.use('/login', loginRouter);
+app.use('/join', joinRouter);
 
 
 
