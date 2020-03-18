@@ -9,7 +9,7 @@ import JoinPage from '../Containers/JoinPage'
 import ProductListPage from '../Containers/ProductListPage'
 import EventListPage from '../Containers/EventListPage'
 import CartPage from '../Containers/CartPage'
-import CS from '../CustomerServiceComponents/CS'
+import CS from '../CustomerServiceComponents'
 import Sidebar from '../MainComponents/Sidebar'
 
 export default function() {

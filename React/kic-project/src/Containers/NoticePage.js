@@ -1,0 +1,212 @@
+import React, {useState, useEffect} from 'react'
+import Notice from '../CustomerServiceComponents/Notice'
+import queryString from 'query-string'
+
+export default function NoticePage({location, history}) {
+    const [size, ] = useState(10)
+    const [test, setTest] = useState(null)
+    const query = queryString.parse(location.search);
+    const [page, setPage] = useState(query.page)
+    console.log(location)
+    console.log(history)
+    console.log(query)
+
+
+    if(!test){
+        setTest(
+        [
+            {
+                id:22,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:21,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:20,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:19,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:18,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:17,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:16,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                count:223
+            },
+            {
+                id:15,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:14,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:13,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:12,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:11,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:10,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:9,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:8,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:7,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:6,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:5,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:4,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:3,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:2,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            },
+            {
+                id:1,
+                title:"테스트중",
+                username:"홍길동",
+                date:"2020-01-23",
+                contents:"내용입니다.",
+                count:223
+            }
+        ])
+    }
+    useEffect(()=> {
+            if(query.page === NaN || query.page === undefined){
+                setPage(1)
+                history.push(`/customer/notice?page=1`)
+            };
+        
+        if(page !== query.page){
+        setPage(query.page)}
+    })
+
+
+
+    return (
+        <>
+            {test && page ? <Notice page={query.page} test={test} listcount={test.length} size={size}/> : "loading"}
+        </>
+    )
+}

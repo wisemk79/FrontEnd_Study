@@ -1,27 +1,43 @@
+
 .cs-navi-design{
     position: relative;
     float: left;
     padding-top: 73px;
+    width: 200px;
+    max-width: none !important;
 }
 
 .cs-navi-design h2{
     position: relative;
     margin-bottom: 10px;
-
 }
 
 .customer-navi-button{
     width: 10rem;
-    height: 3rem;
-    padding-top: 11px;
-    border: 1px solid #8a8a8a;
+    height: 40px;
+    padding-top: 9px;
+    border: 1px solid #dcdbde;
     list-style: none;
     text-align: center;
     vertical-align: bottom;
     font-size: 14px;
+    border-bottom:none;
+    color:#7f7f7f;
+}
+
+#customer-navi-button{
+    border-bottom: 1px solid #dcdbde;
 }
 
 .customer-navi{
     width: 10rem;
     height: 3rem;
 }
+
+
+.customer-navi-button:hover, .customer-navi:hover{
+    text-decoration: none;
+    color: #ed7176;
+    background-color: rgb(232, 232, 232);
+}
+
