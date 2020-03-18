@@ -25,7 +25,15 @@
     width:4.5rem;
 }
 
+.nav-container{
+}
+
 .mr-sm-2{
     width: 11rem !important;
     border-radius: 1rem !important;
+}
+
+.nav-cart-img{
+    width:30px;
+    height:30px;
 }

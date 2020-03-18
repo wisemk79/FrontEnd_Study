@@ -7,8 +7,19 @@ export default function ProductListPage() {
     const [productItems, setProductItems] = useState(null)
     
     if(productItems === null){
-        setProductItems(
-        [
+        setProductItems({
+        category:[
+                {
+                    name:"전체보기"
+                },
+                {
+                    name:"뿌리채소"
+                },
+                {
+                    name:"쌈 샐러드 간편채소"
+                }
+        ],
+        product: [
             {
                 img:product_img,
                 title:"[퓨어스펙] 블랙라벨 고당도 오렌지 4입",
@@ -39,7 +50,7 @@ export default function ProductListPage() {
                 title:"[My little recipe] 안동에서 올라온 전통찜닭 대용량(3~4안용)",
                 price:"23500원"
             }
-        ])
+        ]})
     }
     useEffect(()=>{
         

@@ -1,9 +1,11 @@
 import React from "react";
+import {Image} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import cart from '../Containers/images/Nav/cart.png'
 import {
   Navbar,
   Nav,
   Form,
-  Button,
   FormControl,
   NavDropdown
 } from "react-bootstrap";
@@ -11,9 +13,9 @@ import "./Navi.css";
 
 export default function() {
   return (
-    <div>
+    <div className="nav-container">
       <Navbar  className="navContainer" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavDropdown className="drop-menudesign" title="전체 카테고리" id="basic-nav-dropdown">
@@ -39,6 +41,9 @@ export default function() {
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           </Form>
+          <Link to="/cart">
+            <Image className="nav-cart-img" src={cart} rounded/>
+        </Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

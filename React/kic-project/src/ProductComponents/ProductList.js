@@ -1,10 +1,10 @@
 import React from 'react'
-import {Container, Row, Col, Image} from 'react-bootstrap'
+import {Container, Row, Col, Image, Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import './ProductList.css'
 
 export default function ProductList(props) {
-    const productList = props.productItems
+    const productList = props.productItems.product
     const getProducts = productList.map((product,index)=>
       <Col className="product" lg xs md={3} key={index}>
           <Link className="product-list-img" to="/">
@@ -15,6 +15,13 @@ export default function ProductList(props) {
           </Link>
           <Col className="text-margin"><b>{product.price}</b></Col> 
       </Col>
+    )
+
+    const categories = props.productItems.category
+    const getCategories = categories.map((category, index)=>
+        <Link className="category" to="/category" key={index}>
+            <Button className="category-button">{category.name}</Button>
+        </Link>
     )
     return (
         <>
@@ -27,12 +34,7 @@ export default function ProductList(props) {
                     </Row>
                     <Row>
                         <Col>
-                            <Link to="/category">
-                                <span className="category">전체보기</span>
-                            </Link>
-                            <Link to="/category">
-                                <span>뿌리채소</span>
-                            </Link>
+                            {getCategories}
                             <hr/>
                         </Col>                       
                     </Row>

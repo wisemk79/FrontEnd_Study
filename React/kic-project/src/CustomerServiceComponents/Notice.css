@@ -1,0 +1,16 @@
+.notice-container{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    margin-left: 20rem;
+    margin-top: 3rem;
+    padding-right: 9rem;
+}
+
+.notice-title{
+    margin: 15px;
+}
+
+.notice-board{
+    width: 20px;
+}

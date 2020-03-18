@@ -1,0 +1,23 @@
+#floatMenu {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	left: 50px;
+	top: 10px;
+	background-color: #606060;
+	color: #fff;
+}
+
+.float{
+    position: fixed;
+    width:10rem;
+    height:10rem;
+    background-color: red;
+    position: -webkit-sticky; /* 사파리 브라우저 지원 */
+
+    top: 4px;
+    background: red;
+    float: right;
+    right:10rem;
+    z-index: 10;
+}

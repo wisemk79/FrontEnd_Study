@@ -78,11 +78,10 @@ export default function MainPage() {
     return (
         <>
         {
-        mainItems ?
+        mainItems &&
             <Main
                 mainItems={mainItems}
-            />:
-            <Spinner animation="border" variant="warning" />
+            />
         }
         </>
     )

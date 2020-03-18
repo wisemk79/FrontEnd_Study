@@ -11,11 +11,31 @@
 }
 
 .category{
-    
+    color:#7f7f7f;
 }
 
+.category-button{
+    position: relative;
+    margin-top: 15px !important;
+    margin:6px;
+    background-color:white !important; 
+    border: 2px solid#ed7176 !important; 
+    color:#ed7176 !important;
+    font-weight: bolder !important;
+    border-radius: 2rem !important;
+}
 
+.category-button:hover{
+    background-color:rgb(203, 203, 203) !important; 
+    border: 2px solid#bd5a5d !important; 
+    color:#bd5a5d !important;
+}
+
+.category:hover{
+    color:#ed7176;
+    text-decoration: none;
+}
 
 .category:focus{
-    
+    color:#ed7176;
 }

@@ -25,7 +25,7 @@ export default function ArticleList(props) {
       let active = pageNum;
       for (let number = 1; number <= Math.ceil(props.count/props.size); number++) {
         pageItems.push(
-          <Pagination.Item key={number} active={number === active} >
+          <Pagination.Item key={number} active={number === active}>
             <Link className="pageNationStL" onClick={()=>{
             // props.history.push(`/articles?page=${number}`)
             setPageNum(number)

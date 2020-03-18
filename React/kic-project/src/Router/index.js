@@ -8,6 +8,9 @@ import Footer from '../MainComponents/Footer'
 import JoinPage from '../Containers/JoinPage'
 import ProductListPage from '../Containers/ProductListPage'
 import EventListPage from '../Containers/EventListPage'
+import CartPage from '../Containers/CartPage'
+import CS from '../CustomerServiceComponents/CS'
+import Sidebar from '../MainComponents/Sidebar'
 
 export default function() {
     return (
@@ -15,12 +18,15 @@ export default function() {
             <Router>
                 <Header/>
                 <Navi/>
+                {/* <Sidebar/> */}
                 <Switch>
                     <Route exact path="/" component={MainPage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/join" component={JoinPage}/>
                     <Route path="/category" component={ProductListPage}/>
                     <Route path="/event" component={EventListPage}/>
+                    <Route path="/cart" component={CartPage}/>
+                    <Route path="/customer" component={CS}/>
                     <Route component={MainPage}/>
                 </Switch>
                 <Footer/>

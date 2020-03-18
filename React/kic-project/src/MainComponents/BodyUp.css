@@ -20,15 +20,16 @@
 }
 
 /* 이미지의 크기를 지정해주면 자연스럽게 이미지 오브젝트가 내려감 */
-.contents1-img{
+.contents1-img, .contents2-img{
     position: relative;
     right:2px;
+}
+.contents1-img
+{
     width: 15rem;
 }
-
-.contents2-img{
-    position: relative;
-    right:2px;
+.contents2-img
+{
     width: 22rem;
 }
 
