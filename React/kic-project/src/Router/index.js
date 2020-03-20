@@ -11,6 +11,7 @@ import EventListPage from '../Containers/EventListPage'
 import CartPage from '../Containers/CartPage'
 import CS from '../CustomerServiceComponents'
 import Sidebar from '../MainComponents/Sidebar'
+import Test from '../Test'
 
 export default function() {
     return (
@@ -27,6 +28,7 @@ export default function() {
                     <Route path="/event" component={EventListPage}/>
                     <Route path="/cart" component={CartPage}/>
                     <Route path="/customer" component={CS}/>
+                    <Route path="/test" component={Test}/>
                     <Route component={MainPage}/>
                 </Switch>
                 <Footer/>

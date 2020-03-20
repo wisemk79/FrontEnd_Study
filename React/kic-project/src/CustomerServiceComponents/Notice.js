@@ -12,7 +12,7 @@ export default function Notice(props) {
     const getArticles = articles.map((article,index)=>
         <tr key={index}>
             <td>{article.id}</td>
-            <td className="notice-board-title-contents"><Link to="">{article.title}</Link></td>
+            <td className="notice-board-title-contents"><Link className="notice-link" to={`/customer/board/notice?no=${article.id}&page=${pageNum}`}>{article.title}</Link></td>
             <td>{article.username}</td>
             <td>{article.date}</td>
             <td>{article.count}</td>

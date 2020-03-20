@@ -1,0 +1,147 @@
+.join{
+    width:100%;
+    margin:0 auto;
+    background-color: #f9f9f9;
+}
+.join_content{
+    width:1050px;
+    margin:0 auto;
+}
+.join_location{
+    text-align: right;
+    padding: 10px 0;
+}
+.join_location > span{
+    padding-top:26px;
+    font-size:12px;
+    color:#333;
+}
+.join_tit > h2{
+    margin-bottom:50px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 20px;
+    text-align: center;
+    color: #333;
+}
+.join_main{
+    margin:0 auto;
+    width:640px;
+    height:auto;
+    padding: 9px 0 19px;
+}
+.tit_sub {
+    width:640px;
+    margin:0 auto;
+    text-align:right;
+    font-size: 13px;
+}
+.join_tit{
+    padding-top: 12px;
+}
+.join_board{
+    height:570px;
+    border: 1px solid #f3f2f4;
+    background-color: #fff;
+}
+.memCols1{
+    width: 145px;
+    padding: 30px 0 15px 29px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #333;
+    line-height: 20px;
+    vertical-align: top;
+}
+.memCols2{
+    padding: 20px 0 0 0;
+    border-top: 0 none;
+    font-size: 0;
+    vertical-align: top;
+    text-align: left;
+}
+.memCols2 > input{
+    width: 300px;
+    height: 40px;
+    padding: 0 9px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+}
+.join_name:nth-child(3) > .memCols1{
+    padding-top:16px;
+}
+.join_name:nth-child(3) > .memCols2{
+    padding-top:10px;
+}
+.join_pwCheck{
+    padding-top: 10px;
+}
+.memCols2 > a{
+    float: none;
+    display:inline-block;
+    width:150px;
+    height: 40px;
+    margin-left: 10px;
+    border: 1px solid #ed7176;
+    border-radius: 3px;
+    background-color: #ed7176;
+    font-size: 14px;
+    color: #fff;
+    line-height: 36px;
+    vertical-align: middle;
+    text-align: center;
+}
+.memCols2 > input::placeholder{
+    color:#999;
+    font-size: 13px;
+}
+.join_name:nth-child(6) > .memCols2 > a{
+    background-color: #ddd;
+    border-color: #ddd;
+}
+.join_name:nth-child(7) > .memCols2 > a {
+    margin-left:0;
+    display: block;
+}
+.join_name:nth-child(7) > .memCols2 > input{
+    margin-top:10px;
+    width:460px;
+    height:40px;
+}
+.join_agree{
+    margin-top:10px;
+    padding: 29px 0 21px 29px;
+    height:340px;
+    border: 1px solid #f3f2f4;
+    background-color: #fff;
+}
+.agree_tit > h3{
+    margin-right:15px;
+    float: left;
+    font-weight: 700;
+    font-size: 20px;
+    color: #333;
+    line-height: 28px;
+}
+.agree_tit > p{
+    padding-top: 10px;
+    font-size: 11px;
+    color: #666;
+    line-height: 17px;
+}
+.agree_total{
+    height:40px;
+    text-align: left;
+    border: 1px solid black;
+}
+input[id="agree_check"] {
+   ddisplay: none;
+}
+.ch > label > label > img{
+    margin:4px 10px 0 0;
+}

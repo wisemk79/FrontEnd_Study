@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("p").hide()
+                $("#test").hide()
+                $(".test").hide()
+                //*의경우 전체를 select를 말하는 것으로 모든 것에 적용된다.(버튼도 없어짐)
+                //$("*").hide()
+
+                $(this).hide()//여기서 this를 실행 주체를 의미하며, 여기서는 실행주체 자신인 button을 의미한다.
+                $("span.eee").hide()//span 태그의 eee클래스
+                $("span#eee").hide()//span 태그의 eee id
+                $("span:first").hide()//제일 첫번째 span태그
+                $("ul li:first").hide()//ul태그의 첫번째 태그 hide
+                $("ul li:first-child").hide()//모든 ul에서 첫번째 li태그를 지정
+                $("[href]").hide()//href태그가 있는 모든 태그를 지정
+                $("a[target='_blank']").hide()//타겟이 블랭크인 것 지정
+                $(":button").hide()//input type이 button인것 지정
+                $("tr:even").css("background-color","yellow")//table의 tr중 짝수번째 칸을 노란색으로 바꾸시오
+                $("tr:odd").css("background-color","blue")//table의 tr중 홀수번째 칸을 파란색으로 변경하시오
+            })
+
+
+        })
+    </script>
+
+ 
+    <button> 쿼리테스트</button>
+    <p> p태그임</p>
+    <span> span태그임</span>
+    <span id="test">id설정한태그임</span>
+    <span class="test">class 설정한태그임</span>
+    <span class="eee">태그와 eee 클래스를 지정한경우</span>
+    <span id="eee">태그와 eee 아이디를 지정한경우</span>
+
+    <ul>첫번째ul태그
+        <li>첫번째1</li>
+        <li>첫번째2</li>
+    </ul>
+
+    <ul>두번째ul태그
+        <li>두번째1</li>
+        <li>두번째2</li>
+    </ul>
+
+    <a href="#">링크태그</a>
+    
+
+    <a href="#" target="_blank">target이 _blank인경우(새창띄우기인경우)</a>
+
+    <input type="button" value="버튼임"></input>
+
+    <table>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+    </table>
+</body>
+</html>

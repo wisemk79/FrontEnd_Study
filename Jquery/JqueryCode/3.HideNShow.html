@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            //$(selector).hide(speed, callback) 여기서 speed는 속도이며 1000분의 1초단위로 나타내는데,
+            //1000으로 설정하면 1초이다
+        $("button#buttone").click(function(){
+            $("#hidenshow").show(1000,)
+            $("#hidenshow").hide(1000,)
+        })
+
+        $("button.hey").click(function(){
+            $("#toggle").toggle(1000,)//클릭하면 사라졌다가 클릭하면 생기게하는것
+        })
+        
+        $("#bt1").click(function(){
+            $("#color").animate({height:"300px"})//애니메이션 움직이게
+        })
+
+        $("#bt2").click(function(){
+            $("#color").animate({height:"100px"})
+        })
+
+        $("#bt3").click(function(){
+            $("#color").animate({height:"300px"},1500)
+            $("#color").animate({width:"300px"},1500)
+            $("#color").animate({height:"100px"},1500)
+            $("#color").animate({width:"100px"},1500)
+        })
+
+        $("#bt4").click(function(){
+            $("#color").clearQueue()//하던 애니메이션정지
+        })
+
+        
+        
+
+
+        })
+    </script>
+</head>
+<body>
+    <button id="buttone">버튼임</button>
+    <button class="hey">hey</button>
+    <p id="hidenshow">숨기기</p>
+    <p id="toggle">토글</p>
+
+    <button id="bt1">버튼1</button>
+    <button id="bt2">버튼2</button>
+    <button id="bt3">시작</button>
+    <button id="bt4">정지</button>
+    <div id="color" style="background-color: aqua; width:100px; height:100px;"></div>
+</body>
+</html>

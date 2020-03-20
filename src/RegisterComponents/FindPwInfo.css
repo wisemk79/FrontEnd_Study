@@ -1,0 +1,72 @@
+.find-pw-container{
+    width:1050px;
+    padding:80px;
+    text-align: center;
+    margin:0px auto;
+    max-width: none !important;
+}
+
+.find-pw-title{
+    width:340px;
+    font-size: 24px;
+    margin:0px auto;
+}
+
+.find-pw-input-box{
+    position: relative;
+    width:340px !important;
+    margin: 0px auto;
+    height: 54px !important;
+    font-size: 0.9rem !important;
+}
+
+.find-pw-button{
+    margin-top: 10px;
+    position: relative;
+    width:340px !important;
+    height: 54px !important;
+    font-size: 1rem !important;
+    background-color: #ed7176 !important;
+    border: 2px solid #ed7176 !important;
+}
+
+.find-pw-button:hover{
+    background-color: #c45e61 !important;
+    border: 2px solid #c45e61 !important;
+}
+
+.find-pw-join-button{
+    position: relative;
+    margin-top: 10px;
+    width:340px !important;
+    height: 54px !important;
+    font-size: 1rem !important;
+    color: #ed7176 !important;
+    font-weight: bolder !important;
+    background-color: #ffff !important;
+    border: 2px solid #ed7176 !important;
+}
+
+.find-pw-join-button:hover{
+    background-color: rgb(230, 230, 230) !important;
+    border: 2px solid #ce6266 !important;
+}
+
+.find-pw-text-link{
+    width:340px;
+    max-width: none;
+    color:black;
+}
+
+.find-pw-input-box-title{
+    width: 340px;
+    margin: 0px auto;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: -20px;
+}
+
+.find-pw-text-link:hover{
+    color: #ce6266;
+    text-decoration: none;
+}

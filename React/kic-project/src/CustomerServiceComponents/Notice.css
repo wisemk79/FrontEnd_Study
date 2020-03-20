@@ -5,7 +5,7 @@
     text-align: center;
     justify-content: center;
     margin-left: 25rem;
-    margin-top: 3rem;
+    margin-top: 5rem;
     padding-right: 9rem;
 }
 
@@ -56,6 +56,14 @@
     margin-bottom: 2rem;
 }
 
+.notice-link{
+    color:#202529;
+}
+
+.notice-link:hover{
+    text-decoration: none;
+    color:#202529;
+}
 
 .page-link{
     top:10px;

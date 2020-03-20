@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("#bt1").click(function(){
+                $(".id1").fadeIn()//생기는것
+                $(".id2").fadeIn("slow")
+                $(".id3").fadeIn(3000)
+            })
+
+            $("#bt2").click(function(){
+                $(".id4").fadeOut()//사라지는것
+                $(".id5").fadeOut("slow")
+                $(".id6").fadeOut(3000)
+            })
+
+
+            $("#bt3").click(function(){
+                $(".id7").fadeToggle()//클릭하면 생기고 클릭하면 사라지는것
+                $(".id8").fadeToggle("slow")
+                $(".id9").fadeToggle(3000)
+            })
+
+
+            $("#bt4").click(function(){
+                $(".id10").fadeTo("slow",0.15)//0으로 갈수록 더 투명해진다
+                $(".id11").fadeTo("slow",0.4)
+                $(".id12").fadeTo("slow",0.7)
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="bt1">fade in</button>
+
+    <div class="id1" style="width: 80px; height:80px; display:none; background-color:red;"></div>
+    <div class="id2" style="width: 80px; height:80px; display:none; background-color:blue;"></div>
+    <div class="id3" style="width: 80px; height:80px; display:none; background-color:black;"></div>
+
+
+    <button id="bt2">fade Out</button>
+
+    <div class="id4" style="width: 80px; height:80px; background-color:red;"></div>
+    <div class="id5" style="width: 80px; height:80px; background-color:blue;"></div>
+    <div class="id6" style="width: 80px; height:80px; background-color:black;"></div>
+
+
+    <button id="bt3">fade Toggle</button>
+
+    <div class="id7" style="width: 80px; height:80px; background-color:red;"></div>
+    <div class="id8" style="width: 80px; height:80px; background-color:blue;"></div>
+    <div class="id9" style="width: 80px; height:80px; background-color:black;"></div>
+
+    <button id="bt4">fade to</button>
+
+    <div class="id10" style="width: 80px; height:80px; background-color:red;"></div>
+    <div class="id11" style="width: 80px; height:80px; background-color:blue;"></div>
+    <div class="id12" style="width: 80px; height:80px; background-color:black;"></div>
+</body>
+</html>
