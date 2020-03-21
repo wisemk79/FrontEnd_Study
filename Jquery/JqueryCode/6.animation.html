@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            //애니메이션 형식 $(selector).animate({params},speed,callback)<-여기서 params는 left:'250px'이런식
+            $("#bt1").click(function(){
+                $("#ani1").animate({left:"100px"})
+            })
+
+            $("#bt2").click(function(){
+                $("#ani2").animate({
+                    left:"250px",
+                    opacity:'0.5',
+                    height:'150px',
+                    width:'150px'
+                })
+            })
+
+            $("#bt3").click(function(){
+                $("#ani3").animate({
+                    left:"250px",
+                    opacity:'0.5',
+                    height:'+=150px',//더한다
+                    width:'-=150px'//뺀다
+                })
+            })
+
+            $("#bt4").click(function(){
+                const ani4 = $("#ani4")
+                ani4.animate({height:'300px',opacity:'0.4'},'slow')
+                ani4.animate({height:'300px',opacity:'0.8'},'slow')
+                ani4.animate({height:'100px',opacity:'0.4'},'slow')
+                ani4.animate({height:'100px',opacity:'0.8'},'slow')
+            })
+
+
+            $("#bt5").click(function(){
+                const ani4 = $("#ani5")
+                ani4.animate({left:'+=300px',fontSize:'3rem'},'slow')
+            })
+        })
+    </script>
+</head>
+<body>
+    <button id="bt1">버튼이다</button>
+    <div id="ani1" style="background-color:black; height:100px; width:100px; position:absolute;"></div>
+
+    <button id="bt2">버튼2다</button>
+    <div id="ani2" style="top:200px;background-color:blue; height:100px; width:100px; position:absolute;"></div>
+
+    <button id="bt3">버튼3다</button>
+    <div id="ani3" style="top:400px;background-color:green; height:100px; width:100px; position:absolute;"></div>
+
+    <button id="bt4">버튼4다</button>
+    <div id="ani4" style="top:200px; left:200px; background-color:brown; height:100px; width:100px; position:absolute;"></div>
+
+    <button id="bt5">버튼5다</button>
+    <div id="ani5" style="top:400px; left:200px; background-color:violet; height:100px; width:100px; position:absolute;">dddd</div>
+</body>
+</html>
