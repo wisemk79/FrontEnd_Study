@@ -11,6 +11,7 @@ export default function AriticleListPage({location, history}){
     const [items, setItems] = useState(null)
     const [count, setCount] = useState(0)
     const [size, setSize] = useState(10)
+    const [page, setPage] = useState("1")
 
     const getArticleListAxios = (url) => {
         console.log("호출")
@@ -32,6 +33,10 @@ export default function AriticleListPage({location, history}){
         if(size !== query.size){
         setSize(query.size)
         getArticleListAxios(host + "/articles" + location.search)}
+
+        if(page !== query.page){
+            setPage(query.page)
+        }
     })
 console.log(items);
 
@@ -42,7 +47,7 @@ console.log(items);
             history={history} 
             count={count} 
             size={size} 
-            page={query.page} 
+            page={page} 
             location={location.search} 
             getArticle={getArticleListAxios}    
         />: "loading"

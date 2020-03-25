@@ -1,6 +1,6 @@
 import React from 'react'
 import "./test.css";
-import ico_checkbox_off from './ico_checkbox_off.webp'
+// import ico_checkbox_off from './ico_checkbox_off.webp'
 
 export default function Join() {
   const handleAddress = (data) => {
@@ -90,7 +90,7 @@ export default function Join() {
                   <label className="ch">
                     <label>
                       <input type="checkbox" id="agree_check" />
-                      <label for="agree_check"><img src={ico_checkbox_off}></img></label>
+                      {/* <label for="agree_check"><img src={ico_checkbox_off}></img></label> */}
                     </label>
                     <span>전체동의</span>
                   </label>

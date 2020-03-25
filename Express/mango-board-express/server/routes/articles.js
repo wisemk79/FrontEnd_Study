@@ -6,7 +6,7 @@ const router = express.Router();
 /* GET users listing. */
 router.get('/', (req, res, next) => {
   if(req.query){
-  console.log(req.query)
+  // console.log(req.query)
   }
   db.serialize(() => {
     // console.log("articleList실행됨");
@@ -28,7 +28,7 @@ router.get('/', (req, res, next) => {
         console.log(err,'에러임')
       }
       if(rows){
-        console.log('들어옴',rows)
+        // console.log('들어옴',rows)
         responseData.items = rows;
         // console.log('들어옴',responseData)
       }else{
@@ -119,8 +119,6 @@ router.put('/:id', (req, res, next)=>{
 
 
 
-  process.on('exit',()=>{
-    db.close()
-  })
+
 
 export default router;

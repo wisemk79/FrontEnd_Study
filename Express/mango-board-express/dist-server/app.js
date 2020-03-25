@@ -17,11 +17,15 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _articles = _interopRequireDefault(require("./routes/articles"));
 
-var _login = _interopRequireDefault(require("./routes/login"));
+var _auth = _interopRequireDefault(require("./routes/auth"));
 
 var _join = _interopRequireDefault(require("./routes/join"));
 
 var _cors = _interopRequireDefault(require("cors"));
+
+var _process = _interopRequireDefault(require("process"));
+
+var _score = _interopRequireDefault(require("./routes/score"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -34,10 +38,11 @@ app.use(_express["default"].urlencoded({
   extended: false
 }));
 app.use((0, _cookieParser["default"])());
-app.use(_express["default"]["static"](_path["default"].join(__dirname, 'public'))); // app.use('/articles', articlesRouter);
-
-app.use('/login', _login["default"]);
-app.use('/join', _join["default"]); // catch 404 and forward to error handler
+app.use(_express["default"]["static"](_path["default"].join(__dirname, 'public')));
+app.use('/articles', _articles["default"]);
+app.use('/auth', _auth["default"]);
+app.use('/join', _join["default"]);
+app.use('/score', _score["default"]); // catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
   next((0, _httpErrors["default"])(404));
@@ -50,5 +55,10 @@ app.use(function (err, req, res, next) {
 
   res.status(err.status || 500);
 });
+
+_process["default"].on('exit', function () {
+  db.close();
+});
+
 var _default = app;
 exports["default"] = _default;

@@ -6,12 +6,13 @@ import './Nav.css'
 export default function Nav() {
     const [selected, setSelected] = useState(10)
     const [redirect, setRedirect] = useState(false)
-    console.log(selected)
+    const [logged, setLogged] = useState(true)
+    console.log(logged)
 
     return (
         <>
         <Navbar className="navDesign" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
         <img
             alt=""
             src="/logo.svg"
@@ -29,6 +30,22 @@ export default function Nav() {
                 <option>50</option>
             </Form.Control>
         </Form>
+        {
+        logged? 
+        <div>
+            <span className="nav-font">mango님 안녕하세요</span>
+            <Link className="nav-font" to="/" onClick={()=>{
+                setLogged(false)
+            }}>LogOut</Link>
+            <Link className="nav-font" to="/userupdate">회원정보 수정</Link>
+        </div>
+        :
+        <div>
+            <Link className="nav-font" to="/login">Login</Link>
+            <Link className="nav-font" to="/join">Join</Link>
+        </div>
+ 
+        }
     </Navbar>
     {redirect && <Redirect to={`/articles?size=${selected}`}/>}    
     </>

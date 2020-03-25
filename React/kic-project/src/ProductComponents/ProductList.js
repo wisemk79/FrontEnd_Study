@@ -1,12 +1,29 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Container, Row, Col, Image, Button} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
+import sale60 from '../Containers/images/Product/60.png'
+import sale50 from '../Containers/images/Product/50.png'
 import './ProductList.css'
+
 
 export default function ProductList(props) {
     const productList = props.productItems.product
+    let saleImg = ""
+    const getSaleImage = (sale) =>{
+        switch(sale){
+            case "0.6":
+                saleImg=sale60;
+                break;
+            case "0.5":
+                saleImg=sale50;
+                break;
+        }
+        return saleImg
+    }
+
     const getProducts = productList.map((product,index)=>
       <Col className="product" lg xs md={3} key={index}>
+      {product.sale !== "0" ? <Image className="product-sale-img" src={getSaleImage(product.sale)} rounded />: <p className="product-sale-img"></p>}
           <Link className="product-list-img" to="/">
               <Image className="product-list-img" src={product.img} rounded />
           </Link>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#test1").text("바뀜1")//이렇게 하면 해당 아이디를 갖고 있는 태그의 값이 바뀐다.
+            })
+            $("#btn2").click(function(){
+                $("#test2").text("바뀜2")
+            })
+            $("#btn3").click(function(){
+                $("#test3").val("바뀜3")
+            })
+        })
+            
+    </script>
+</head>
+<body>
+    <button id="btn1">텍스트 값 넣기</button>
+    <button id="btn2">html 값 넣기</button>
+    <button id="btn3">val 값 넣기</button>
+
+    <p id="test1">테스트1</p>
+    <p id="test2">테스트2</p>
+    <input id="test3" type="text">
+</body>
+</html>

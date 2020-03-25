@@ -4,9 +4,11 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import articlesRouter from './routes/articles';
-import loginRouter from './routes/login'
+import authRouter from './routes/auth'
 import joinRouter from './routes/join'
 import cors from 'cors'//app.js에서 middle ware를 구축해야됨
+import process from 'process'
+import scoreRouter from './routes/score'
 
 
 const app = express();
@@ -18,9 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use('/articles', articlesRouter);
-app.use('/login', loginRouter);
+app.use('/articles', articlesRouter);
+app.use('/auth', authRouter);
 app.use('/join', joinRouter);
+app.use('/score', scoreRouter);
 
 
 
@@ -38,5 +41,9 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
 });
+
+process.on('exit',()=>{
+  db.close()
+})
 
 export default app;

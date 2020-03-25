@@ -7,3 +7,14 @@
 .comboBox{
     width: 4rem;
 }
+
+.nav-font{
+    margin:0px 20px 0px 60px;
+    color: white;
+    font-size: 1rem;
+}
+.nav-font:hover{
+    color: rgb(157, 144, 144);
+    text-decoration: none;
+    
+}

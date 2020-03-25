@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#p1").css("color","red").slideUp(2000).slideDown(2000)
+            })//여러개의 효과를 중첩해서 사용할 수 있다. 색깔을 빨간색으로 바꾸고 
+        })
+    </script>
+</head>
+<body>
+    <button>click me</button>
+    <p id="p1">jquery fun</p>
+</body>
+</html>

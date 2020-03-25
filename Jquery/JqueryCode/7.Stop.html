@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("#flip").click(function(){
+                 $("#panel").slideDown(5000)//fast,slow,또는 1000 1초단위
+            })
+
+            $("#stop").click(function(){
+                $("#panel").stop();
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <style>
+    #panel, #flip, #panel1, #flip1, #panel2, #flip2, #stop{
+        padding: 5px;
+        text-align: center;
+        background-color: aquamarine;
+        border: 1px solid black;
+    }
+
+    #panel{
+        padding:50px;
+        display: none;
+    }
+
+    #panel1, #panel2{
+        padding:50px;
+    }
+</style>
+<div id="flip">Click to slide down panel</div>
+
+<div id="stop">stop</div>
+<div id="panel">Hello World</div>
+
+
+</body>
+</html>

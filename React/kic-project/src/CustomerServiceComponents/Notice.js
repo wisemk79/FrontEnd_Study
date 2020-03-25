@@ -39,7 +39,9 @@ export default function Notice(props) {
       items.push(
         <Link to={`/customer/notice?page=${number}`}  >
             <Pagination.Item onClick={()=>
-            setPageNum(number)} key={number} active={number === active}>
+            setPageNum(number)} 
+            key={number} 
+            active={number === active}>
             {number}
             </Pagination.Item>
             </Link> 

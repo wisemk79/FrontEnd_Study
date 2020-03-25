@@ -9,8 +9,8 @@ public class ConnectDB {
 	//멤버변수
 	private Connection con;
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";//localhost내ip   포트번호1521   orcl 오라클의 sid 이름
-	private String user = "shield";
-	private String password = "1234";
+	private String user = "scott";
+	private String password = "tiger";
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private PreparedStatement pstmtInsert;
 	
@@ -23,6 +23,7 @@ public class ConnectDB {
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패");
 		}
+		
 		
 		//2.DB연결
 		try {
@@ -39,6 +40,7 @@ public class ConnectDB {
 			System.out.println("Statement 생성 실패");
 		}
 	}
+	
 	
 	//Insert문 작성
 	public void insert(String ip, String chat) {

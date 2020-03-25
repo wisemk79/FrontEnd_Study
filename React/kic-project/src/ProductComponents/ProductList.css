@@ -5,6 +5,10 @@
     padding:4rem;
 }
 
+.product-sale-img{
+    position: absolute;
+    top:0px;
+}
 
 .product-list-img{
     

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert("text: " + $("#test").text())
+            })
+
+            $("#btn2").click(function(){
+                alert("text: " + $("#test").html())
+            })
+
+            $("#btn3").click(function(){
+                alert("text: " + $("#test2").val())
+                                            //값을가져오는것
+            })
+
+            $("#btn4").click(function(){
+                alert("arttribute중 href는 " + $("#test3").attr("href") + " 그리고 id는" + $("#test3").attr("id"))//id가 test3인 태그의 속성중 href인것의 값을 가져와라
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- dom = document object model text()는 해당 태그의 텍스트만 가져오고, html()은  해당 태그의 텍스트와 태그까지가져온다 -->
+    <button id="btn1">show text</button>
+    <button id="btn2">show html</button>
+
+    <p id="test">this is some <b>bold</b> text in paragraph</p>
+
+    Name: <input id="test2" type="text"></input>
+    <button id="btn3">show value</button>
+
+    <div>
+        <button id="btn4">show attr</button>
+        <a id="test3" href="www.naver.com">네이버</a>
+    </div>
+
+</body>
+</html>
