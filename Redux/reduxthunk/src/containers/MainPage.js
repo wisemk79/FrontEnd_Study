@@ -1,13 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Main from '../components/Main'
+import {connect} from 'react-redux'
 
-export default function MainPage() {
-    const [logger_name, setLogger_name] = useState("없음")
-    
+function MainPage(props) {
+    const [logger_name, setLogger_name] = useState(null)
+
+    useEffect(() => {
+        if(!logger_name){
+            setLogger_name(props.id)
+        }
+    })
     
     return (
         <>
-            <Main logger_name={logger_name}/>
+            {logger_name && <Main logger_name={props.id}/>}
         </>
     )
 }
+
+const mapStateToProps = (state) => {
+    return {
+        id: state.logger.id
+    }
+}
+
+MainPage = connect(mapStateToProps)(MainPage)
+
+export default MainPage;
+

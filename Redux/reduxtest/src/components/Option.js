@@ -34,7 +34,9 @@ let mapStateToProps = (state) => {
 
 //props.onUpdateDiff를 실행 할 경우 dispatch 할 action을 정의하는 코드입니다.
 let mapDispatchToProps = (dispatch) =>{ 
-    return { onUpdateDiff: (value) => dispatch(setDiff(value)) }; 
+    return { 
+        onUpdateDiff: (value) => dispatch(setDiff(value)) 
+    }; 
 } 
 
 //mapStateToProps와 mapDispatchToProps에서 작성한 내용을 적용하는 connect 메소드를 호출합니다.
