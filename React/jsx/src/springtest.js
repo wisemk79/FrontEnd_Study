@@ -15,7 +15,7 @@ export default function springtest() {
 
     useEffect(()=>{
         if(isEmpty(userInfoList)){
-            getData("http://localhost:3000/score")
+            getData("http://localhost:8181/mango-spring/api/test?a=b&c=d")
             console.log(userInfoList)
         }
     })

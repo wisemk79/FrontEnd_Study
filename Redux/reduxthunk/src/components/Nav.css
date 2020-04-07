@@ -1,0 +1,8 @@
+.nav-design > li,
+.nav-design > a > li{
+    display: table-cell;
+    border: 1px solid rebeccapurple;
+    background-color: aqua;
+    font-weight: 700;
+    width: 200px;
+}

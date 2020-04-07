@@ -26,15 +26,19 @@
             
             })
             $.ajax({
-                url: "http://localhost:3000/score",
+                url: "http://localhost:8181/mango-spring/api/test?a=b&c=d",
                 type: "get",
-                dataType: "json",
+                /*headers : {
+                    "Content-Type" : "application/json",  
+                    "X-HTTP-Method-override" : "get"},*/
+                dataType: 'jsonp',   
+                //dataType: "json",
                 success: function(data){
                     console.log("성공")
                     console.log(data)
                     list=data;
                     $("#list").after($.map( list, function(list){ 
-                        return `<div>${list.name}님의 점수는 ${list.score}입니다. </div>`}))
+                        return `<a href=""><div>${list.name}님의 점수는 ${list.score}입니다. </div></a>`}))
                 },
                 error: function (request, status, error){        
                     console.log("실패")
@@ -42,12 +46,6 @@
               });
         })
 
-        
-        function makeListToDom(list){
-            const dom = list.map(info => `<div>${info.name}님의 점수는 ${info.score}입니다.</div>`);
-
-            return dom;
-        }
 
     </script>
 
