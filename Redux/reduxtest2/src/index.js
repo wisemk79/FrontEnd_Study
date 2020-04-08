@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 //리덕스설정
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import loginApp from './reducer'
 //
@@ -10,7 +11,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 //스토어 생성
-const store = createStore(loginApp)
+const store = createStore(loginApp, applyMiddleware(ReduxThunk))
 
 ReactDOM.render(
   // 프로바이더로 감싸서 앱 전체에 스토어 연결시켜주기
