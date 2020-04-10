@@ -1,33 +1,46 @@
-import {LOGIN, LOGOUT, SET_ID, GET_AXIOS_DATA} from '../action'
+import {LOGIN, LOGOUT, SET_ID, GET_AXIOS_DATA, POST_AXIOS_DATA} from '../action'
 //combineReducers 를 import 합니다. combineReducers는 reducer가 여러개 있다면, 하나로 합쳐주는 메소드입니다.
 import {combineReducers} from 'redux'
 
 const loginInitialState = {
     id: "초기값",
     isLogged:false,
-    list:""
+    list:"",
+    session:"없음."
 }
 
 const logger = (state = loginInitialState, action)=>{
     switch(action.type){
         case LOGIN:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 id: "abcde",
                 isLogged:true
-            })
+            }
         case LOGOUT:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 id: "",
-                isLogged:false
-            })
+                isLogged:false,
+                session:""
+            }
         case GET_AXIOS_DATA:
-        return Object.assign({}, state, {
-            list: action.data
-        })
+            return  {
+                ...state,
+                list: action.data
+            }
+        case POST_AXIOS_DATA:
+            return {
+                ...state,
+                id: action.data.id,
+                isLogged: action.data.isLogged,
+                session: action.data.session
+            }
         case SET_ID:
-            return Object.assign({}, state, {
+            return {
+                ...state,
                 id: action.id
-            })
+            }
         default:
             return state;
     }

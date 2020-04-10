@@ -27,6 +27,8 @@ var _process = _interopRequireDefault(require("process"));
 
 var _score = _interopRequireDefault(require("./routes/score"));
 
+var _login = _interopRequireDefault(require("./routes/login"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //app.js에서 middle ware를 구축해야됨
@@ -41,6 +43,7 @@ app.use((0, _cookieParser["default"])());
 app.use(_express["default"]["static"](_path["default"].join(__dirname, 'public')));
 app.use('/articles', _articles["default"]);
 app.use('/auth', _auth["default"]);
+app.use('/login', _login["default"]);
 app.use('/join', _join["default"]);
 app.use('/score', _score["default"]); // catch 404 and forward to error handler
 

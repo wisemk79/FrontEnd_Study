@@ -27,18 +27,21 @@ export default function Login(props) {
         <div>
             로그인 => {props.datas.id}<br/>
             로그인여부 => {String(props.datas.isLogged)}<br/>
+            세션 => {props.datas.session}<br/>
             리스트 => {String(props.datas.list)}<br/>
             리스트 테이블 =>
             <br/>
             <table>
-                {getlist}
+                <tbody>
+                    {getlist}
+                </tbody>
             </table>
             <br/>
             <form>
                 <input type="text"  onChange={props.idChange}/>
             <br/>
                 <input type="password"/>
-                <input type="button" onClick={handleLogin} value="로그인"/>
+                <input type="button" onClick={()=>{props.postAxiosAction()}} value="로그인"/>
                 <input type="button" onClick={handleLogout} value="로그아웃"/>
                 <input type="button" onClick={()=>props.getAxiosAction()} value="리스트가져오기"/>
             </form>

@@ -9,6 +9,7 @@ import joinRouter from './routes/join'
 import cors from 'cors'//app.js에서 middle ware를 구축해야됨
 import process from 'process'
 import scoreRouter from './routes/score'
+import loginRouter from './routes/login'
 
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/articles', articlesRouter);
 app.use('/auth', authRouter);
+app.use('/login', loginRouter);
 app.use('/join', joinRouter);
 app.use('/score', scoreRouter);
 

@@ -5,20 +5,33 @@ const router = express.Router();
 
 // 로그인
 router.post('/', (req, res, next) => {
-  console.log(req.body)
+  console.log("로그인 라우터 실행 "+req.body)
+  const {id, pw} = req.body;
+  const responseData={}
 
   db.serialize(() => {
     // db.run('CREATE TABLE articles (id integer primary key autoincrement, title varchar(20), contents text)'); 
-    const stmt = db.prepare("insert into articles(title, contents) values(?,?)")
+    const stmt = db.prepare("select id, pw from register where id=? and pw=?")
     // console.log("실행됨");
-    stmt.run(req.body.title, req.body.contents)
+    stmt.get(id,pw, (err,row)=>{
+        if(err){
+          console.log('에러임')
+        }
+        if(row){
+          console.log("rows",row)
+          responseData.logged = row;
+          // console.log('들어옴',responseData)
+          console.log(responseData)
+          res.json({isLogged: true, id:row.id, session:"세션생김"})
+        }else{
+          res.json({isLogged: false})
+          console.log('error');
+        }
+    })
   })
-  
-  res.json({message: "post works!"})
 });
 
-  process.on('exit',()=>{
-    db.close()
-  })
+
+
 
 export default router;

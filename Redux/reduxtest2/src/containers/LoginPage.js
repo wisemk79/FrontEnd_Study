@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Login from '../components/Login'
-import {setId, login, logout, axiosLoginAction} from '../action'
+import {setId, login, logout, getAxiosAction, postAxiosAction} from '../action'
 import {connect} from 'react-redux'
 
 function LoginPage(props) {
@@ -12,7 +12,8 @@ function LoginPage(props) {
                 {
                     id: props.id,
                     isLogged: props.isLogged,
-                    list: props.list
+                    list: props.list,
+                    session: props.session
                 }
             )
         }else if(datas.id !== props.id || datas.list !== props.list){
@@ -20,7 +21,8 @@ function LoginPage(props) {
                 {
                     id: props.id,
                     isLogged: props.isLogged,
-                    list: props.list
+                    list: props.list,
+                    session: props.session
                 }
             )
         }
@@ -39,6 +41,7 @@ function LoginPage(props) {
                 login_evt={props.loginId} 
                 logout_evt={props.logoutId}
                 getAxiosAction={props.getAxiosAction}
+                postAxiosAction={props.postAxiosAction}
             />}
         </div>
     )
@@ -50,7 +53,8 @@ const mapStateToProps = (state) => {
     return {
         id: state.logger.id,
         isLogged: state.logger.isLogged,
-        list:state.logger.list
+        list:state.logger.list,
+        session:state.logger.session
     }
 }
 
@@ -59,7 +63,8 @@ const mapDispatchToProps = (dispatch) => {
         onUpdateId: (value)=>dispatch(setId(value)),
         loginId: ()=>dispatch(login()),
         logoutId: ()=>dispatch(logout()),
-        getAxiosAction: ()=>dispatch(axiosLoginAction())
+        getAxiosAction: ()=>dispatch(getAxiosAction()),
+        postAxiosAction: ()=>dispatch(postAxiosAction())
     }
 }
 
