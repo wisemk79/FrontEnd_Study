@@ -19,7 +19,7 @@ export default function ProductListPage() {
                     name:"쌈 샐러드 간편채소"
                 }
         ],
-        product: [
+        items: [
             {
                 img:product_img,
                 title:"[퓨어스펙] 블랙라벨 고당도 오렌지 4입",

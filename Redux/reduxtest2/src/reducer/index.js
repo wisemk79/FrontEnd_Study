@@ -1,12 +1,14 @@
-import {LOGIN, LOGOUT, SET_ID, GET_AXIOS_DATA, POST_AXIOS_DATA} from '../action'
+import {LOGIN, LOGOUT, SET_DATA, GET_AXIOS_DATA, POST_AXIOS_DATA} from '../action'
 //combineReducers 를 import 합니다. combineReducers는 reducer가 여러개 있다면, 하나로 합쳐주는 메소드입니다.
 import {combineReducers} from 'redux'
+import { withCookies, useCookies } from 'react-cookie'
 
 const loginInitialState = {
     id: "초기값",
     isLogged:false,
     list:"",
-    session:"없음."
+    session:"없음.",
+    data: "데이터없음"
 }
 
 const logger = (state = loginInitialState, action)=>{
@@ -36,10 +38,11 @@ const logger = (state = loginInitialState, action)=>{
                 isLogged: action.data.isLogged,
                 session: action.data.session
             }
-        case SET_ID:
+        case SET_DATA:
+            console.log("셋데이타실행",action.data.data)
             return {
                 ...state,
-                id: action.id
+                data: action.data
             }
         default:
             return state;

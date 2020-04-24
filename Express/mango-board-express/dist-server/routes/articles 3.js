@@ -16,7 +16,8 @@ var router = _express["default"].Router();
 
 
 router.get('/', function (req, res, next) {
-  if (req.query) {// console.log(req.query)
+  if (req.query) {
+    console.log(req.query);
   }
 
   _database["default"].serialize(function () {
@@ -44,12 +45,8 @@ router.get('/', function (req, res, next) {
       }
 
       if (rows) {
-        // console.log('들어옴',rows)
-        responseData.items = rows;
-        responseData.category = [{
-          name: "신상품",
-          categody_id: 1
-        }]; // console.log('들어옴',responseData)
+        console.log('들어옴', rows);
+        responseData.items = rows; // console.log('들어옴',responseData)
       } else {
         console.log('error');
       }
@@ -142,5 +139,8 @@ router.put('/:id', function (req, res, next) {
   });
 }); // db.run('CREATE TABLE articles (id integer primary key autoincrement, title varchar(20), contents text)'); 
 
+process.on('exit', function () {
+  _database["default"].close();
+});
 var _default = router;
 exports["default"] = _default;

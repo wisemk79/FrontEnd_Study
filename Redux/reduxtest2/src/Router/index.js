@@ -4,8 +4,8 @@ import MainPage from '../containers/MainPage'
 import LoginPage from '../containers/LoginPage'
 import NavPage from '../containers/NavPage'
 
-
-export default function index() {
+export default function index({location, history}) {
+    console.log(location, history)
     return (
         <div>
             <Router>

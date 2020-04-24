@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import Login from '../components/Login'
-import {setId, login, logout, getAxiosAction, postAxiosAction} from '../action'
+import {setData, login, logout, getAxiosAction, postAxiosAction} from '../action'
 import {connect} from 'react-redux'
+import { withCookies, useCookies } from 'react-cookie'
 
-function LoginPage(props) {
-    const [datas, setDatas] = useState(null)
+function LoginPage(props, {location, history}) {
+    console.log(props.data, location)
+    const {cookies} = props;
+    const [datas, setDatas] = useState("")
 
     useEffect(() => {
         if(!datas){
@@ -13,16 +16,21 @@ function LoginPage(props) {
                     id: props.id,
                     isLogged: props.isLogged,
                     list: props.list,
-                    session: props.session
+                    session: props.session,
+                    data:props.data
                 }
             )
-        }else if(datas.id !== props.id || datas.list !== props.list){
+        }else if(datas.id !== props.id || datas.list !== props.list || datas.data !== props.data){
+
+            cookies.set("user_id", props.id)
+            cookies.set("user_isLogged", props.isLogged)
             setDatas(
                 {
                     id: props.id,
                     isLogged: props.isLogged,
                     list: props.list,
-                    session: props.session
+                    session: props.session,
+                    data: props.data
                 }
             )
         }
@@ -32,16 +40,22 @@ function LoginPage(props) {
         props.onUpdateId(event.target.value); 
     } 
 
+    const handleSubmit = () => {
+        props.getData("dsdsds")
+        console.log(props.data)
+    }
     return (
         <div>
             {datas && 
             <Login 
+                onSubmit={handleSubmit}
                 datas={datas} 
                 idChange={idChange} 
                 login_evt={props.loginId} 
                 logout_evt={props.logoutId}
                 getAxiosAction={props.getAxiosAction}
                 postAxiosAction={props.postAxiosAction}
+                data={props.data}
             />}
         </div>
     )
@@ -54,22 +68,24 @@ const mapStateToProps = (state) => {
         id: state.logger.id,
         isLogged: state.logger.isLogged,
         list:state.logger.list,
-        session:state.logger.session
+        session:state.logger.session,
+        data:state.logger.data
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onUpdateId: (value)=>dispatch(setId(value)),
+        onUpdateId: (value)=>dispatch(setData(value)),
         loginId: ()=>dispatch(login()),
         logoutId: ()=>dispatch(logout()),
         getAxiosAction: ()=>dispatch(getAxiosAction()),
-        postAxiosAction: ()=>dispatch(postAxiosAction())
+        postAxiosAction: ()=>dispatch(postAxiosAction()),
+        getData: (data)=>dispatch(setData(data)),
     }
 }
 
 //LoginPage를 store와 연결한다.
-LoginPage = connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+LoginPage = withCookies(connect(mapStateToProps, mapDispatchToProps)(LoginPage))
 
 export default LoginPage
 

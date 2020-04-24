@@ -7,6 +7,9 @@ import ReduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import loginApp from './reducer'
 //
+//쿠키설정
+import {CookiesProvider} from 'react-cookie'
+//
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,10 +17,12 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore(loginApp, applyMiddleware(ReduxThunk))
 
 ReactDOM.render(
-  // 프로바이더로 감싸서 앱 전체에 스토어 연결시켜주기
+  //프로바이더로 감싸서 앱 전체에 스토어 연결시켜주기
+  <CookiesProvider>
     <Provider store={store}>
       <App />
     </Provider>
+  </CookiesProvider>
 ,
   document.getElementById('root')
 );

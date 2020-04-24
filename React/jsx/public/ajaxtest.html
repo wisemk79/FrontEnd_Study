@@ -12,7 +12,7 @@
                 console.log($(".name").val())
                 console.log($(".score").val())
             $.ajax({
-                    url: "http://localhost:3000/score",
+                    url: "http://localhost:8181/cds/login",
                     type: "post",
                     dataType: "json",
                     data: {name: $(".name").val(), score:$(".score").val()},
@@ -26,20 +26,24 @@
             
             })
             $.ajax({
-                url: "http://localhost:8181/mango-spring/api/test?a=b&c=d",
+                url: "http://localhost:8181/cds/session",
                 type: "get",
                 /*headers : {
                     "Content-Type" : "application/json",  
-                    "X-HTTP-Method-override" : "get"},*/
-                dataType: 'jsonp',   
-                //dataType: "json",
+                    "X-HTTP-Method-override" : "get"},*/ 
+                crossDomain: true,
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                xhrFields: {  withCredentials: true },
+                dataType: "json",
                 success: function(data){
                     console.log("성공")
                     console.log(data)
-                    list=data;
+                /*    list=data;
                     $("#list").after($.map( list, function(list){ 
                         return `<a href=""><div>${list.name}님의 점수는 ${list.score}입니다. </div></a>`}))
-                },
+                */
+                    }
+                ,
                 error: function (request, status, error){        
                     console.log("실패")
                 }

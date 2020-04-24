@@ -1,14 +1,18 @@
 import React,{useState} from 'react'
 
 export default function Login(props) {
-    console.log(props)
+    const [id, setid] = useState(null)
+    console.log(props.data)
     const handleLogin = () =>{
         props.login_evt()
     }
     const handleLogout = ()=>{
         props.logout_evt()
     }
-
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        props.onSubmit({id});
+    }
     let axioslist = []
 
     if(props.datas.list){
@@ -29,6 +33,7 @@ export default function Login(props) {
             로그인여부 => {String(props.datas.isLogged)}<br/>
             세션 => {props.datas.session}<br/>
             리스트 => {String(props.datas.list)}<br/>
+            데이터 => {props.datas.data}<br/>
             리스트 테이블 =>
             <br/>
             <table>
@@ -37,13 +42,14 @@ export default function Login(props) {
                 </tbody>
             </table>
             <br/>
-            <form>
-                <input type="text"  onChange={props.idChange}/>
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={id} onChange={(e)=> setid(e.target.value)}/>
             <br/>
                 <input type="password"/>
                 <input type="button" onClick={()=>{props.postAxiosAction()}} value="로그인"/>
                 <input type="button" onClick={handleLogout} value="로그아웃"/>
                 <input type="button" onClick={()=>props.getAxiosAction()} value="리스트가져오기"/>
+                <button>제출</button>
             </form>
         </div>
     )

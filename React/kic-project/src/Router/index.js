@@ -11,6 +11,7 @@ import EventListPage from '../Containers/EventListPage'
 import CartPage from '../Containers/CartPage'
 import CS from '../CustomerServiceComponents'
 import Sidebar from '../MainComponents/Sidebar'
+import NewProductPage from '../Containers/NewProductPage'
 import Test from '../Test'
 
 export default function() {
@@ -25,6 +26,7 @@ export default function() {
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/join" component={JoinPage}/>
                     <Route path="/category" component={ProductListPage}/>
+                    <Route path="/newproduct" component={NewProductPage}/>
                     <Route path="/event" component={EventListPage}/>
                     <Route path="/cart" component={CartPage}/>
                     <Route path="/customer" component={CS}/>

@@ -30,6 +30,8 @@ router.get('/', (req, res, next) => {
       if(rows){
         // console.log('들어옴',rows)
         responseData.items = rows;
+        responseData.category = [{name: "신상품",
+        categody_id:1}]
         // console.log('들어옴',responseData)
       }else{
         console.log('error');

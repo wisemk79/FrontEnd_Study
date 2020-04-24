@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import Main from '../components/Main'
 import {connect} from 'react-redux'
 
-function MainPage(props) {
+function MainPage(props,{location, history}) {
+    console.log(location, history)
     const [logger_name, setLogger_name] = useState(null)
     const [isLogged, setIsLogged] = useState(null)
     const [session, setSession] = useState(null);

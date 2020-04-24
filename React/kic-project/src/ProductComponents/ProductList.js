@@ -7,7 +7,7 @@ import './ProductList.css'
 
 
 export default function ProductList(props) {
-    const productList = props.productItems.product
+    const productList = props.productItems
     let saleImg = ""
     const getSaleImage = (sale) =>{
         switch(sale){
@@ -20,8 +20,8 @@ export default function ProductList(props) {
         }
         return saleImg
     }
-
-    const getProducts = productList.map((product,index)=>
+    const productItemsss= productList.items
+    const getProducts = productItemsss.map((product,index)=>
       <Col className="product" lg xs md={3} key={index}>
       {product.sale !== "0" ? <Image className="product-sale-img" src={getSaleImage(product.sale)} rounded />: <p className="product-sale-img"></p>}
           <Link className="product-list-img" to="/">
@@ -33,8 +33,7 @@ export default function ProductList(props) {
           <Col className="text-margin"><b>{product.price}</b></Col> 
       </Col>
     )
-
-    const categories = props.productItems.category
+    const categories = productList.category
     const getCategories = categories.map((category, index)=>
         <Link className="category" to="/category" key={index}>
             <Button className="category-button">{category.name}</Button>
@@ -46,7 +45,7 @@ export default function ProductList(props) {
                 <Container>
                     <Row>
                         <Col>
-                            <h3>신상품</h3>
+                            <h3>{productList.category[0].name}</h3>
                         </Col>
                     </Row>
                     <Row>

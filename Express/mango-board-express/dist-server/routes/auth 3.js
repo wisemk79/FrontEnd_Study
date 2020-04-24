@@ -14,19 +14,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var router = _express["default"].Router(); // 로그인
 
 
-router.post('/', function (req, res, next) {
-  console.log("로그인 라우터 실행 " + req.body);
+router.post('/login', function (req, res, next) {
+  console.log(req.body);
   var _req$body = req.body,
-      mem_id = _req$body.mem_id,
-      mem_pw = _req$body.mem_pw;
+      id = _req$body.id,
+      pw = _req$body.pw;
   var responseData = {};
 
   _database["default"].serialize(function () {
     // db.run('CREATE TABLE articles (id integer primary key autoincrement, title varchar(20), contents text)'); 
-    var stmt = _database["default"].prepare("select id, pw from register where id=? and pw=?"); // console.log("실행됨");
+    var stmt = _database["default"].prepare("select id, pw from users where id=?"); // console.log("실행됨");
 
 
-    stmt.get(mem_id, mem_pw, function (err, row) {
+    stmt.get(id, function (err, row) {
       if (err) {
         console.log('에러임');
       }
@@ -37,14 +37,9 @@ router.post('/', function (req, res, next) {
 
         console.log(responseData);
         res.json({
-          isLogged: true,
-          id: row.id,
-          session: "세션생김"
+          login: true
         });
       } else {
-        res.json({
-          isLogged: false
-        });
         console.log('error');
       }
     });
