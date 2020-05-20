@@ -227,25 +227,10 @@ npm install css-loader
 ````  
 - webpack.config.js에 로더를 적용시킨다.  
 ````
-const path = require('path')
 
-module.exports = {
-    mode: 'development',
-    entry: {
-        main: './src/app.js'
-    },
-    output: {
-        path: path.resolve('./dist'),
-        filename: '[name].js'
-    },
     module:{
         rules:[
-            {   
-                test: /\.js$/,
-                use: [
-                    path.resolve('./my-webpack-loader.js')
-                ]
-            },
+
             {
                 test: /\.css$/,
                 use: [
@@ -265,25 +250,10 @@ npm install style-loader
 ```` 
 - webpack.config.js에 로더를 적용시킨다.  
 ````
-const path = require('path')
 
-module.exports = {
-    mode: 'development',
-    entry: {
-        main: './src/app.js'
-    },
-    output: {
-        path: path.resolve('./dist'),
-        filename: '[name].js'
-    },
     module:{
         rules:[
-            {   
-                test: /\.js$/,
-                use: [
-                    path.resolve('./my-webpack-loader.js')
-                ]
-            },
+
             {
                 test: /\.css$/,
                 use: [
@@ -310,37 +280,15 @@ npm install file-loader
 ````  
 - webpack.config.js에 로더를 적용시킨다.  
 ````
-const path = require('path')
 
-module.exports = {
-    mode: 'development',
-    entry: {
-        main: './src/app.js'
-    },
-    output: {
-        path: path.resolve('./dist'),
-        filename: '[name].js'
-    },
     module:{
         rules:[
-            {   
-                test: /\.js$/,
-                use: [
-                    path.resolve('./my-webpack-loader.js')
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'css-loader',
-                    'style-loader'
-                ]
-            },
+
             {
                 test: /\.png$/, <-파일확장자
                 loader:'file-loader', <-로더명
                 options: {<--옵션을 지정해준다.
-                    publicPath:'./dist/', <-- 이렇게 해주면 로더로 변환된 bg.png 앞에 publicPath를 붙혀준다 예를들어 ./dist/bg.png로 바꿔준다
+                    publicPath:'../dist/', <-- 이렇게 해주면 로더로 변환된 bg.png 앞에 publicPath를 붙혀준다 예를들어 ./dist/bg.png로 바꿔준다
                     //이렇게 하는 이유는 번들링된 파일은 dist폴더에 들어가기 때문이다.
                     name: '[name].[ext]?[hash]'// 번들링될때 파일로더는 해싱처리를한다. 
                     //파일명이 5c6d3b633991b51295c68b34d8b94c8b.png 이런식으로되기 때문에 알아보기 쉽지 않다.
@@ -351,3 +299,41 @@ module.exports = {
     }
 }
 ````  
+### url loader  
+사용하는 이미지가 많은 경우 네트워크와 사이트 성능에 부담이 될 수 있다.  
+만약 한페이지 안에서 작은 이미지를 여러개 사용한다면 Data Schema URI를 사용하는것이 낫다.  
+아래와 같이 문자열 형태로 들어오는데, 그 내용을 설명하자면,  
+데이터형식을 이미지(png)로 정하고(data:image/png) 인코딩 방식을 base64로해서 그값을 문자열로 변환한 것이다.  
+이렇게하면 어떤 이점이 생기냐면, 경로로 지정하는 경우 한번더 네트워크 통신을 하는데,  
+아래처럼 하게되면 또다시 네트워크 통신할 필요없이 다로 표시해주게된다.  
+````
+<img src="data:image/png;base64,iVBORw0KGgoAAA
+ANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4
+//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU
+5ErkJggg==" alt="Red dot" />
+````  
+- url loader를 설치한다.  
+````
+npm install url-loader
+```` 
+- webpack.config.js에 로더를 적용시킨다.  
+````
+
+    module:{
+        rules:[
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader:'url-loader',
+                options: {
+                    publicPath:'../dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 30000, //30kb 미만의 파일은 자바스크립트로 변환하고, 아닌것은 파일을 생성한다.
+                }
+            }
+        ]
+    }
+}
+````    
+
+
+

@@ -27,12 +27,21 @@ module.exports = {
                     'css-loader'
                 ]
             },
+            // {
+            //     test: /\.(png|jpg|gif|svg)$/,
+            //     loader:'file-loader',
+            //     options: {
+            //         publicPath:'../dist/',
+            //         name: '[name].[ext]?[hash]'
+            //     }
+            // },
             {
-                test: /\.png$/,
-                loader:'file-loader',
+                test: /\.(png|jpg|gif|svg)$/,
+                loader:'url-loader',
                 options: {
-                    publicPath:'./dist/',
-                    name: '[name].[ext]?[hash]'
+                    publicPath:'../dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 30000, //30kb 미만의 파일은 자바스크립트로 변환하고, 아닌것은 파일을 생성한다.
                 }
             }
         ]
