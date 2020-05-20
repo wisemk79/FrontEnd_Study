@@ -40,7 +40,10 @@ npx lite-server// 이 명령어로 간단하게 해당 디렉토리에 있는 �
 ````  
 &nbsp;  
 ## webpack의 역할  
+![웹팩](../images/webpack.PNG)  
 웹팩은 모듈로 연결된 여러가지 자바스크립트 파일을 합쳐주는 역할을 한다.  
+위의 이미지에서 보면 왼쪽의 모든 자바스크립트 파일이 합쳐져서  
+오른쪽에 있는 파일들 처럼 합쳐주는 것이 번들링 이라고한다.  
 이렇게 하나로 합쳐진 파일을 번들(bundle)이라고 한다.  
 웹팩을 설치해서 번들링하는 작업을 해보자.  
 ````
@@ -72,4 +75,11 @@ npm install -D webpack webpack-cli// 여기서 -D를 넣는 거는 개발용 Dpe
 
 ## Entry  
 ![웹팩](../images/webpack.PNG)  
-개념: 모듈의 시작점으로 
+개념: 모듈의 시작점으로 위의 사진에서 왼쪽 맨위의 js파일의 위치를  
+Entry Point라고 한다.   
+### 필수 옵션 3가지  
+- --mode: ["development","production","none"] 과 같이 3가지 옵션을 선택할 수 있다.   
+개발환경(development)이냐, 운영환경(production)이냐에 따라 옵션을 다르게준다.  
+- --entry: 모듈의 시작점을 설정해주는 옵션이다.  
+- --output, -o: entry를 통해서 모듈들을 합치고 저장하는 경로를 설정하는 옵션이다.  
+&nbsp;  
