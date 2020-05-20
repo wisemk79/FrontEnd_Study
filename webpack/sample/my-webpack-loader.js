@@ -7,5 +7,5 @@
 
 module.exports = function myWebpackLoader(content){
     console.log('로더 동작')
-    return content.replace('console.log(', 'alert(');//모든 console.log()를 alert으로 바꾼다
+    return content.replace('console.log(', 'alert(')//모든 console.log()를 alert으로 바꾼다
 }

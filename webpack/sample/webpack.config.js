@@ -19,7 +19,22 @@ module.exports = {
                 use: [//사용할 로더를 정의한다.
                     path.resolve('./my-webpack-loader.js')
                 ]
-            } 
+            },
+            {
+                test: /\.css$/,//로더가 처리해될 패턴을 입력한다(정규식)
+                use: [//사용할 로더를 정의한다.
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.png$/,
+                loader:'file-loader',
+                options: {
+                    publicPath:'./dist/',
+                    name: '[name].[ext]?[hash]'
+                }
+            }
         ]
     }
 }

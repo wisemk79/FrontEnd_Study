@@ -167,7 +167,14 @@ module.exports = function myWebpackLoader(content){
     console.log('myWebpackLoader 동작함')
     return content;
 }
-````  
+````
+- 모든 console.log를 alert으로 치환시키고 싶은경우  
+````
+module.exports = function myWebpackLoader(content){
+    console.log('로더 동작')
+    return content.replace('console.log(', 'alert(')//모든 console.log()를 alert으로 바꾼다
+}
+````
 - webpack.config.js  
 ````
 const path = require('path')
@@ -181,6 +188,166 @@ module.exports = {
     output: {
         path: path.resolve('./dist'),//output 디렉토리명을 입력. 절대경로를 입력하는데, 노드의 path 모듈을 import하여 사용한다.
         filename: '[name].js'//여기서 name은 entry에서 설정한 키값으로 치환되어 main.js로 생기게된다.
+    },
+    // 로더는 모듈객체에 rules라는 배열에다 추가할 수 있다.
+    // 이 배열에는 test와 use라는 키를 갖는 객체를 사용한다.
+    module:{
+        rules:[
+            {   //정규표현식으로 모든 js파일에 대해 동작을 시켰기 때문에 2번 실행된다.
+                test: /\.js$/,//로더가 처리해될 패턴을 입력한다(정규식)
+                use: [//사용할 로더를 정의한다.
+                    path.resolve('./my-webpack-loader.js')
+                ]
+            } 
+        ]
+    }
+}
+````  
+## 커스텀 로더 만들기 (자주 사용되는 로더들)  
+### CSS loader  
+자바스크립트에서 css파일을 모듈로 불러올 수 있다.  
+예를들어 app.css라는 파일을 import로 불러오기 위해서는  
+app.css가 모듈이 되어야하는데 이설정을 로더에서 해줄수 있다.  
+````
+import './app.css'//만약 아무런 설정없이 import한다면 아래와 같은 에러가 발생한다.
+````  
+- 에러메세지  
+````
+ERROR in ./src/app.css 1:4
+Module parse failed: Unexpected token (1:4)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> body{
+|     background-color: green;
+| }
+````  
+#### 에러 해결 방법  
+- css loader를 설치한다.  
+````
+npm install css-loader
+````  
+- webpack.config.js에 로더를 적용시킨다.  
+````
+const path = require('path')
+
+module.exports = {
+    mode: 'development',
+    entry: {
+        main: './src/app.js'
+    },
+    output: {
+        path: path.resolve('./dist'),
+        filename: '[name].js'
+    },
+    module:{
+        rules:[
+            {   
+                test: /\.js$/,
+                use: [
+                    path.resolve('./my-webpack-loader.js')
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'css-loader'  <--적용
+                ]
+            } 
+        ]
     }
 }
 ````
+### Style loader  
+스타일로더란 위에서 CSS로더로 자바스크립트 코드로 바꾼 스타일들을 적용시켜주는 역할을 한다.  
+따라서 CSS로더와 스타일로더를 동시에 사용해줘야한다.  
+- style loader를 설치한다.  
+````
+npm install style-loader
+```` 
+- webpack.config.js에 로더를 적용시킨다.  
+````
+const path = require('path')
+
+module.exports = {
+    mode: 'development',
+    entry: {
+        main: './src/app.js'
+    },
+    output: {
+        path: path.resolve('./dist'),
+        filename: '[name].js'
+    },
+    module:{
+        rules:[
+            {   
+                test: /\.js$/,
+                use: [
+                    path.resolve('./my-webpack-loader.js')
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'css-loader',
+                    'style-loader'  <--적용
+                ]
+            } 
+        ]
+    }
+}
+````  
+### file loader  
+css로 아래와 같이 불러올때 빌드를 하면 오류가 발생한다.
+````
+body{
+    background-image: url(bg.png);
+}
+````  
+이 오류는 css로더가 bg.png 파일을 읽어들일 수 없어 생기는 오류이다.  
+이러한 이미지를 처리하는 로더가 file loader이다.  
+- file loader를 설치한다.  
+````
+npm install file-loader
+````  
+- webpack.config.js에 로더를 적용시킨다.  
+````
+const path = require('path')
+
+module.exports = {
+    mode: 'development',
+    entry: {
+        main: './src/app.js'
+    },
+    output: {
+        path: path.resolve('./dist'),
+        filename: '[name].js'
+    },
+    module:{
+        rules:[
+            {   
+                test: /\.js$/,
+                use: [
+                    path.resolve('./my-webpack-loader.js')
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'css-loader',
+                    'style-loader'
+                ]
+            },
+            {
+                test: /\.png$/, <-파일확장자
+                loader:'file-loader', <-로더명
+                options: {<--옵션을 지정해준다.
+                    publicPath:'./dist/', <-- 이렇게 해주면 로더로 변환된 bg.png 앞에 publicPath를 붙혀준다 예를들어 ./dist/bg.png로 바꿔준다
+                    //이렇게 하는 이유는 번들링된 파일은 dist폴더에 들어가기 때문이다.
+                    name: '[name].[ext]?[hash]'// 번들링될때 파일로더는 해싱처리를한다. 
+                    //파일명이 5c6d3b633991b51295c68b34d8b94c8b.png 이런식으로되기 때문에 알아보기 쉽지 않다.
+                    //[name].[ext]?[hash]의 의미는 name은 원본 파일명 ext은 원본확장자명 ?[hash]는 해쉬를 무력화시킨다.
+                }
+            }
+        ]
+    }
+}
+````  
