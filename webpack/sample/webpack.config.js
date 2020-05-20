@@ -1,4 +1,7 @@
-const path = require('path')
+const path = require('path');
+const MyWebpackPlugin = require('./my-webpack-plugin');
+const webpack = require('webpack');
+const childProcess = require('child_process');// 터미널 명령어 실행가능
 
 //module.exports는 노드의 모듈 시스템이다.
 module.exports = {
@@ -45,5 +48,19 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    //Build Date: ${new Date().toLocaleString} <--빌드날짜
+    //Commit Version: ${childProcess.execSync('git rev-parse --short HEAD')}
+    //childProcess.execSync는 문자열을 받아서 터미널을 실행해주는 역할을 한다.
+    //                Author: ${childProcess.execSync('git config user.name')}
+    plugins: [
+        new MyWebpackPlugin(),
+        new webpack.BannerPlugin({
+            banner: `
+                Build Date: ${new Date().toLocaleString}
+                Commit Version: ${childProcess.execSync('git rev-parse --short HEAD')}
+
+            `,
+        })
+    ]
 }

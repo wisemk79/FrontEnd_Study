@@ -45,4 +45,45 @@ module.exports = {
        filename: '[name].js'
     }
 }
-````
+````  
+5. 로더 정의하기  
+`````
+const path = require('path')
+
+module.exports = {
+    mode: 'development',
+    entry: {
+        main: './src/app.js'
+    },
+    output: {
+        path: path.resolve('./dist'),노드의 path 모듈을 import하여 사용한다.
+        filename: '[name].js'생기게된다.
+    },
+    module:{
+        rules:[
+            {
+                test: /\.js$/,
+                use: [
+                    path.resolve('./my-webpack-loader.js')
+                ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader:'url-loader',
+                options: {
+                    publicPath:'../dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 30000, //30kb 미만의 파일은 자바스크립트로 변환하고, 아닌것은 파일을 생성한다.
+                }
+            }
+        ]
+    }
+}
+`````  

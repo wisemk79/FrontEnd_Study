@@ -334,6 +334,89 @@ npm install url-loader
     }
 }
 ````    
+## 플러그인  
+오더는 파일단위로 처리하는 반면 플러그인은 번들된 결과물을 처리하는 것이다.   
+번들된 자바스크립트를 난독화 한다거나 특정 텍스트를 추출하는 용도로 사용한다.  
+### 플러그인 설정 방법  
+- my-webpack-plugin.js
+````
+class MyWebpackPlugin {
+    apply(compiler){//apply 메소드는 compiler라는 객체를 주입해준다.
+        compiler.hooks.done.tap('My Plugin', stats => {//'My Plugin'문자열을 넣고 콜백함수를 넣어주는데,
+            console.log('MyPlugin: done')//이 함수는 플러그인이 완료됐을때 동작하는 콜백함수이다.
+        })
+    }
+}
+
+module.exports = MyWebpackPlugin;
+````  
+- webpack.config.js 
+````
+
+    module:{
+        rules:[
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader:'url-loader',
+                options: {
+                    publicPath:'../dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 30000, 
+                }
+            }
+        ]
+    },
+    plugins: [// 번들된 결과물에 대해 로드되기 때문에 딱 한번 실행된다.
+        new MyWebpackPlugin(),
+    ]
+}
+````  
+
+### 번들된 결과물에 접근하는 방법?  
+- my-webpack-plugin.js  
+`````  
+class MyWebpackPlugin {
+    apply(compiler){//apply 메소드는 compiler라는 객체를 주입해준다.
+        //compiler.hooks.done.tap은 플러그인이 종료되었을때 로드되는것
+    //     compiler.hooks.done.tap('My Plugin', stats => {//'My Plugin'문자열을 넣고 콜백함수를 넣어주는데,
+    //         console.log('MyPlugin: done')//이 함수는 플러그인이 완료됐을때 동작하는 콜백함수이다.
+    //     })
+    // }
+    
+    //emit이라는 문자열을 전달하고 
+    compiler.plugin('emit', (compilation, callback)=>{//콜백함수는 compilation, callback이라는 인자를 받는다.
+                                                        //compilation를 통해서 웹팩에 번들링한 결과에 접근할 수 있다.
+        const source = compilation.assets['main.js'].source();// 'main.js' 라는 부분의 소스를 가져오는 코드이다. 
+        console.log(source)
+        //아래의 코드는 웹팩으로 빌드한 시간을 추가하는 로직이다 
+        compilation.assets[main.js].source = () =>{
+            const banner = [
+                '/**',
+                ' * 이것은 BannerPlugin이 처리한 결과입니다.',
+                ' * Build Date: 2019-10-10',
+                ' */'
+            ].join('\n');
+            return banner + '\n\n' + source;
+        }
+        callback();
+    })
+}
+}
+`````  
+## 자주 사용하는 플러그인  
+### BannerPlugin  
+결과물에 빌드정보나 커밋 버전 같은 걸 추가할 수 있다.(웹팩이 기본적으로 제공하는 플러그인)  
+- webpack.config.js  
+`````
+const webpack = require('webpack')
 
 
-
+module.exports = {
+    module:{
+    plugins: [
+        new webpack.BannerPlugin({// 웹팩에 있는 BannerPlugin 객체를 가져온다.
+            banner: '이것은 배너입니다.'
+        })
+    ]
+}
+`````
