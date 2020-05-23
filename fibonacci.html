@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 피보나치 수(영어: Fibonacci numbers)는 첫째 및 둘째 항이 1이며 
+        그 뒤의 모든 항은 바로 앞 두 항의 합인 수열이다. 처음 여섯 항은 각각 1, 1, 2, 3, 5, 8이다. 편의상 0번째 항을 0으로 두기도 한다. -->
+        <!-- <script>
+            let input = prompt("숫자를 입력해주세요.");
+            let answer = 0;
+            arr = [0, 1]
+            arr[0] + arr[1]
+            for(let i=2;i<=input; i++){
+                arr.push(arr[i-1]+arr[i-2])
+            }
+            answer = arr[input]
+            console.log(arr,answer)
+        </script> -->
+
+        <script>
+            function solution(n) {
+                var answer = 0;
+                var arr = [0, 1]
+                for(var i=2;i<=n; i++){
+                    arr.push(arr[i-1]+arr[i-2])
+                }
+                answer = arr[n]
+                return answer;
+            }
+
+            alert(solution(3))
+            alert(solution(5))
+        </script>
+</body>
+</html>

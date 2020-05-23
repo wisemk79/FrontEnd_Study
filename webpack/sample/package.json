@@ -1,0 +1,24 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "print": "echo \"여기에 빌드 스크립트를 추가합니다.\"",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "react": "^16.13.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
