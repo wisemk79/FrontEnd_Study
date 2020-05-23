@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getData(callback){
+            return new Promise(function(resolve,reject){
+                $.get('http://localhost:3000/articles',function(response){
+                    if(response){
+                        resolve(response)
+                    }
+                    reject(new Error("Request is failed"))
+                })
+            });
+        }
+
+        getData()
+        .then(function(tableData){
+            console.log(tableData)//받아온 데이터 출력
+        })
+        .catch(function(err){
+            console.log(err)//에러출력
+        })
+    </script>
+</body>
+</html>
