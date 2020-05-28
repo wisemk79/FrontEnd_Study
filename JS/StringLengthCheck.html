@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+모든 공백 체크 정규식
+var regExp = /\s/g;
+
+ 
+
+숫자만 체크 정규식
+var regExp = /^[0-9]+$/;
+
+
+이메일 체크 정규식
+var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+
+핸드폰번호 정규식
+var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
+
+
+일반 전화번호 정규식
+var regExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
+
+
+아이디나 비밀번호 정규식 
+var regExp = /^[a-z0-9_]{4,20}$/;
+
+
+휴대폰번호 체크 정규식 
+var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+     -->
+    <script>
+        let strN = '1';
+        let strE = 'a';
+        let strH = '한';
+        let strT = '^';
+        let strB = ' ';
+        let str = 'sdf라라d sk@@$%';
+
+        function checkStr(str){
+            const pattern_num = /[0-9]/;	// 숫자
+            const pattern_eng = /[a-zA-Z]/;	// 문자 
+            const pattern_spc = /[~!@#$%^&*()_+|<>?:{}]/; // 특수문자
+            const pattern_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
+            const pattern_blank = /\s/g; // 공백
+            console.log("숫자=>" + pattern_num.test(strN) + ", 영어=> " + pattern_eng.test(strE) + ", 한글=> " + pattern_kor.test(strH) + ", 특수문자=> " + pattern_spc.test(strT), ", 공백=> " + pattern_blank.test(strB))
+            let length = 0;
+            let string = str.split('');
+            console.log(string, string.length)
+            for(let i=0; i<string.length; i++){
+                console.log(string[i])
+                if(pattern_num.test(string[i])){
+                    length++;
+                    console.log('숫자', length)
+                }else if(pattern_eng.test(string[i])){
+                    length++;
+                    console.log('영어', length)
+                }else if(pattern_kor.test(string[i])){
+                    length = length + 2;
+                    console.log('한글', length)
+                }else if(pattern_spc.test(string[i])){
+                    length++;
+                    console.log('특수문자',length)
+                }else if(pattern_blank.test(string[i])){
+                    length++;
+                    console.log('공백',length)
+                }else{
+                    length++;
+                    console.log('다른것',length)
+                }
+            }    
+            return length;
+        }
+
+        console.log(checkStr(str));
+    </script>
+    
+
+</body>
+</html>
