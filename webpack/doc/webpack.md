@@ -424,4 +424,138 @@ module.exports = {
 어플리케이션은 개발환경과 운영환경으로 나눠서 운영하는데, 환경에따라  API서버 주소가  
 다를 수 있다. 같은 소스 코드를 두 환경에 배포하기 위해서는 이러한 환경 의존적인 정보를  
 소스가 아닌 곳에서 관리하는 것이 좋다. 배포할 때마다 코드를 수정하는 것은 곤란하기 때문이다.  
-웹팩은 이러한 환경정보를 제공하기 위해 Define
+웹팩은 이러한 환경정보를 제공하기 위해 DefinePlugin을 제공한다. 
+
+- webpack.config.js  
+````
+        //웹팩의 환경설정 코드를 관리
+        new webpack.DefinePlugin({
+            TWO: "1+1",//defineplugin에서 이런식으로 선언해주면 TWO라는 전역변수로 접근할 수 있고, 1+1이 연산된 값이나온다.
+            TWOSTRING: JSON.stringify("1+1"),// 스트링형으로 변화시켜주면 문자열 형태로 나온다. 
+            'api.domain': JSON.stringify("http://dev.api.domain.com")// 객체형태의 선언도 해줄 수 있다.
+        })
+````
+- app.js  
+````
+console.log(process.env.NODE_ENV);// developement <--config의 mode 속성값을 가져온다.
+console.log(TWO);//2
+console.log(TWOSTRING)// 1+1
+console.log(api.domain)//http://dev.api.domain.com
+````
+### HtmlTemplatePlugin  
+HTML 파일을 후처리 할 때 사용하는 플러그인으로, 빌드타임의 값을 넣거나 코드를 압축 할 수 있다.  
+- 패키지 다운로드  
+````
+npm install -D html-webpack-plugin
+````  
+- webpack.config.js  
+````
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
+        //아래처렴 경로를 설정해주면, dist폴더에 index.html 파일이 생성되며,
+        //따로 설정하지 않아도 entry point에 맞는 것(main.js)을 script scr로 불러온다.
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            templateParameters:{// 여기서 선언한 값은 ejs문법 <%= %>으로 불러올수 있고 아래와 같이 사용한다.
+                env: process.env.NODE_ENV === 'development' ? '(개발용)' : ""//NODE_ENV=development npm run build 명령어를 사용하면된다.
+            },
+            minify: process.env.NODE_ENV === 'production' ? {// 개발환경이 프로덕션일때만 일반적으로 적용한다.
+                collapseWhitespace: true,// 공백을 삭제하는 명령어
+                removeComments:true// 모든 주석을 삭제하는 명령어
+            }:false
+        })
+````
+
+- templateParameters  
+templateParameters는 ejs문법 형태로 사용할 수 있는데 <%= 변수명%>으로 사용한다.  
+위에서 설정한대로 개발환경이 development인 경우 templateParameter를 적용할 것이기 때문에 아래의 명령어로 적용한다.  
+````
+NODE_ENV=development npm run build
+````
+위의 명령어를 실행하면 정상적으로 ejs문법을 사용한 html파일의 위치에 (개발용)이라는 스트링이 들어갈 것이다.  
+만약 환경을 production으로 변경한다면 어떻게될까?   
+````
+NODE_ENV=production npm run build
+````
+production을 적용하게되면 (개발용)이라는 스트링이 html파일 상에서 적용되지 않을 것이다.  
+위의 설정을하는 이유는 개발환경, 배포환경에 따라 다른 환경설정을 하기위해서이다.
+
+- ./src/index.html
+````
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document <%= env%></title> <--- ejs문법을 이용하여 templateparameters를 이용한다.
+    <!-- <script src="math.js"></script> -->
+    <!-- <script src="../dist/main.js"></script> -->
+</head>
+<body>
+    
+</body>
+</html>
+````
+
+- ./dist/index.html  
+````
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document (개발용)</title>
+    <!-- <script src="math.js"></script> -->
+    <!-- <script src="../dist/main.js"></script> -->
+</head>
+<body>
+    
+<script src="main.js"></script></body> <--따로 html에서 설정해주지 않아도 webpack config에서 후처리하여 스크립트를 가져온다.
+</html>
+````
+
+### CleanWebpackPlugin  
+빌드 이전의 결과물을 제거하는 플러그인으로, 기존에 우리가 직접 dist폴더를 삭제해줬다면,  
+이 플러그인을 통해서 자동으로 삭제해줄 수 있도록 해준다.  
+- 패키지 설치  
+````
+npm install -D clean-webpack-plugin
+````
+- webpack.config.js  
+````
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+new CleanWebpackPlugin()
+````
+
+### MiniCssExtractPlugin  
+Css를 별도의 파일로 뽑아내는 플러그인으로 여러개의 작은 파일로 분리한다  
+- 패키지 설치  
+````
+npm install -D mini-css-extract-plugin
+````
+
+- webpack.config.js  
+````
+    플러그인즈 배열에 추가
+        ...(process.env.NODE_ENV === 'production'?
+        [new MiniCssExtractPlugin({filename:'[name].css'})]
+        :
+        [])
+
+    로더에 추가
+           {
+                test: /\.css$/,//로더가 처리해될 패턴을 입력한다(정규식)
+                use: [//사용할 로더를 정의한다.
+                    process.env.NODE_ENV === 'production'?//프로덕션 환경이면 MiniCssExtractPlugin를 적용하고 아니면 'style-loader'를 적용한다
+                    MiniCssExtractPlugin.loader:
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+````
+
+````
+NODE_ENV=production npm run build
+````
