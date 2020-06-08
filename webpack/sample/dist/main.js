@@ -6,7 +6,7 @@
 /*!
  * 
  *                 Build Date: function toLocaleString() { [native code] }
- *                 Commit Version: e72fb7f
+ *                 Commit Version: 5fe1ac6
  * 
  * 
  *             
@@ -106,7 +106,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nvar ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ \"./node_modules/css-loader/dist/runtime/getUrl.js\");\nvar ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ./bg.png */ \"./src/bg.png\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);\n// Module\nexports.push([module.i, \"body{\\r\\n    /* background-color: green; */\\r\\n    background-image: url(\" + ___CSS_LOADER_URL_REPLACEMENT_0___ + \");\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/app.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nvar ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ \"./node_modules/css-loader/dist/runtime/getUrl.js\");\nvar ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ./bg.png */ \"./src/bg.png\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);\n// Module\nexports.push([module.i, \"body{\\n    /* background-color: green; */\\n    background-image: url(\" + ___CSS_LOADER_URL_REPLACEMENT_0___ + \");\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/app.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -165,7 +165,7 @@ eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtim
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math.js */ \"./src/math.js\");\n/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.css */ \"./src/app.css\");\n/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _nyancat_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nyancat.jpg */ \"./src/nyancat.jpg\");\n\r\nconsole.log(_math_js__WEBPACK_IMPORTED_MODULE_0__[\"sum\"](1,2));\r\n\r\n\r\n\r\n\r\n//DOMContentLoaded dom이 로드되면 이미지 태그를 노출시킨다.\r\ndocument.addEventListener('DOMContentLoaded', ()=>{\r\n    document.body.innerHTML = `\r\n    <img src=\"${_nyancat_jpg__WEBPACK_IMPORTED_MODULE_2__[\"default\"]}\"/>\r\n    `\r\n})\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math.js */ \"./src/math.js\");\n/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.css */ \"./src/app.css\");\n/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _nyancat_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nyancat.jpg */ \"./src/nyancat.jpg\");\n\nconsole.log(_math_js__WEBPACK_IMPORTED_MODULE_0__[\"sum\"](1,2));\n\n\n\n\n//DOMContentLoaded dom이 로드되면 이미지 태그를 노출시킨다.\ndocument.addEventListener('DOMContentLoaded', ()=>{\n    document.body.innerHTML = `\n    <img src=\"${_nyancat_jpg__WEBPACK_IMPORTED_MODULE_2__[\"default\"]}\"/>\n    `\n})\n\nconsole.log(\"development\");// developement <--config의 mode 속성값을 가져온다.\nconsole.log(1+1);//2\nconsole.log(\"1+1\")// 1+1\nconsole.log(\"http://dev.api.domain.com\")//http://dev.api.domain.com\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -189,7 +189,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sum\", function() { return sum; });\n// var math = math || {};\r\n\r\n// (function(){\r\n//     //이 함수의 안쪽은 외부로부터 독립적인 스코프이다.\r\n//     function sum(a,b){\r\n//         return a + b;\r\n//     }\r\n\r\n//     math.sum = sum;//전역변수인 math에 sum이라는 함수를 할당한다.\r\n// })();\r\n\r\nfunction sum(a,b){\r\n    return a + b;\r\n}\n\n//# sourceURL=webpack:///./src/math.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"sum\", function() { return sum; });\n// var math = math || {};\n\n// (function(){\n//     //이 함수의 안쪽은 외부로부터 독립적인 스코프이다.\n//     function sum(a,b){\n//         return a + b;\n//     }\n\n//     math.sum = sum;//전역변수인 math에 sum이라는 함수를 할당한다.\n// })();\n\nfunction sum(a,b){\n    return a + b;\n}\n\n//# sourceURL=webpack:///./src/math.js?");
 
 /***/ }),
 

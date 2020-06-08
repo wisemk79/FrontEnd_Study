@@ -2,6 +2,7 @@ const path = require('path');
 const MyWebpackPlugin = require('./my-webpack-plugin');
 const webpack = require('webpack');
 const childProcess = require('child_process');// 터미널 명령어 실행가능
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //module.exports는 노드의 모듈 시스템이다.
 module.exports = {
@@ -61,6 +62,18 @@ module.exports = {
                 Commit Version: ${childProcess.execSync('git rev-parse --short HEAD')}
 
             `,
+        }),
+        //웹팩의 환경설정 코드를 관리
+        new webpack.DefinePlugin({
+            TWO: "1+1",//defineplugin에서 이런식으로 선언해주면 TWO라는 전역변수로 접근할 수 있고, 1+1이 연산된 값이나온다.
+            TWOSTRING: JSON.stringify("1+1"),// 스트링형으로 변화시켜주면 문자열 형태로 나온다. 
+            'api.domain': JSON.stringify("http://dev.api.domain.com")// 객체형태의 선언도 해줄 수 있다.
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            templateParameters:{// 여기서 선언한 값은 ejs문법 <%= %>으로 불러올수 있고 아래와 같이 사용한다.
+                env: process.env.NODE_ENV === 'development' ? '(개발용)' : ""//NODE_ENV=development npm run build 명령어를 사용하면된다.
+            }
         })
     ]
 }

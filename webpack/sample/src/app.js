@@ -10,3 +10,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     <img src="${nyancat}"/>
     `
 })
+
+console.log(process.env.NODE_ENV);// developement <--config의 mode 속성값을 가져온다.
+console.log(TWO);//2
+console.log(TWOSTRING)// 1+1
+console.log(api.domain)//http://dev.api.domain.com
