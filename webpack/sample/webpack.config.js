@@ -3,6 +3,8 @@ const MyWebpackPlugin = require('./my-webpack-plugin');
 const webpack = require('webpack');
 const childProcess = require('child_process');// 터미널 명령어 실행가능
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //module.exports는 노드의 모듈 시스템이다.
 module.exports = {
@@ -27,6 +29,8 @@ module.exports = {
             {
                 test: /\.css$/,//로더가 처리해될 패턴을 입력한다(정규식)
                 use: [//사용할 로더를 정의한다.
+                    process.env.NODE_ENV === 'production'?//프로덕션 환경이면 MiniCssExtractPlugin를 적용하고 아니면 'style-loader'를 적용한다
+                    MiniCssExtractPlugin.loader:
                     'style-loader',
                     'css-loader'
                 ]
@@ -73,7 +77,16 @@ module.exports = {
             template: './src/index.html',
             templateParameters:{// 여기서 선언한 값은 ejs문법 <%= %>으로 불러올수 있고 아래와 같이 사용한다.
                 env: process.env.NODE_ENV === 'development' ? '(개발용)' : ""//NODE_ENV=development npm run build 명령어를 사용하면된다.
-            }
-        })
+            },
+            minify: process.env.NODE_ENV === 'production' ? {// 개발환경이 프로덕션일때만 일반적으로 적용한다.
+                collapseWhitespace: true,// 공백을 삭제하는 명령어
+                removeComments:true// 모든 주석을 삭제하는 명령어
+            }:false
+        }),
+        new CleanWebpackPlugin(),
+        ...(process.env.NODE_ENV === 'production'?
+        [new MiniCssExtractPlugin({filename:'[name].css'})]
+        :
+        [])
     ]
 }
