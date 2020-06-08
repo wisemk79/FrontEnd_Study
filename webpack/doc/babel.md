@@ -258,5 +258,100 @@ npx babel app.js
 var alert = function alert(msg) {
   return window.alert(msg);
 };
-`````
+`````  
+### 타겟 브라우저  
+프리셋으로 변환하는 코드가 특정 브라우저를 지원할 수 있도록 설정해준다.  
+- babel.config.js  
+````
+module.exports = {
+    presets: [
+        // './my-babel-preset.js'
+        ['@babel/preset-env',
+        {
+            targets:{
+                chrome: '79',//크롬 79까지 지원하는 코드를 만든다. 
+                ie: '11'
+            }
+        }]
+    ]
+}
+````
+- 결과  
+````
+"use strict";
 
+const alert = msg => window.alert(msg);
+````
+위의 결과를 보면 크롬 79버전 부터는 const와 arrow function을 사용할 수 있기 때문에  
+따로 변환시키지 않는 것을 볼 수 있다.  
+
+### 폴리필  
+바벨은 es6코드를 es5로 변환 가능한것 만을 변환 시킬수 있다.  
+예를들어 new Promise() 객체는 es5에서 변환될 수 없기 때문에 오류를 발생시킨다.  
+이 처럼 변환되지 않는 것을 폴리필이라는 코드조각을 추가하여 해결한다.  
+
+- babel.config.js  
+````
+module.exports = {
+    presets: [
+        // './my-babel-preset.js'
+        ['@babel/preset-env',
+        {
+            targets:{
+                chrome: '79',//크롬 79까지 지원하는 코드를 만든다. 
+                ie: '11'
+            },
+            //어떤 방식으로 폴리필을 사용할지 설정하는 옵션('usage', 'entry', false <--기본값)
+            useBuiltIns: 'usage', //'entry', false
+            corejs: {//corejs버전을 설정
+                version: 2 // 3이있는데 2가 기본버전이다.
+            }
+        }]
+    ]
+}
+````
+
+- 결과  
+````
+"use strict";
+
+require("core-js/modules/es6.promise");
+
+require("core-js/modules/es6.object.to-string");
+
+var alert = function alert(msg) {
+  return window.alert(msg);
+};
+
+new Promise(); //es6에 있는 객체
+````
+promise 객체가 정상적으로 require로 가져와진다.
+
+# 웹팩으로 바벨을 통합 시키는 법  
+실무 환경에서는 바벨을 직접 사용하는 것 보다는 웹팩으로 통합해서 사용한다.  
+로더 형태로 제공하는데 babel-loader가 그것이다.  
+- 패키지 설치  
+````
+npm install -D babel-loader
+````
+- webpack.config.js  
+````
+            {
+                test:/\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/ 
+                //node_modules에 대해서는 바벨 처리를 하지 않도록한다.
+            }
+````
+로더 설정을 위처럼 해주고 빌드해줘도 아래와 같은 오류가 발생하게된다.  
+- 에러메세지  
+````
+ERROR in ./app.js
+Module not found: Error: Can't resolve 'core-js/modules/es6.object.to-string' in '/Users/wisemk/Desktop/study/webpack/sample'
+ @ ./app.js 2:0-46
+````
+위의 메세지는 core-js라는 모듈을 찾을 수 없기 때문에 발생하는 오류이다.  
+따라서 core-js를 설치해줘야한다.  
+````
+npm install core-js@2 // 2버전을 설치한다.
+````

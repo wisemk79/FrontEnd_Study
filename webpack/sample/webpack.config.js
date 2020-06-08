@@ -51,6 +51,12 @@ module.exports = {
                     name: '[name].[ext]?[hash]',
                     limit: 30000, //30kb 미만의 파일은 자바스크립트로 변환하고, 아닌것은 파일을 생성한다.
                 }
+            },
+            {
+                test:/\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/ 
+                //node_modules에 대해서는 바벨 처리를 하지 않도록한다.
             }
         ]
     },
