@@ -5,16 +5,67 @@ const childProcess = require("child_process"); // 터미널 명령어 실행가�
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const apiMocker = require('connect-api-mocker');
+const OptimizeCSSAssertsPlugins = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
+const mode = process.env.NODE_ENV || "development";
 
 //module.exports는 노드의 모듈 시스템이다.
 module.exports = {
-  mode: "development",
+  mode,
   entry: {
     main: "./src/app.js",
+    // result: "./src/result.js",
+    // form: "./src/form.js"
   },
   output: {
     path: path.resolve("./dist"), //output 디렉토리명을 입력. 절대경로를 입력하는데, 노드의 path 모듈을 import하여 사용한다.
     filename: "[name].js", //여기서 name은 entry에서 설정한 키값으로 치환되어 main.js로 생기게된다.
+  },
+  devServer:{
+    overlay:true,
+    stats:"errors-only",
+    port:8090,
+    before: app => {
+      app.use(apiMocker('/api', 'mocks/api'))
+      // app.get("/api/users", (req,res)=>{
+      //   res.json([
+      //      {
+      //       id:1,
+      //       name:"Alice"
+      //     },
+      //     {
+      //       id:2,
+      //       name:"Jack"
+      //     },
+      //     {
+      //       id:3,
+      //       name:"Sara"
+      //     },
+      //   ])
+      // })
+    },
+    hot:true
+  },
+  optimization:{
+    minimizer: mode === "production" ? [
+      new OptimizeCSSAssertsPlugins(),
+      new TerserPlugin({
+        terserOptions:{
+          compress:{
+            drop_console: true // 콘솔로그를 제거
+          }
+        }
+      })
+    ] : [],
+    // splitChunks:{
+    //   chunks:"all"
+    // }
+    // externals: {
+    //   axios : 'axios'
+    // }
   },
   // 로더는 모듈객체에 rules라는 배열에다 추가할 수 있다.
   // 이 배열에는 test와 use라는 키를 갖는 객체를 사용한다.
@@ -50,15 +101,15 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: "url-loader",
         options: {
-          publicPath: "../dist/",
+          // publicPath: "../dist/",
           name: "[name].[ext]?[hash]",
           limit: 30000, //30kb 미만의 파일은 자바스크립트로 변환하고, 아닌것은 파일을 생성한다.
         },
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
         exclude: /node_modules/,
+        loader: "babel-loader",
         //node_modules에 대해서는 바벨 처리를 하지 않도록한다.
       },
     ],
@@ -103,5 +154,13 @@ module.exports = {
     ...(process.env.NODE_ENV === "production"
       ? [new MiniCssExtractPlugin({ filename: "[name].css" })]
       : []),
+    new CopyPlugin({
+    patterns: [
+      {
+        from: './node_modules/axios/dist/axios.min.js',
+        to: './axios.min.js'
+      }
+    ],
+    })
   ],
 };

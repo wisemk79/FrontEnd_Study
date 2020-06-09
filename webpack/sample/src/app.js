@@ -1,21 +1,31 @@
-import * as math from './math.js'
-console.log(math.sum(1,2));
-
+import form from './form';
+import result from './result';
 import './app.css'
-import nyancat from './nyancat.jpg'
 
-//DOMContentLoaded dom이 로드되면 이미지 태그를 노출시킨다.
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.body.innerHTML = `
-    <img src="${nyancat}"/>
-    `
+let resultEl;
+let formEl;
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+    formEl = document.createElement("div");
+    formEl.innerHTML = form.render();
+    document.body.appendChild(formEl);
+
+    resultEl = document.createElement("div");
+    resultEl.innerHTML = await result.render();
+    document.body.appendChild(resultEl);
 })
 
-console.log(process.env.NODE_ENV);// developement <--config의 mode 속성값을 가져온다.
-console.log(TWO);//2
-console.log(TWOSTRING)// 1+1
-console.log(api.domain)//http://dev.api.domain.com
+if(module.hot){
+    console.log('핫 모듈 켜짐');
 
-const alert = msg => window.alert(msg);
+    module.hot.accept("./result", async ()=>{
+        console.log("result 모듈 변경됨")
+        resultEl.innerHTML = await result.render();
+        //resultEl.innerHTML에다가 업데이트된 result 모듈의 렌더함수의 결과를 넣어준다. 
+    })
 
-new Promise();//es6에 있는 객체  
+    module.hot.accept("./form", ()=>{
+    console.log("form 모듈 변경됨")
+    formEl.innerHTML = form.render();
+    })
+}
